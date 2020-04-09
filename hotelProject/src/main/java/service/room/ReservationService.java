@@ -8,6 +8,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
+import Controller.Room.SmsSend;
 import command.room.ReservationCommand;
 import model.dto.member.AuthInfo;
 import model.dto.pay.PayDTO;
@@ -15,12 +17,7 @@ import model.dto.room.ReservationChkDTO;
 import model.dto.room.ReservationDTO;
 import model.dto.room.RoomDTO;
 import repository.room.RoomRepository;
-import java.util.HashMap;
 
-import org.json.simple.JSONObject;
-
-import net.nurigo.java_sdk.api.Message;
-import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 
 
@@ -139,12 +136,14 @@ public class ReservationService {
 		request.setAttribute("userId",authInfo.getId() );
 		
 	}
-	public void execute5(String userId,ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)throws Exception 
+	public void execute5(String userId,ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)
 	{
 		ReservationDTO dto = roomRepository.selectReservationOk(userId);	
-	 
-		model.addAttribute("reservationOk",dto);	
-		 
+		model.addAttribute("reservationOk",dto);
+		String textMassage = dto.getUserName()+"님 예약해주셔서 감사합니다."
+				+ "체크인 날짜:"+dto.getRmbkChkIn()+", 체크 아웃날짜:"+dto.getRmbkChkOut()+"호 수:"+ dto.getRoomNo();
+		SmsSend sms = new SmsSend();
+		sms.smsSend(dto.getUserPh(), textMassage);
 
 	}
 }
