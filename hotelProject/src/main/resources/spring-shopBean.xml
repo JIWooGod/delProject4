@@ -10,6 +10,8 @@
 	<bean id = "goodsInsertService" class = "service.shop.goodsInsertService" />
 	<bean id = "goodsListService" class = "service.shop.goodsListService" />
 	<bean id = "goodsDetailService" class = "service.shop.goodsDetailService" />
+	<bean id = "cartInsertService" class = "service.shop.cartInsertService" />
+	<bean id = "cartService" class = "service.shop.cartService" />
 
    <!-- repository -->
     <bean id = "shopRepository" class = "repository.shop.ShopRepository" />

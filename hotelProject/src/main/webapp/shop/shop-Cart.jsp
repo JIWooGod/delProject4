@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -16,6 +18,13 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
 
+	 <style >
+    	#qbtn{
+    	color: #000000;
+    	text-decoration: none;
+		background-color: transparent;
+    	}
+    </style>
     <!-- Css Styles -->
     <link rel="stylesheet" href="/hotelProject/shop/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/hotelProject/shop/css/font-awesome.min.css" type="text/css">
@@ -24,6 +33,8 @@
     <link rel="stylesheet" href="/hotelProject/shop/css/magnific-popup.css" type="text/css">
     <link rel="stylesheet" href="/hotelProject/shop/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="/hotelProject/shop/css/style.css" type="text/css">
+    
+   
 </head>
 
 <body>
@@ -80,21 +91,38 @@
                         </tr>
                     </thead>
                     <tbody>
+                    	<c:if test="${empty cartList}">
+                        	<td class="product-col">
+                                
+                                <div class="p-title">
+                                    <h5>장바구니가 비어있습니다.</h5>
+                                </div>
+                            </td>
+                        </c:if>
+                        <c:if  test="${!empty cartList}">
+                        <c:forEach var="carts" items="${cartList }" varStatus="status">
                         <tr>
                             <td class="product-col">
                                 <img src="img/product/product-1.jpg" alt="">
                                 <div class="p-title">
-                                    <h5>Blue Dotted Shirt</h5>
+                                    <h5>${carts.goodsName }</h5>
                                 </div>
                             </td>
-                            <td class="price-col">$29</td>
+                            <td class="price-col"><fmt:formatNumber type="currency" value="${carts.cartPrice }" /></td>
                             <td class="quantity-col">
                                 <div class="pro-qty">
-                                    <input type="text" value="1">
+                                	<span class="dec qtybtn"><a href="cartQtyDown?name=${carts.goodsCode }-${carts.cartQty }" id ="qbtn" >-</span></a>
+                                    <input type="text" value="${carts.cartQty }">
+                                    <span class="inc qtybtn"><a href="cartQtyUp?name=${carts.goodsCode }" id ="qbtn" >+</a></span>
                                 </div>
                             </td>
-                            <td class="total">$29</td>
+                            <td class="total"><fmt:formatNumber type="currency" value="${carts.gAvg }"/></td>
+                    
                             <td class="product-close">x</td>
+                            
+                        	</c:forEach>
+                        	</c:if>
+                        	
                         </tr>
                     </tbody>
                 </table>
@@ -149,17 +177,28 @@
                                     <thead>
                                         <tr>
                                             <th>Total</th>
-                                            <th>Subtotal</th>
                                             <th>Shipping</th>
                                             <th class="total-cart">Total Cart</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="total">$29</td>
-                                            <td class="sub-total">$29</td>
-                                            <td class="shipping">$10</td>
-                                            <td class="total-cart-p">$39</td>
+                                        
+                                            <c:forEach var="cart" items="${cartList }" varStatus="status" end="0">
+                                            <td class="total"><fmt:formatNumber type="currency" value="${cart.aSum }"/></td>
+                                            <!-- 배송비 무료 -->
+                                            <c:if test= "${cart.aSum > '100000'}" >
+                                            <c:set var="i" value="0" />
+                                            <td class="shipping"><fmt:formatNumber type="currency" value="${i }"/></td>
+                                            <td class="total-cart-p"><fmt:formatNumber type="currency" value="${cart.aSum + '0' }"/></td>
+                                            </c:if>
+                                            <!-- 배송비 추가 -->
+                                            <c:if test= "${cart.aSum < '100000'}" >
+                                            <c:set var="i" value="3000" />
+                                            <td class="shipping"><fmt:formatNumber type="currency" value="${i }"/></td>
+                                            <td class="total-cart-p"><fmt:formatNumber type="currency" value="${cart.aSum + '3000' }"/></td>
+                                            </c:if>
+                                            </c:forEach>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -177,95 +216,8 @@
     </div>
     <!-- Cart Page Section End -->
 
-    <!-- Footer Section Begin -->
-    <footer class="footer-section spad">
-        <div class="container">
-            <div class="newslatter-form">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <form action="#">
-                            <input type="text" placeholder="Your email address">
-                            <button type="submit">Subscribe to our newsletter</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-widget">
-                <div class="row">
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h4>About us</h4>
-                            <ul>
-                                <li>About Us</li>
-                                <li>Community</li>
-                                <li>Jobs</li>
-                                <li>Shipping</li>
-                                <li>Contact Us</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h4>Customer Care</h4>
-                            <ul>
-                                <li>Search</li>
-                                <li>Privacy Policy</li>
-                                <li>2019 Lookbook</li>
-                                <li>Shipping & Delivery</li>
-                                <li>Gallery</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h4>Our Services</h4>
-                            <ul>
-                                <li>Free Shipping</li>
-                                <li>Free Returnes</li>
-                                <li>Our Franchising</li>
-                                <li>Terms and conditions</li>
-                                <li>Privacy Policy</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-sm-6">
-                        <div class="single-footer-widget">
-                            <h4>Information</h4>
-                            <ul>
-                                <li>Payment methods</li>
-                                <li>Times and shipping costs</li>
-                                <li>Product Returns</li>
-                                <li>Shipping methods</li>
-                                <li>Conformity of the products</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="social-links-warp">
-			<div class="container">
-				<div class="social-links">
-					<a href="" class="instagram"><i class="fa fa-instagram"></i><span>instagram</span></a>
-					<a href="" class="pinterest"><i class="fa fa-pinterest"></i><span>pinterest</span></a>
-					<a href="" class="facebook"><i class="fa fa-facebook"></i><span>facebook</span></a>
-					<a href="" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a>
-					<a href="" class="youtube"><i class="fa fa-youtube"></i><span>youtube</span></a>
-					<a href="" class="tumblr"><i class="fa fa-tumblr-square"></i><span>tumblr</span></a>
-				</div>
-			</div>
-
-
-            <div class="container text-center pt-5">
-                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-            </div>
-
-
-
-		</div>
-    </footer>
+	<!-- Footer Section Begin -->
+	<jsp:include page="./shopInclude/shopFooter.jsp" flush="true" /> 
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->

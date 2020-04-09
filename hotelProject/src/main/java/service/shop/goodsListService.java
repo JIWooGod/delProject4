@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import model.dto.member.AuthInfo;
+import model.dto.shop.cartDTO;
 import model.dto.shop.shopDTO;
 import repository.shop.ShopRepository;
 
@@ -22,6 +24,10 @@ public class goodsListService {
 	public void goodsCateList(Model model, HttpSession session, String goodsCategory) {
 		List<shopDTO> list= shopRepository.goodsCateList(goodsCategory);
 		model.addAttribute("goodsCateList", list);
+	}
+	public void cartList(HttpSession session, Model model) {
+		List<cartDTO> list= shopRepository.cartList(model, session);
+		model.addAttribute("cartList", list);
 	}
 	
 }

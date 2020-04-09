@@ -30,8 +30,8 @@
                     </a>
                 </div>
                 <div class="user-access">
-                    <a href="#">Register</a>
-                    <a href="#" class="in">Sign in</a>
+                    <a href="/hotelProject/signInForm">Sign In</a>
+                 
                 </div>
                 <nav class="main-menu mobile-menu">
                     <ul>

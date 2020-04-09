@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -177,37 +175,111 @@
                         </div>
                         <ul class="product-controls">
                             <li data-filter="*">All</li>
-                            <li data-filter=".Outer">Outer</li>
-                            <li data-filter=".Top">Top</li>
+                            <li data-filter=".dresses">Dresses</li>
+                            <li data-filter=".bags">Bags</li>
                             <li data-filter=".shoes">Shoes</li>
                             <li data-filter=".accesories">Accesories</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            
             <div class="row" id="product-list">
-            <c:forEach var="goods" items="${goodsList }" varStatus="status">
-                <div class="col-lg-3 col-sm-6 mix all ${goods.goodsCategory }">
+                <div class="col-lg-3 col-sm-6 mix all dresses bags">
                     <div class="single-product-item">
                         <figure>
-                           <c:forTokens items="${goods.goodsPic }" delims="-"
-									var="goodsPic" varStatus="status">
-									<c:if test="${status.index == 0}">
-										 <a href="product?code=${goods.goodsCode }">
-										<img src="../shop/img/product/${goodsPic }" />
-									</c:if>
-							</c:forTokens>
+                            <a href="#"><img src="/hotelProject/shop/img/products/img-1.jpg" alt=""></a>
                             <div class="p-status">new</div>
                         </figure>
                         <div class="product-text">
-                            <h6>${goods.goodsName }</h6>
-                            <p><fmt:formatNumber type="currency" value="${goods.goodsPrice }" /></p>
+                            <h6>Green Dress with details</h6>
+                            <p>$22.90</p>
                         </div>
                     </div>
                 </div>
-            </c:forEach>
-     
+                <div class="col-lg-3 col-sm-6 mix all dresses bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="/hotelProject/shop/img/products/img-2.jpg" alt=""></a>
+                            <div class="p-status sale">sale</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Yellow Maxi Dress</h6>
+                            <p>$25.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="/hotelProject/shop/img/products/img-3.jpg" alt=""></a>
+                            <div class="p-status">new</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>One piece bodysuit</h6>
+                            <p>$19.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all shoes accesories">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src="/hotelProject/shop/img/products/img-4.jpg" alt=""></a>
+                            <div class="p-status popular">popular</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Blue Dress with details</h6>
+                            <p>$35.50</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all dresses shoes">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src='/hotelProject/shop/img/products/img-5.jpg' alt=""></a>
+                            <div class="p-status">new</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Green Dress with details</h6>
+                            <p>$22.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all accesories bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src='/hotelProject/shop/img/products/img-6.jpg' alt=""></a>
+                            <div class="p-status sale">sale</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Yellow Maxi Dress</h6>
+                            <p>$25.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all dresses bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src='/hotelProject/shop/img/products/img-7.jpg' alt=""></a>
+                        </figure>
+                        <div class="product-text">
+                            <h6>One piece bodysuit</h6>
+                            <p>$19.90</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-sm-6 mix all accesories bags">
+                    <div class="single-product-item">
+                        <figure>
+                            <a href="#"><img src='/hotelProject/shop/img/products/img-8.jpg' alt=""></a>
+                            <div class="p-status popular">popular</div>
+                        </figure>
+                        <div class="product-text">
+                            <h6>Blue Dress with details</h6>
+                            <p>$35.50</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
     <!-- Latest Product End -->

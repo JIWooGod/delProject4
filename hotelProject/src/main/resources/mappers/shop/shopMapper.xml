@@ -9,6 +9,10 @@
 		goods_code, goods_name, goods_price, goods_pic, goods_opt, goods_category
 	</sql>
 	
+	<sql id="cartcolumn">
+		cart_no, goods_code, cart_price , cart_qty, mem_id
+	</sql>
+	
 	<resultMap type="shopdto" id="shopmap">
 		<id column="goods_code" jdbcType="VARCHAR" property="goodsCode"/>
 		<result column="goods_name" jdbcType="VARCHAR" property="goodsName"/>
@@ -16,23 +20,59 @@
 		<result column="goods_pic" jdbcType="VARCHAR" property="goodsPic"/>
 		<result column="goods_opt" jdbcType="VARCHAR" property="goodsOpt"/>
 		<result column="goods_category" jdbcType="VARCHAR" property="goodsCategory"/>
+		<result column="memId" jdbcType="VARCHAR" property="memId" />
 	</resultMap>
-
-
+	
+	<resultMap type="cartdto" id="cartmap">
+		<id column="gcode" jdbcType="VARCHAR" property="goodsCode" />
+		<result column="cart_no" jdbcType="BIGINT" property="cartNo" />
+		<result column="mem_id" jdbcType="VARCHAR" property="memId"/>
+		<result column="cart_qty" jdbcType="BIGINT" property="cartQty" />
+		<result column="gprice" jdbcType="BIGINT" property="cartPrice" />
+		<result column="g.goods_name" jdbcType="VARCHAR" property="goodsName" />
+		<result column="gavg" jdbcType="BIGINT" property="gAvg" />
+		<result column="asum" jdbcType="BIGINT" property="aSum" />
+	</resultMap>
+	<!-- 카트 시작 -->
+	
+	<select id="cartList" resultMap="cartmap" parameterType="string">
+		SELECT g.GOODS_PRICE gprice, g.GOODS_NAME, c.CART_QTY, g.GOODS_PRICE * c.CART_QTY gavg, g.GOODS_CODE gcode, SUM(g.GOODS_PRICE * c.CART_QTY ) OVER (PARTITION BY c.MEM_ID) asum
+		FROM DELUNA.GOODS g , DELUNA.CART c WHERE c.GOODS_CODE = g.GOODS_CODE AND c.MEM_ID = #{memId} 
+		group by c.MEM_ID, GOODS_PRICE, GOODS_NAME, c.CART_QTY, g.GOODS_CODE
+	</select>	
+	
+	<update id="cartQtyDown">
+		update cart
+		set CART_QTY = CART_QTY -1
+		where mem_id = #{memId} and goods_code = #{goodsCode}
+	</update>
+	
+	<update id="cartQtyUp">
+		update cart
+		set CART_QTY = CART_QTY + 1
+		where mem_id = #{memId} and goods_code = #{goodsCode}
+	</update>
+	<!-- 카트 끝 -->
+	
 	<insert id="insertGoods" parameterType="shopdto" >
 		insert into goods (<include refid="basecolumn"/>) values(#{goodsCode},#{goodsName},#{goodsPrice},#{goodsPic},#{goodsOpt},#{goodsCategory})
 	</insert>
 	
+	<insert id="insertCart">
+		insert into cart  (<include refid="cartcolumn"/>) values(num_seq.nextval, #{goodsCode},#{goodsPrice},#{goodsQty},#{memId})
+	</insert>
+	
+
 	<select id="goodsList" resultMap="shopmap" parameterType="long">
-	select <include refid="basecolumn" /> from goods
+		select <include refid="basecolumn" /> from goods
 	</select>
 	
-	<select id="goodsCateList" resultMap="shopmap" parameterType="String">
-	select <include refid="basecolumn" /> from goods where goods_category = #{goodsCategory}
+	<select id="goodsCateList" resultMap="shopmap" parameterType="string">
+		select <include refid="basecolumn" /> from goods where goods_category = #{goodsCategory}
 	</select>
 	
 	<select id="goodsDetail" resultMap="shopmap" parameterType="String" >
-	select <include refid="basecolumn" /> from goods where goods_code = #{goodsCode}
+		select <include refid="basecolumn" /> from goods where goods_code = #{goodsCode}
 	</select>
 	
 

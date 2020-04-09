@@ -28,7 +28,7 @@ public class shopInsertController {
 	}
 	@RequestMapping(method = RequestMethod.POST)
 	public String insertPro(shopCommand shopcommand , HttpServletRequest request) {
-		System.out.println("들어옴");
+	
 		goodsInsertService.execute(shopcommand, request);
 		
 		return "redirect:main";

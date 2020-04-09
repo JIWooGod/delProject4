@@ -10,5 +10,7 @@
 	<bean class="Controller.shop.shopListController" />
 	<bean class="Controller.shop.shopDetailController" />
 	<bean class="Controller.shop.shopCateController" />
+	<bean class="Controller.shop.shopCartController" />
+	<bean class="Controller.shop.shopCartQtyController" />
 	
 </beans>

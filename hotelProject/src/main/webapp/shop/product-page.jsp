@@ -34,6 +34,15 @@
 </head>
 
 <body>
+	<div style=display:none >
+	<form action="InsertCart" method="post" name="goodsCart" enctype="application/x-www-form-urlencoded" >
+		<input name="goodsPrice" type="text" size="20" maxlength="20" value="${goodsD.goodsPrice }" />
+		<input name="goodsCode" type="text" size="20" maxlength="30" value="${goodsD.goodsCode }" />
+		<input name="goodsName" type="text" size="50" maxlength="100" value="${goodsD.goodsName }" />
+	</form>
+	</div>
+	
+	
 	<!-- Header -->
 	 <jsp:include page="./shopInclude/shopHeader.jsp" flush="true" /> 
     <!-- Page Preloder -->
@@ -120,7 +129,7 @@
                             </div>
                         </div>
                         <a href="#" class="primary-btn pc-btn">구매하기</a> &nbsp;&nbsp;
-                        <a href="#" class="primary-btn pc-btn">장바구니</a>
+                        <a href="javascript:goodsCart.submit()" class="primary-btn pc-btn">장바구니</a>
                         <ul class="p-info">
                             <li>Product Information</li>
                             <li>Reviews</li>

@@ -14,11 +14,14 @@ public class shopDTO implements Serializable {
 	private String goodsCategory;
 	private String goodsIncode;
 	private Integer goodsQty;
+	private String memId;
 	
+
+
 	public shopDTO() {} ;
 	
 	public shopDTO(String goodsCode, String goodsName, Integer goodsPrice, String goodsPic, String goodsOpt,
-			Integer goodsLev, String goodsCode2, String goodsCategory, String goodsIncode, Integer goodsQty ) {
+			Integer goodsLev, String goodsCode2, String goodsCategory, String goodsIncode, Integer goodsQty, String memId ) {
 		super();
 		this.goodsCode = goodsCode;
 		this.goodsName = goodsName;
@@ -30,7 +33,16 @@ public class shopDTO implements Serializable {
 		this.goodsCategory = goodsCategory;
 		this.goodsIncode = goodsIncode;
 		this.goodsQty = goodsQty;
+		this.memId = memId;
 	}
+	public String getMemId() {
+		return memId;
+	}
+
+	public void setMemId(String memId) {
+		this.memId = memId;
+	}
+	
 	public String getGoodsCode() {
 		return goodsCode;
 	}

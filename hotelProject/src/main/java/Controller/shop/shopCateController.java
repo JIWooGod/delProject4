@@ -16,7 +16,6 @@ public class shopCateController {
 	@RequestMapping("/delshop/categories2")
 	public String goodsDetail(@RequestParam(value = "cate")String goodsCategory ,Model model, HttpSession session) {
 		goodsListService.goodsCateList(model, session, goodsCategory);
-		System.out.println("cate= " + goodsCategory);
 		return "shop/categories2";
 	}
 }
