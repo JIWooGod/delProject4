@@ -30,11 +30,12 @@ function kakaopay(){
 	writeF.submit();
 }
 function selectRoom(n){
-  	 $.ajax({
+	//location.href="ajaxRoom?n="+n+"&rmbkChkIn=${ reservation.rmbkChkIn }&rmbkChkOut=${ reservation.rmbkChkOut }&rmbkView=${reservation.roomView }&rmbkGrade=${room.roomGrade }&rmbkBed=${reservation.roomBed}";
+  	  $.ajax({
 	      type : "post",
 	      url : "ajaxRoom",
 	      dataType : "html", 
-	      data : "n=" + n, 
+	      data : {"n" : n , "rmbkChkIn" : "${ reservation.rmbkChkIn }","rmbkChkOut" : "${ reservation.rmbkChkOut }","rmbkView" : "${reservation.roomView }","rmbkGrade" : "${room.roomGrade }","rmbkBed" : "${reservation.roomBed}"} ,
 	      success: function(result){
 	         $("#selectroom").html(result);
 	      },
@@ -42,7 +43,7 @@ function selectRoom(n){
 	         alert('응 에러');
 	         return;
 	      }
-	   }); 
+	   });  
 }
 selectRoom(4)
 </script>
@@ -251,9 +252,9 @@ selectRoom(4)
 					</form>
 				</div>
 				<div class="hs_reservation">
-				
-				
-						
+				<c:forEach items="${reservationChk }" var="chkeck">
+				${chkeck.roomNo }
+				</c:forEach>
 					</div>
 				</div>
 		</div>

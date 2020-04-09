@@ -21,6 +21,15 @@
 		<result column="rm_view" jdbcType="VARCHAR" property="roomView"/>
 	</resultMap>
 	
+		<resultMap type="model.dto.room.ReservationChkDTO" id="chkMap">
+		<result column="rm_no" jdbcType="BIGINT" property="roomNo"/>
+		<result column="rm_grade" jdbcType="VARCHAR" property="roomGrade"/>
+		<result column="rm_bed" jdbcType="VARCHAR" property="roomBed"/>
+		<result column="rmbk_chkin" jdbcType="TIMESTAMP" property="chkIn"/>
+		<result column="rmbk_chkout" jdbcType="TIMESTAMP" property="chkOut"/>
+		
+	</resultMap>
+	
 	<resultMap type="reservationdto" id="reservationmap">
 		<id column="rmbk_no" jdbcType="BIGINT" property="rmbkNo"/>
 		<id column="mem_id" jdbcType="VARCHAR" property="memId"/>
@@ -66,13 +75,23 @@
 	</select>
 
 	<select id="selectRoom" parameterType="reservationdto" resultMap="roommap">
-		select <include refid="basecolumn"/> from room where	
-			 rm_grade = #{roomGrade} and rm_view = #{roomView} and rm_bed = #{roomBed}
+		select <include refid="basecolumn"/> from (select * from room order by rm_price desc) where	
+			 rm_grade = #{roomGrade} and rm_view = #{roomView} and rm_bed = #{roomBed} and rownum = 1
 	</select>
 	
 	<select id="selectRooms" parameterType="reservationdto" resultMap="roommap">
 		select <include refid="basecolumn"/> from room order by rm_no asc
 			 
+	</select>
+	
+	<select id="reservatonCheck" parameterType="model.dto.room.ReservationChkDTO" resultMap="chkMap">
+		SELECT rm_no FROM roombook
+		 WHERE rmbk_chkin &gt; #{chkIn} AND rmbk_chkin &lt;= #{chkOut}
+		OR rmbk_chkout &gt; #{chkIn} and rmbk_chkout &lt;= #{chkOut}
+	</select>
+	
+	<select id="roomChkOk" parameterType="model.dto.room.ReservationChkDTO" resultMap="chkMap">
+		select rm_no from room where rm_grade = #{roomGrade} and rm_bed = #{roomBed} and rm_view = #{roomView}
 	</select>
 	
 	<select id ="selectReservationOk" parameterType="String" resultMap="reservationmap">

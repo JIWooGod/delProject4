@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import command.room.ReservationCommand;
 import model.dto.member.AuthInfo;
 import model.dto.pay.PayDTO;
+import model.dto.room.ReservationChkDTO;
 import model.dto.room.ReservationDTO;
 import model.dto.room.RoomDTO;
 import repository.room.RoomRepository;
@@ -45,6 +46,7 @@ public class ReservationService {
 	{
 		ReservationDTO dto = new ReservationDTO();
 		String userPh = reservationCommand.getUserPh1()+reservationCommand.getUserPh2()+reservationCommand.getUserPh3();
+		dto.setRoomGrade(reservationCommand.getRoomGrade());
 		dto.setUserName(reservationCommand.getUserName());
 		dto.setUserPh(userPh);
 		dto.setRmbkOption(reservationCommand.getRmbkContent());
@@ -60,17 +62,38 @@ public class ReservationService {
 		dto.setRoomCount(reservationCommand.getRoomCount());
 		session.setAttribute("reservation",dto);
 		
+		System.out.println(reservationCommand.getRoomGrade());
+		System.out.println(dto.getRmbkChkIn());
+		System.out.println(dto.getRmbkChkOut());
+		
+		
+		
 		RoomDTO room = roomRepository.selectRoom(dto);
+		
 		model.addAttribute("room",room);
 		
 	}
-	public void ajaxExecute(Model model,String roomLoc) {
+	public void ajaxExecute(Model model,String roomLoc,String chkIn,String chkOut,String roomGrade,String roomBed,String roomView) {
+		ReservationChkDTO dto = new ReservationChkDTO();
+		dto.setChkIn(chkIn);
+		dto.setChkOut(chkOut);
+		dto.setRoomGrade(roomGrade);
+		dto.setRoomBed(roomBed);
+		dto.setRoomView(roomView);
+		
+		List<ReservationDTO> reservation = roomRepository.reservationCheck(dto);
+		model.addAttribute("reservationChk",reservation);
+		System.out.println(reservation);
+		
 		List<RoomDTO> rooms = roomRepository.selectRooms(null);
-		System.out.println(rooms.size());
 		String ho= "1404";
 		model.addAttribute("ho", ho);
 		model.addAttribute("roomLoc", roomLoc);
 		model.addAttribute("rooms",rooms);
+		
+		List<RoomDTO> room = roomRepository.roomCheckOk(dto);
+		model.addAttribute("roomChk",room);
+		
 	}
 	
 	public void execute4(ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)
@@ -114,7 +137,8 @@ public class ReservationService {
 	}
 	public void execute5(String userId,ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)
 	{
-		ReservationDTO dto = roomRepository.selectReservationOk(userId);		
+		ReservationDTO dto = roomRepository.selectReservationOk(userId);	
 		model.addAttribute("reservationOk",dto);	
+		
 	}
 }

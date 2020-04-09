@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import model.dto.pay.PayDTO;
+import model.dto.room.ReservationChkDTO;
 import model.dto.room.ReservationDTO;
 import model.dto.room.RoomDTO;
 
@@ -54,6 +55,16 @@ public class RoomRepository {
 	{
 		String statement = namespace+".selectReservationOk";
 		return sqlSession.selectOne(statement,userId);
+	}
+	public List<ReservationDTO> reservationCheck(ReservationChkDTO dto)
+	{
+		String statement = namespace+".reservatonCheck";
+		return sqlSession.selectList(statement,dto);
+	}
+	public List<RoomDTO> roomCheckOk(ReservationChkDTO dto)
+	{
+		String statement = namespace+".roomChkOk";
+		return sqlSession.selectList(statement,dto);
 	}
 	
 }

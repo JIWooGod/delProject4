@@ -49,9 +49,9 @@ public class ReservationController {
 		return"room/reservationSuccess";
 	}
 	@RequestMapping("/ajaxRoom" )
-	public String reservation6(@RequestParam("n")String roomLoc,Model model)
+	public String reservation6(@RequestParam("n")String roomLoc,@RequestParam("rmbkChkIn")String chkIn,@RequestParam("rmbkChkOut")String chkOut,@RequestParam("rmbkView")String roomView,@RequestParam("rmbkGrade")String roomGrade,@RequestParam("rmbkBed")String roomBed,Model model)
 	{
-		reservationService.ajaxExecute(model,roomLoc);
+		reservationService.ajaxExecute(model,roomLoc,chkIn,chkOut,roomGrade,roomBed,roomView);
 		return"room/ajaxRoom";
 	}
 	

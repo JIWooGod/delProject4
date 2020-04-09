@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,6 +22,11 @@ $(window).load(function() {
 	slideshowSpeed :4000
   });
 });
+
+function loginAlert(){
+	alert("로그인 후 이용해주세요");
+	location.href = "signInForm";
+}
 </script>
 <body>
 
@@ -110,11 +116,21 @@ $(window).load(function() {
 </div>
 <div class='line_height30'></div>
 
+<c:if test="${!empty authInfo  }">
 <a href='reservation?room=standard'>
 <div class='sub_room_reservation'>
 	실시간 예약하기
 </div>
 </a>
+</c:if>
+<c:if test="${empty authInfo  }">
+<a href='#' onclick="loginAlert();">
+<div class='sub_room_reservation'>
+	실시간 예약하기
+</div>
+</a>
+</c:if>
+
 	<div class='line_height50'></div>
 		</div>
 </div>
