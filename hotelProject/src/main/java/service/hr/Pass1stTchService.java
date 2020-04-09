@@ -16,3 +16,4 @@ public class Pass1stTchService {
 		passTchRepository.reposit(dto);
 	}
 }
+//

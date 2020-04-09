@@ -20,3 +20,4 @@ public class Pass1stTchController {
 		return "redirect:/teacher";
 	}
 }
+//

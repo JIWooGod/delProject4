@@ -33,3 +33,4 @@ public class ApplyTchController {
 		return "redirect:/main";
 	}
 }
+//

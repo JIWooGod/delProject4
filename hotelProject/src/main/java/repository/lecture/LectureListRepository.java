@@ -19,3 +19,4 @@ public class LectureListRepository {
 		return sqlSession.selectList(statement);
 	}
 }
+//

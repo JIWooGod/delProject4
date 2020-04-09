@@ -46,7 +46,6 @@ public class ApplyService {
 	}
 
 	public Integer joinAction(String num, String reciver, String empId) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

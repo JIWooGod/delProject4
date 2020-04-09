@@ -15,3 +15,4 @@ public class LectureModifyRepository {
 		sqlSession.update(statement, dto);
 	}
 }
+//

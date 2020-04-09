@@ -19,3 +19,4 @@ public class JobInterviewRepository {
 		return sqlsession.selectOne(statement);
 	}
 }
+//

@@ -30,3 +30,4 @@ public class LectureUpController {
 		return "redirect:/lecture";
 	}
 }
+//

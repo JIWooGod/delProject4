@@ -21,3 +21,4 @@ public class DetailTchController {
 		return "hr/detail2";
 	}
 }
+//

@@ -50,3 +50,4 @@ public class JobInterviewService {
 		model.addAttribute("score",score);
 	}
 }
+//

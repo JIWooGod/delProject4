@@ -33,3 +33,4 @@ public class LectureModifyingController {
 		return "redirect:/lecture/"+subjNum;
 	}
 }
+//

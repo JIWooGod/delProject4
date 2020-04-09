@@ -21,3 +21,4 @@ public class LectureModifyController {
 		return "lec/lectureModify";
 	}
 }
+//

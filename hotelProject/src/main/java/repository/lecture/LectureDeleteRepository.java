@@ -15,3 +15,4 @@ public class LectureDeleteRepository {
 		sqlSession.delete(statement, num);
 	}
 }
+//

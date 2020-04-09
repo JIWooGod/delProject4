@@ -14,3 +14,4 @@ public class LecStudentController {
 		return "lec/lectureView";
 	}
 }
+//

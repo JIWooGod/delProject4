@@ -24,3 +24,4 @@ public class ApplyRepository {
 		sqlSession.insert(statement,dto);
 	}
 }
+//

@@ -20,3 +20,4 @@ public class LectureDetailController {
 		return "lec/lectureView";
 	}
 }
+//

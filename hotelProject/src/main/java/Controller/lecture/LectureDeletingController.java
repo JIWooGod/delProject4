@@ -21,3 +21,4 @@ public class LectureDeletingController {
 		return "redirect:/lecture";
 	}
 }
+//
