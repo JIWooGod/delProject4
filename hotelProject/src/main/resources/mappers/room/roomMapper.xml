@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="roomMapper">
+<cache />
+
+	<sql id="basecolumn">
+		rm_no,rm_grade,rm_price,rm_pic,rm_loc,rm_bed,rm_view
+	</sql>
+	
+	<sql id = "basecolumn2">
+		rmbk_no,mem_id,rm_no,rm_grade,pay_no,rmbk_date,rmbk_bed,rmbk_opt,rmbk_dnd,rmbk_peo,rmbk_price,rmbk_chkin,rmbk_chkout,rmbk_realin,rmbk_realout,mem_name,mem_ph,rmbk_uncomfort,rmbk_nofeader
+	</sql>
+	<resultMap type="roomdto" id="roommap">
+		<id column="rm_no" jdbcType="VARCHAR" property="roomNo"/>
+		<result column="rm_grade" jdbcType="VARCHAR" property="roomGrade"/>
+		<result column="rm_price" jdbcType="VARCHAR" property="roomPrice"/>
+		<result column="rm_pic" jdbcType="VARCHAR" property="roomPic"/>
+		<result column="rm_loc" jdbcType="VARCHAR" property="roomLoc"/>
+		<result column="rm_bed" jdbcType="VARCHAR" property="roomBed"/>
+		<result column="rm_view" jdbcType="VARCHAR" property="roomView"/>
+	</resultMap>
+	
+	<resultMap type="reservationdto" id="reservationmap">
+		<id column="rmbk_no" jdbcType="BIGINT" property="rmbkNo"/>
+		<id column="mem_id" jdbcType="VARCHAR" property="memId"/>
+		<id column="rm_no" jdbcType="BIGINT" property="roomNo"/>
+		<id column="rm_grade" jdbcType="VARCHAR" property="roomGrade"/>
+		<id column="pay_no" jdbcType="BIGINT" property="payNo"/>
+		<result column="rmbk_date" jdbcType="TIMESTAMP" property="rmbkDate"/>
+		<result column="rmbk_bed" jdbcType="VARCHAR" property="roomBed"/>
+		<result column="rmbk_opt" jdbcType="VARCHAR" property="rmbkOption"/>
+		<result column="rmbk_dnd" jdbcType="VARCHAR" property="dndMode"/>
+		<result column="rmbk_peo" jdbcType="BIGINT" property="rmbkPeople"/>
+		<result column="rmbk_price" jdbcType="BIGINT" property="rmbkPrice"/>
+		<result column="rmbk_chkin" jdbcType="TIMESTAMP" property="rmbkChkIn"/>
+		<result column="rmbk_chkout" jdbcType="TIMESTAMP" property="rmbkChkOut"/>
+		<result column="rmbk_realin" jdbcType="TIMESTAMP" property="realIn"/>
+		<result column="rmbk_realout" jdbcType="TIMESTAMP" property="realOut"/>
+		<result column="mem_name" jdbcType="VARCHAR" property="userName"/>
+		<result column="mem_ph" jdbcType="VARCHAR" property="userPh"/>
+		<result column="rmbk_uncomfort" jdbcType="VARCHAR" property="uncomFort"/>
+		<result column="rmbk_nofeader" jdbcType="VARCHAR" property="noFeader"/>			
+
+	</resultMap>
+	
+	<insert id="insertRoom" parameterType="roomdto" >
+		insert into room (<include refid="basecolumn"/>) values(#{roomNo},#{roomGrade},#{roomPrice},#{roomPic},#{roomLoc},#{roomBed},#{roomView})
+	</insert>
+	<insert id="insertReservation" parameterType="reservationdto">
+		insert into roombook(<include refid="basecolumn2"/>) values(RMBK_SEQ.NEXTVAL,#{memId},#{roomNo},#{roomGrade},#{payNo},sysdate,#{roomBed},#{rmbkOption},#{dndMode},#{rmbkPeople},#{rmbkPrice},#{rmbkChkIn},#{rmbkChkOut},default,default,#{userName},#{userPh},#{uncomFort},#{noFeader})
+	</insert>
+	
+	<insert id="insertPay" parameterType="paydto">
+		insert into payment(pay_no,pay_price,pay_mtd,pay_date,pay_who)values(#{payNo},#{payPrice},#{payMtd},sysdate,#{payWho})
+	</insert>
+	
+	
+	<select id="reservation" parameterType="roomdto" resultMap="roommap">
+		select <include refid="basecolumn"/> from(SELECT *FROM room ORDER BY rm_no DESC)
+			<where>
+			<if test="value != null">
+			 rm_grade = #{roomGrade} and rownum = 1
+			</if>
+		</where>
+	</select>
+
+	<select id="selectRoom" parameterType="reservationdto" resultMap="roommap">
+		select <include refid="basecolumn"/> from room where	
+			 rm_grade = #{roomGrade} and rm_view = #{roomView} and rm_bed = #{roomBed}
+	</select>
+	
+	<select id="selectRooms" parameterType="reservationdto" resultMap="roommap">
+		select <include refid="basecolumn"/> from room order by rm_no asc
+			 
+	</select>
+	
+	<select id ="selectReservationOk" parameterType="String" resultMap="reservationmap">
+		select<include refid="basecolumn2"/> from (select * from roombook order by rmbk_date desc)
+		<where>
+			<if test="value != null">
+			 mem_id = #{userId} and rownum = 1
+			</if>
+		</where>
+	</select>
+	
+</mapper>

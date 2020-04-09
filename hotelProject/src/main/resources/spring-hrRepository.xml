@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation = "http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- personnel repository -->
+	<bean id="applyRepository" class="repository.hr.ApplyRepository"/>
+	<bean id="empListRepository" class="repository.hr.EmpListRepository"/>
+	<bean id="empDetailRepository" class="repository.hr.EmpDetailRepository"/>
+	<bean id="empModifyRepository" class="repository.hr.EmpModifyRepository"/>
+	<bean id="passEmpRepository" class="repository.hr.PassEmpRepository"/>
+	<bean id="jobInterviewRepository" class="repository.hr.JobInterviewRepository"/>
+	
+	<!-- promote repository -->
+	
+	<!-- teacher repository -->
+	<bean id="tchListRepository" class="repository.hr.TchListRepository"/>
+	<bean id="tchDetailRepository" class="repository.hr.TchDetailRepository"/>
+	<bean id="tchModifyRepository" class="repository.hr.TchModifyRepository"/>
+	<bean id="passTchRepository" class="repository.hr.PassTchRepository"/>
+</beans>

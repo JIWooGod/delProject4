@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lectureMapper">
+	<cache />
+	<sql id="subjBaseColumn">
+		SUBJ_NO, SUBJ_NAME, SUBJ_CNT, SUBJ_GROUP, SUBJ_DAY,
+		SUBJ_TIME, SUBJ_ORIGIN, SUBJ_FILESIZE, SUBJ_STORE, SUBJ_REGDATE
+	</sql>
+	<resultMap type="subj" id="subRs">
+		<id column="SUBJ_NO" jdbcType="BIGINT" property="subjNo"/>
+		<result column="SUBJ_NAME" jdbcType="VARCHAR" property="subjName"/>
+		<result column="SUBJ_CNT" jdbcType="VARCHAR" property="subjCnt"/>
+		<result column="SUBJ_GROUP" jdbcType="VARCHAR" property="subjGroup"/>
+		<result column="SUBJ_DAY" jdbcType="BIGINT" property="subjDay"/>
+		<result column="SUBJ_TIME" jdbcType="BIGINT" property="subjTime"/>
+		<result column="SUBJ_ORIGIN" jdbcType="VARCHAR" property="subjOrigin"/>
+		<result column="SUBJ_FILESIZE" jdbcType="VARCHAR" property="subjFileSize"/>
+		<result column="SUBJ_STORE" jdbcType="VARCHAR" property="subjStore"/>
+		<result column="SUBJ_REGDATE" jdbcType="TIMESTAMP" property="subjRegDate"/>
+	</resultMap>
+	
+	<insert id="addVideo1" parameterType="subj">
+		insert
+			into SUBJECT (<include refid="subjBaseColumn"/>)
+			values (<choose>
+						<when test="subjGroup!=null and subjGroup=='필수'">
+							lec_ch_seq.nextval
+						</when>
+						<when test="subjGroup!=null and subjGroup=='선택'">
+							lec_nc_seq.nextval
+						</when>
+						<otherwise>
+							null
+						</otherwise>
+					</choose>, #{subjName}, #{subjCnt}, #{subjGroup},
+					#{subjDay}, null, #{subjOrigin},
+					#{subjFileSize}, #{subjStore}, sysdate)
+	</insert>
+	<select id="videoList" resultMap="subRs">
+		select
+			<include refid="subjBaseColumn"/>
+		from
+			SUBJECT
+		order by
+			SUBJ_REGDATE desc
+	</select>
+	<select id="videoView" resultMap="subRs" parameterType="subj">
+		select
+			<include refid="subjBaseColumn"/>
+		from
+			SUBJECT
+		where
+			SUBJ_NO = #{subjNo}
+	</select>
+	<update id="modifyLec">
+		update
+			SUBJECT
+		<trim prefix="set" suffixOverrides=",">
+			SUBJ_NAME = #{subjName},
+			SUBJ_CNT = #{subjCnt},
+			SUBJ_DAY = #{subjDay},
+			<if test="subjOrigin != null" >
+			SUBJ_ORIGIN = #{subjOrigin},
+			SUBJ_FILESIZE = #{subjFileSize},
+			SUBJ_STORE = #{subjStore}
+			</if>
+		</trim>
+		where
+			SUBJ_NO = #{subjNo}
+	</update>
+	<delete id="deleteLec" parameterType="Long">
+		delete
+		from
+			SUBJECT
+		where
+			SUBJ_NO = #{num}
+	</delete>
+</mapper>

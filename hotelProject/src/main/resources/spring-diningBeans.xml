@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation = "http://www.springframework.org/schema/beans 
+	    http://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+
+	<bean id = "diningRepository" class = "repository.dining.DiningRepository" />
+	
+	<bean id = "diningTblListService" class = "service.dining.DiningTblListService" />
+	<bean id = "tblInsertService" class = "service.dining.TblInsertService" />
+	<bean id = "MenuInsertService" class = "service.dining.MenuInsertService" />
+	<bean id = "menuSelectService" class = "service.dining.MenuSelectService" />
+	<bean id = "menuDetailService" class = "service.dining.MenuDetailService" />
+	<bean id = "menuUpdateActionService" class = "service.dining.MenuUpdateActionService" />
+	<bean id = "menuDeleteService" class = "service.dining.MenuDeleteService" />
+	<bean id = "tblDeleteService" class = "service.dining.TblDeleteService" />
+	<bean id = "rstDetailService" class = "service.dining.RstDetailService" />
+	<bean id = "mgMenuSelectService" class = "service.dining.MgMenuSelectService" />
+	<bean id = "tblDeleteListService" class = "service.dining.TblDeleteListService" />
+	
+</beans>

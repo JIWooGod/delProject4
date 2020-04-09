@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DiningMapper">
+<cache />
+	<resultMap type="sdto" id="seatBaseMap">
+		<id column="rst_no" jdbcType="BIGINT" property="rstNo" />
+		<id column="rst_tbl" jdbcType="BIGINT" property="rstTbl" />
+		<result column="rst_seat" jdbcType="BIGINT" property="rstSeat" />
+	</resultMap>
+	
+	<!-- 좌석관리 -->
+	<select id="seatPlace1" resultMap="seatBaseMap" parameterType="long">
+		SELECT RST_NO, RST_TBL, RST_SEAT
+		FROM SEATPLACE
+		WHERE RST_NO=1
+	</select>
+	
+	<select id="seatPlace2" resultMap="seatBaseMap" parameterType="long">
+		SELECT RST_NO, RST_TBL, RST_SEAT
+		FROM SEATPLACE
+		WHERE RST_NO=2
+	</select>
+	
+	<select id="seatPlace3" resultMap="seatBaseMap" parameterType="long">
+		SELECT RST_NO, RST_TBL, RST_SEAT
+		FROM SEATPLACE
+		WHERE RST_NO=3
+	</select>
+	
+	<!-- 좌석삭제할 리스트 -->
+	<select id="tblDeleteList" resultMap="seatBaseMap" parameterType="long">
+		SELECT RST_NO, RST_TBL, RST_SEAT
+		FROM SEATPLACE
+		WHERE RST_NO=#{rstNo}
+	</select>
+	
+	<!-- 레스토랑 좌석 등록 -->
+	<insert id="tbl1Insert" parameterType="sdto">
+		INSERT INTO SEATPLACE(RST_NO, RST_TBL, RST_SEAT)
+		VALUES(#{rstNo}, tbl1_no_seq.nextval, #{rstSeat})
+	</insert>
+	
+	<insert id="tbl2Insert" parameterType="sdto">
+		INSERT INTO SEATPLACE(RST_NO, RST_TBL, RST_SEAT)
+		VALUES(#{rstNo}, tbl2_no_seq.nextval, #{rstSeat})
+	</insert>
+	
+	<insert id="tbl3Insert" parameterType="sdto">
+		INSERT INTO SEATPLACE(RST_NO, RST_TBL, RST_SEAT)
+		VALUES(#{rstNo}, tbl3_no_seq.nextval, #{rstSeat})
+	</insert>
+	
+	<insert id="menu1Insert" parameterType="menu">
+		INSERT INTO MENU(MENU_NO, RST_NO, MENU_NAME, MENU_PRICE, MENU_CNT, MENU_IMG)
+		VALUES(MENU1NO_SEQ.NEXTVAL, #{rstNo}, #{menuName}, #{menuPrice}, #{menuCnt}, #{menuImg})
+	</insert>
+	
+	<insert id="menu2Insert" parameterType="menu">
+		INSERT INTO MENU(MENU_NO, RST_NO, MENU_NAME, MENU_PRICE, MENU_CNT, MENU_IMG)
+		VALUES(MENU2NO_SEQ.NEXTVAL, #{rstNo}, #{menuName}, #{menuPrice}, #{menuCnt}, #{menuImg})
+	</insert>
+	
+	<insert id="menu3Insert" parameterType="menu">
+		INSERT INTO MENU(MENU_NO, RST_NO, MENU_NAME, MENU_PRICE, MENU_CNT, MENU_IMG)
+		VALUES(MENU3NO_SEQ.NEXTVAL, #{rstNo}, #{menuName}, #{menuPrice}, #{menuCnt}, #{menuImg})
+	</insert>
+	
+	<resultMap type="menu" id="menuBaseMap">
+		<id column="MENU_NO" jdbcType="BIGINT" property="menuNo" />
+		<id column="RST_NO" jdbcType="BIGINT" property="rstNo" />
+		<result column="MENU_NAME" jdbcType="VARCHAR" property="menuName" />
+		<result column="MENU_PRICE" jdbcType="BIGINT" property="menuPrice" />
+		<result column="MENU_CNT" jdbcType="VARCHAR" property="menuCnt" />
+		<result column="MENU_IMG" jdbcType="VARCHAR" property="menuImg" />
+		<result column="RST_NAME" jdbcType="VARCHAR" property="rstName" />
+	</resultMap>
+	
+	<!-- 메뉴판리스트 -->
+	<select id="menuSelect" resultMap="menuBaseMap" parameterType="long">
+		SELECT m.RST_NO, r.RST_NAME, m.MENU_NO, m.MENU_NAME, m.MENU_PRICE, m.MENU_CNT, m.MENU_IMG
+		FROM DELUNA.MENU m, DELUNA.RESTAURANT r
+		WHERE m.RST_NO = r.RST_NO AND m.RST_NO=#{rstNo}
+	</select>
+	
+	<!-- 메뉴디테일, 수정페이지에서의 디테일 oneSelect -->
+	<select id="menuOneSelect" resultMap="menuBaseMap" parameterType="long">
+		SELECT m.RST_NO, r.RST_NAME, m.MENU_NO, m.MENU_NAME, m.MENU_PRICE, m.MENU_CNT, m.MENU_IMG
+		FROM DELUNA.MENU m, DELUNA.RESTAURANT r
+		WHERE m.RST_NO = r.RST_NO AND m.RST_NO=#{rstNo} and m.MENU_NO=#{menuNo}
+	</select>
+	
+	<select id="mgmenu1" resultMap="menuBaseMap" parameterType="long">
+		SELECT m.RST_NO, r.RST_NAME, m.MENU_NO, m.MENU_NAME, m.MENU_PRICE, m.MENU_CNT, m.MENU_IMG
+		FROM DELUNA.MENU m, DELUNA.RESTAURANT r
+		WHERE m.RST_NO = r.RST_NO AND m.RST_NO=1
+	</select>
+	
+	<select id="mgmenu2" resultMap="menuBaseMap" parameterType="long">
+		SELECT m.RST_NO, r.RST_NAME, m.MENU_NO, m.MENU_NAME, m.MENU_PRICE, m.MENU_CNT, m.MENU_IMG
+		FROM DELUNA.MENU m, DELUNA.RESTAURANT r
+		WHERE m.RST_NO = r.RST_NO AND m.RST_NO=2
+	</select>
+	
+	<select id="mgmenu3" resultMap="menuBaseMap" parameterType="long">
+		SELECT m.RST_NO, r.RST_NAME, m.MENU_NO, m.MENU_NAME, m.MENU_PRICE, m.MENU_CNT, m.MENU_IMG
+		FROM DELUNA.MENU m, DELUNA.RESTAURANT r
+		WHERE m.RST_NO = r.RST_NO AND m.RST_NO=3
+	</select>
+	
+	<!-- 레스토랑 메뉴 수정(새사진파일 선택) -->
+	<update id="menuUpdate" parameterType="menu">
+		UPDATE MENU
+		SET MENU_NAME=#{menuName}, MENU_PRICE=#{menuPrice}, MENU_CNT=#{menuCnt}, MENU_IMG=#{menuImg}
+		WHERE RST_NO=#{rstNo} AND MENU_NO=#{menuNo}
+	</update>
+	
+	<!-- 레스토랑 메뉴 수정(새 사진파일 선택안함) -->
+	<update id="noPicMenuUpdate" parameterType="menu">
+		UPDATE MENU
+		SET MENU_NAME=#{menuName}, MENU_PRICE=#{menuPrice}, MENU_CNT=#{menuCnt}
+		WHERE RST_NO=#{rstNo} AND MENU_NO=#{menuNo}
+	</update>
+	
+	<delete id="menuDelete" parameterType="menu">
+		DELETE
+		FROM MENU
+		WHERE MENU_NO=#{menuNo} AND RST_NO=#{rstNo}
+	</delete>
+	
+	<delete id="tblDelete">
+		DELETE
+		FROM SEATPLACE
+		WHERE RST_NO=#{rstNo} AND RST_TBL=#{rstTbl}
+	</delete>
+	
+	<!-- 레스토랑 디테일 select -->
+	<resultMap id="rstBaseMap" type="rst">
+		<id property="rstNo" jdbcType="BIGINT" column="RST_NO"/>
+		<result property="rstName" jdbcType="VARCHAR" column="RST_NAME"/>
+		<result property="rstAddr" jdbcType="VARCHAR" column="RST_ADDR"/>
+		<result property="rstTel" jdbcType="VARCHAR" column="RST_TEL"/>
+		<result property="rstEmail" jdbcType="VARCHAR" column="RST_EMAIL"/>
+		<result property="rstImg" jdbcType="VARCHAR" column="RST_IMG"/>
+		<result property="tblCount" jdbcType="BIGINT" column="TBL_COUNT"/>
+	</resultMap>
+
+	<select id="rstSelect" parameterType="long" resultMap="rstBaseMap">
+		SELECT r.RST_NO, r.RST_NAME, r.RST_ADDR, r.RST_TEL, r.RST_EMAIL, r.RST_IMG, count(s.RST_TBL) AS tbl_count
+		FROM DELUNA.RESTAURANT r, DELUNA.SEATPLACE s
+		WHERE r.RST_NO = s.RST_NO(+) AND r.RST_NO=#{rstNo}
+		GROUP BY r.RST_NO, r.RST_NAME, r.RST_ADDR, r.RST_TEL, r.RST_EMAIL, r.RST_IMG
+	</select>
+	
+	
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

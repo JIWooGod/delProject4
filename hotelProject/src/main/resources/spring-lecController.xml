@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation = "http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- lecture controller -->
+	<bean class="Controller.lecture.LectureUpController"/>
+	<bean class="Controller.lecture.LectureListController"/>
+	<bean class="Controller.lecture.LectureDetailController"/>
+	<bean class="Controller.lecture.LectureModifyController"/>
+	<bean class="Controller.lecture.LectureModifyingController"/>
+	<bean class="Controller.lecture.LectureDeletingController"/>
+	
+	<!-- lecture student controller -->
+	<bean class="Controller.lecture.LecStudentController"/>
+	
+	<!-- exam controller -->
+	<bean class="Controller.lecture.TestQestController"/>
+	
+</beans>

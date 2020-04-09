@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation = "http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- personnel service -->
+	<bean id="applyService" class="service.hr.ApplyService"/>
+	<bean id="empListService" class="service.hr.EmpListService"/>
+	<bean id="empDetailService" class="service.hr.EmpDetailService"/>
+	<bean id="empModifyService" class="service.hr.EmpModifyService"/>
+	<bean id="pass1stEmpService" class="service.hr.Pass1stEmpService"/>
+	<bean id="jobInterviewService" class="service.hr.JobInterviewService"/>
+	
+	<!-- promote service -->
+
+	<!-- teacher service -->
+	<bean id="apply2Service" class="service.hr.Apply2Service"/>
+	<bean id="tchModifyService" class="service.hr.TchModifyService"/>
+	<bean id="tchListService" class="service.hr.TchListService"/>
+	<bean id="tchDetailService" class="service.hr.TchDetailService"/>
+	<bean id="pass1stTchService" class="service.hr.Pass1stTchService"/>
+</beans> 

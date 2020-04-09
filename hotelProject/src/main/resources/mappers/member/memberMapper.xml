@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="MemberMapper">
+	<cache />
+	<insert id="memInsert" parameterType="memdto">
+		INSERT INTO MEMBER (MEM_ID,
+		MEM_PW, MEM_NAME, MEM_ADDR, MEM_TEL, MEM_EMAIL, MEM_REGDT, MEM_IP,
+		MEM_NO, JOIN_CHK)
+		VALUES (#{memId}, #{memPw}, #{memName},
+		#{memAddr}, #{memTel}, #{memEmail}, sysdate, #{memIp},
+		MEM_NO_SEQ.nextval, 1)
+	</insert>
+
+	<resultMap type="memdto" id="baseMember">
+		<constructor>
+			<idArg column="mem_Id" javaType="String" />
+			<arg column="mem_pw" javaType="String" />
+			<arg column="mem_name" javaType="String" />
+			<arg column="mem_email" javaType="String" />
+			<arg column="mem_addr" javaType="String" />
+			<arg column="mem_tel" javaType="String" />
+			<arg column="mem_regdt" javaType="java.sql.Timestamp" />
+			<arg column="join_chk" javaType="String" />
+			<arg column="mem_ip" javaType="String" />
+			<arg column="mem_no" javaType="String" />
+		</constructor>
+	</resultMap>
+
+	<select id="memChk" parameterType="memdto"
+		resultMap="baseMember">
+		select MEM_ID, MEM_PW, MEM_NAME, MEM_EMAIL, MEM_ADDR, MEM_TEL,
+		MEM_REGDT, MEM_IP, JOIN_CHK, mem_no from member
+		WHERE mem_id=#{memId}
+	</select>
+</mapper>

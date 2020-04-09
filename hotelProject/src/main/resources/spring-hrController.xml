@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+	   xmlns:xsi ="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation = "http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   
+	   <!-- personnel controller -->
+	   <bean class="Controller.hr.NoticeController"/>
+	   <bean class="Controller.hr.ApplyEmpController"/>
+	   <bean class="Controller.hr.ListEmpController"/>
+	   <bean class="Controller.hr.DetailEmpController"/>
+	   <bean class="Controller.hr.FormEmpController"/>
+	   <bean class="Controller.hr.ModifyEmpController"/>
+	   <bean class="Controller.hr.InterviewEmpController"/>
+	   <bean class="Controller.hr.ContractEmpController"/>
+	   <bean class="Controller.hr.Pass1stEmpController"/>
+	   <bean class="Controller.hr.InterviewingEmpController"/>
+	   <bean class="Controller.hr.MailingEmpController"/>
+	   
+	   <!-- promote controller -->
+	   
+	   <!-- teacher controller -->
+	   <bean class="Controller.hr.ApplyTchController"/>
+	   <bean class="Controller.hr.DetailTchController"/>
+	   <bean class="Controller.hr.ModifyTchController"/>
+	   <bean class="Controller.hr.Pass1stTchController"/>
+	   <bean class="Controller.hr.FormTchController"/>
+</beans>

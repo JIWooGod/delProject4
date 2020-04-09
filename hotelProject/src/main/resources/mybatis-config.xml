@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC 	
+	"-//mybatis.org//DTD Config 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<settings>
+		<setting value="false" name="cacheEnabled" />
+		<setting value="true" name="useGeneratedKeys" />
+		<setting value="true" name="mapUnderscoreToCamelCase" />
+		<setting value="PARTIAL" name="autoMappingBehavior" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	<typeAliases>
+		<typeAlias type="model.dto.room.RoomDTO" alias="roomdto" />
+		<typeAlias type="model.dto.room.ReservationDTO" alias="reservationdto" /> 
+		<typeAlias type="model.dto.pay.PayDTO" alias="paydto" />
+		
+
+		<typeAlias type="model.dto.shop.shopDTO" alias="shopdto" />
+
+		<typeAlias type="model.dto.dining.SeatPlaceDTO" alias="sdto" />
+
+		<typeAlias type="model.dto.dining.MenuDTO" alias="menu" />
+		<typeAlias type="model.dto.dining.RstDTO" alias="rst" />
+		<typeAlias type="model.dto.member.MemberDTO" alias="memdto" />
+
+		<typeAlias type="model.dto.hr.AnswerDTO" alias="ans" />
+		<typeAlias type="model.dto.hr.AttendDTO" alias="attend" />
+		<typeAlias type="model.dto.hr.DepartmentDTO" alias="dept" />
+		<typeAlias type="model.dto.hr.EmployeeDTO" alias="staff" />
+		<typeAlias type="model.dto.hr.EmploymentDTO" alias="emp" />
+		<typeAlias type="model.dto.hr.JobintvDTO" alias="injob" />
+		<typeAlias type="model.dto.hr.LecContractDTO" alias="conlec" />
+		<typeAlias type="model.dto.hr.LecEvalDTO" alias="eval" />
+		<typeAlias type="model.dto.hr.LecIntvDTO" alias="inlec" />
+		<typeAlias type="model.dto.hr.PromotionDTO" alias="prm" />
+		<typeAlias type="model.dto.hr.QuestionDTO" alias="qst" />
+		<typeAlias type="model.dto.hr.SubjectDTO" alias="subj" />
+		<typeAlias type="model.dto.hr.TeacherDTO" alias="tch" />
+		<typeAlias type="model.dto.hr.TestDTO" alias="test" />
+	</typeAliases>
+</configuration>
+
