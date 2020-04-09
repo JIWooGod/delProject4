@@ -1,18 +1,13 @@
 package service.room;
-
-
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-
 import command.room.ReservationCommand;
 import model.dto.member.AuthInfo;
 import model.dto.pay.PayDTO;
@@ -20,6 +15,15 @@ import model.dto.room.ReservationChkDTO;
 import model.dto.room.ReservationDTO;
 import model.dto.room.RoomDTO;
 import repository.room.RoomRepository;
+import java.util.HashMap;
+
+import org.json.simple.JSONObject;
+
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
+
+
+
 
 @Service
 public class ReservationService {
@@ -135,10 +139,12 @@ public class ReservationService {
 		request.setAttribute("userId",authInfo.getId() );
 		
 	}
-	public void execute5(String userId,ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)
+	public void execute5(String userId,ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)throws Exception 
 	{
 		ReservationDTO dto = roomRepository.selectReservationOk(userId);	
+	 
 		model.addAttribute("reservationOk",dto);	
-		
+		 
+
 	}
 }

@@ -95,7 +95,7 @@
 	</select>
 	
 	<select id ="selectReservationOk" parameterType="String" resultMap="reservationmap">
-		select<include refid="basecolumn2"/> from (select * from roombook order by rmbk_date desc)
+		 select distinct <include refid="basecolumn2"/> from (select * from roombook order by rmbk_date desc)
 		<where>
 			<if test="value != null">
 			 mem_id = #{userId} and rownum = 1

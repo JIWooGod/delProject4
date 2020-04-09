@@ -45,7 +45,12 @@ public class ReservationController {
 	@RequestMapping("/reservationOk")
 	public String reservation5(@RequestParam("id")String userId ,ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)
 	{
-		reservationService.execute5(userId,reservationCommand,model,session,request);
+		try {
+			reservationService.execute5(userId,reservationCommand,model,session,request);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return"room/reservationSuccess";
 	}
 	@RequestMapping("/ajaxRoom" )
