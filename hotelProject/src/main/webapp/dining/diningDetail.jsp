@@ -55,7 +55,7 @@
 	}
 */
 	function diningReservation() {
-		location.href = "d1reservation";
+		location.href = "dReservation?rno=" + $(".resBtn").val();
 	}
 	
 	function modal() {
@@ -154,7 +154,7 @@
 		</div>
 	</div>
 	<div align="center">
-		<button class="resBtn" onclick="javascript:diningReservation()">예약하기</button>
+		<button class="resBtn" onclick="javascript:diningReservation()" value="${ rst.rstNo }">예약하기</button>
 	</div>
 </body>
 </html>

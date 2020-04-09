@@ -19,11 +19,11 @@
 	$(document).ready(function(){
 		$('select[name=emailSel]').change(function() {
 			if($(this).val()=="0"){
-				$('#emailVal').val("");
-				$("#emailVal").attr("readonly", false);
+				$('#emailVal2').val("");
+				$("#emailVal2").attr("readonly", false);
 			} else {
-				$('#emailVal').val($(this).val());
-				$("#emailVal").attr("readonly", true);
+				$('#emailVal2').val($(this).val());
+				$("#emailVal2").attr("readonly", true);
 			}
 		});
 	});
@@ -62,7 +62,7 @@ $(window).load(function() {
 
 			<div class='sub_reservation'>
 				<!-- 레스토랑 정보 시작 -->
-					<div class='tl'>궁궐</div>
+					<div class='tl' align="center">${ rst.rstName }</div>
 
 
 
@@ -79,7 +79,6 @@ $(window).load(function() {
 					</div>
 						<div class="hs_reservation_left">
 							<ul class="hs_reservation_litt">
-									<li><strong>KRW</strong></li>
 								</ul>
 						</div>
 				</div>
@@ -105,7 +104,7 @@ $(window).load(function() {
 								<h3 class="hs_reservation_title">예약날짜</h3>
 							</div>
 						</div>
-						<form name="writeF" method="POST" action="reservationStep2">
+						<form name="writeF" method="POST" action="dReservationStep2?rno=${ rst.rstNo }">
 							<div class="hs_reservation_right">
 								<ul class="hs_reservation_litt">
 									<li><strong>날짜</strong> <input type="text" id="fromdate"
@@ -135,23 +134,25 @@ $(window).load(function() {
 					</select>
 									</li>
 									<li><strong>인원 수</strong>
-										<select>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
+										<select name="resMans" id="resMans">
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
 					</select>
 									</li>
 									<li><strong>이름</strong>
-										<input type="text" size="10" />
+										<input type="text" size="10" name="resName" id="resName"/>
 									</li>
 									<li><strong>전화번호</strong>
-										<input type="text" size="10" />
+										<input type="text" size="10" name="resTel" id="resTel"/>
 									</li>
 									<li><strong>이메일</strong>
-										<input type="text" size="10" />@<input type="text" size="10" id="emailVal" />
+										<input type="text" size="10" name="emailVal1" id="emailVal1" />
+										@
+										<input type="text" size="10" name="emailVal2" id="emailVal2" />
 					<select id="emailSel" name="emailSel">
 						<option value="0">직접입력</option>
 						<option value="naver.com">naver.com</option>
@@ -162,7 +163,7 @@ $(window).load(function() {
 					</select>
 									</li>
 									<li><strong>요청사항</strong>
-										<textarea style="resize: none;" cols="40" rows="5"></textarea>
+										<textarea style="resize: none;" cols="40" rows="5" name="resCnt" id="resCnt"></textarea>
 									</li>
 								</ul>
 							</div>

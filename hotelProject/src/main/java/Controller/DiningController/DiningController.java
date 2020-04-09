@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import command.dining.MenuCommand;
 import command.dining.ResTblCommand;
+import command.dining.dReservationCommand;
 import service.dining.DiningTblListService;
 import service.dining.MenuDeleteService;
 import service.dining.MenuInsertService;
@@ -53,7 +54,7 @@ public class DiningController {
 
 	@Autowired
 	private RstDetailService rstDetailService;
-	
+
 	@Autowired
 	private TblDeleteListService tblDeleteListService;
 
@@ -100,10 +101,19 @@ public class DiningController {
 		return "dining/diningMenuList";
 	}
 
-	@RequestMapping("/d1reservation")
-	public String d1reservation(Model model) {
-		//diningTblListService.execute(model);
-		return "dining/d1reservation";
+	//식당예약시작
+	@RequestMapping("/dReservation")
+	public String dReservation(@RequestParam(value="rno") Long rstNo, Model model) {
+		rstDetailService.execute(rstNo, model);
+		return "dining/dReservation";
+	}
+
+	//식당예약2단계
+	@RequestMapping("/dReservationStep2")
+	public String dReservationStep2(@RequestParam(value="rno") Long rstNo, Model model, dReservationCommand dreservationCommand) {
+		rstDetailService.resStep2(rstNo, model, dreservationCommand);
+		menuSelectService.execute(rstNo, model);
+		return "dining/dReservation2";
 	}
 
 	@RequestMapping("/tblList")
