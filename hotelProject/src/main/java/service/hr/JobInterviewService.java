@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import Controller.Room.SmsSend;
 import command.hr.InterviewCommand;
 import model.dto.hr.EmployeeDTO;
 import model.dto.hr.JobintvDTO;
@@ -17,6 +18,8 @@ public class JobInterviewService {
 	private JobInterviewRepository jobInterviewRepository;
 	@Autowired
 	private PassEmpRepository passEmpRepository;
+	@Autowired
+	private EmpDetailRepository empDetailRepository;
 	
 	public void action(InterviewCommand command, Model model) {
 		String seq = jobInterviewRepository.repositSeq();
@@ -46,8 +49,10 @@ public class JobInterviewService {
 			emp.setEmpNo(command.getApplierNo());
 			emp.setPassState("면접합격자");
 			passEmpRepository.reposit(emp);
+			empDetailRepository.reposit(emp);
+			SmsSend sms = new SmsSend();
+			sms.smsSend(emp.getEmpTel(),emp.getEmpName()+"님, 합격을 축하합니다. 로그인하여 계약서를 작성해주십시오.");
 		}
 		model.addAttribute("score",score);
 	}
 }
-//

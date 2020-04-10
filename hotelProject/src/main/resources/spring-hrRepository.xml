@@ -11,6 +11,7 @@
 	<bean id="empModifyRepository" class="repository.hr.EmpModifyRepository"/>
 	<bean id="passEmpRepository" class="repository.hr.PassEmpRepository"/>
 	<bean id="jobInterviewRepository" class="repository.hr.JobInterviewRepository"/>
+	<bean id="userCheckRepository" class="repository.hr.UserCheckRepository"/>
 	
 	<!-- promote repository -->
 	

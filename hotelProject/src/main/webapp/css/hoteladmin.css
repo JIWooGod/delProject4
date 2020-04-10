@@ -8,8 +8,7 @@
 @font-face {font-family:'NanumSquare', sans-serif;}
 
 body, * {margin:0;
- 		 padding:0;
- 		 font-family:"NanumSquare", sans-serif;
+ 		padding:0;
   		line-height:1.5;}
   
 #topmenu{height:35px;
@@ -38,8 +37,6 @@ body, * {margin:0;
 				text-decoration:none;
 				font-weight:bold;
 				color:white;}
-
-#gnb{}
 
 #header {height:700px;
 		background-color:#935c3c;
@@ -84,7 +81,7 @@ body, * {margin:0;
 		line-height:1.5;}
 
 h1, h2, h3, h4, h5, h6 {margin:10px 10px 10px 10px;
-						font-family:"NanumSquare";
+						font-family:"NanumSquare", sans-serif;
 						font-stretch:ultra-condensed;
 						padding:5px;
 						color:#382f29;
@@ -118,9 +115,6 @@ input[type="number"] {text-align:left;
 					  border-bottom:1px solid #935c3c;
 					  padding-left:10px;
 					  outline:none;}
-input[type="checkbox"],
-input[type="radio"]{
-}
 button,
 input[type="button"],
 input[type="submit"],

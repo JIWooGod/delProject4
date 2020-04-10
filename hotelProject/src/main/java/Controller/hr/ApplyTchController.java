@@ -27,7 +27,7 @@ public class ApplyTchController {
 
 	@RequestMapping(value="/personnel/teacher/appling2", method=RequestMethod.POST)
 	public String empApplying(HttpServletRequest request,Apply2Command apply2Command,
-			Model model,Errors errors,@RequestParam(value="job") String job) {
+			Model model,Errors errors) {
 		//new ApplyCommandValidator().validate(applyCommand,errors);	
 		apply2Service.action(request,apply2Command,errors);
 		return "redirect:/main";

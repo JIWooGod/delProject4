@@ -25,8 +25,6 @@
   <!-- Custom styles for this template-->
  <link href="/hotelProject/manager/css/sb-admin-2.min.css" rel="stylesheet">
  <link rel="stylesheet" href="/hotelProject/css/hoteladmin.css"/>
- 
-
 </head>
 
 <body id="page-top">
@@ -108,8 +106,8 @@
 	<tr>
 		<td>법적결함사항</td>
 		<td>
-			<form:radiobutton path="violate" value="no" label="없음"/>
-			<form:radiobutton path="violate" value="yes" label="있음"/>
+			<form:radiobutton path="violate" value="no"/>없음
+			<form:radiobutton path="violate" value="yes"/>있음
 		</td>
 	</tr>
 </table>

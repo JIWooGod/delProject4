@@ -24,9 +24,6 @@
   <!-- Custom styles for this template-->
  <link href="/hotelProject/manager/css/sb-admin-2.min.css" rel="stylesheet">
  <link rel="stylesheet" href="/hotelProject/css/hoteladmin.css"/>
-
- <script type="text/javascript" src="/hotelProject/js/contractSign.js"></script>
- <script type="text/javascript" src="/hotelProject/js/error.js"></script>
 </head>
 
 <body id="page-top">

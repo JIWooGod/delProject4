@@ -13,7 +13,9 @@ import command.hr.Apply2Command;
 import command.hr.ApplyCommand;
 import model.dto.hr.EmployeeDTO;
 import model.dto.hr.TeacherDTO;
+import model.dto.member.AuthInfo;
 import repository.hr.ApplyRepository;
+import repository.hr.UserCheckRepository;
 
 @Service
 public class Apply2Service {
@@ -21,10 +23,16 @@ public class Apply2Service {
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	@Autowired
 	private ApplyRepository applyRepository;
+	@Autowired
+	private UserCheckRepository userCheckRepository;
 
 	public void action(HttpServletRequest request, Apply2Command applyCommand,
 			Errors errors) {
 		String password = bcryptPasswordEncoder.encode(applyCommand.getPw());
+		String check = userCheckRepository.check(applyCommand.getId()).getId();
+		System.out.println(applyCommand.getName()+"이 대체 뭐기에 값이 크대?");
+		System.out.println("authinfo 유저체크 레퍼지토리에서 가져오는 아이디값이 "+check);
+		
 		TeacherDTO dto = new TeacherDTO();
 
 		dto.setTeachName(applyCommand.getName());
@@ -33,7 +41,14 @@ public class Apply2Service {
 		dto.setTeachAddr(applyCommand.getAddr());
 		dto.setTeachCarr(applyCommand.getCareer());
 		dto.setTeachCerti(applyCommand.getCerti());
-		dto.setTeachId(applyCommand.getId());
+		dto.setTeachViol(applyCommand.getViolate());
+		
+		if(check==null) {
+			dto.setTeachId(applyCommand.getId());
+		}else {
+			System.out.println(":::::::아이디 중복체크 하셈::::::");
+			//errors.rejectValue("duplicatedId", "중복된 아이디입니다.");
+		}
 		if(bcryptPasswordEncoder.matches(applyCommand.getRePw(), password)) {
 			dto.setTeachPw(password);
 		}else {
@@ -42,7 +57,6 @@ public class Apply2Service {
 		dto.setTeachIp(request.getRemoteAddr());
 
 		applyRepository.applyPut2(dto);
-
 	}
 }
 //

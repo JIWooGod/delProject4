@@ -11,7 +11,7 @@ public class LecStudentController {
 			@RequestParam(value="totalTime") Long totalIme,
 			@RequestParam(value="mineLoc") Long mineLoc,
 			@RequestParam(value="mineTime") Long mineTime) {
-		return "manager/manager/lec/lectureView";
+		return "manager/lec/lectureView";
 	}
 }
 //

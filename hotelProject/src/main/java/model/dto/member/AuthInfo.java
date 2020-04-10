@@ -8,6 +8,7 @@ public class AuthInfo {
 	private String tel;
 	private String addr;
 	private String memNo;
+	private String admin;
 	
 	public AuthInfo(String id, String email, String name, String pw, String tel, String addr, String memNo) {
 		super();
@@ -19,6 +20,7 @@ public class AuthInfo {
 		this.addr = addr;
 		this.memNo = memNo;
 	}
+	public AuthInfo() {}
 	
 	public String getId() {
 		return id;
@@ -62,7 +64,10 @@ public class AuthInfo {
 	public void setMemNo(String memNo) {
 		this.memNo = memNo;
 	}
-	
-	
-	
+	public String getAdmin() {
+		return admin;
+	}
+	public void setAdmin(String admin) {
+		this.admin = admin;
+	}
 }

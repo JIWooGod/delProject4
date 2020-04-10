@@ -62,6 +62,10 @@
 		<result column="JOBINTV_REGDATE" jdbcType="TIMESTAMP" property="jobintvRegdate"/>
 		<result column="JOBINTV_VIEWER" jdbcType="BIGINT" property="jobintvViewer"/>
 	</resultMap>
+	<resultMap type="model.dto.member.AuthInfo" id="authInfo">
+		<id column="EMP_ID" jdbcType="VARCHAR" property="id"/>
+		<result column="ADMIN" jdbcType="VARCHAR" property="admin"/>
+	</resultMap>
 	
 	<insert id="applyInsert" parameterType="model.dto.hr.EmployeeDTO">
 		insert
@@ -142,4 +146,17 @@
 				#{jobintvTask}, #{jobintvSocial}, #{jobintvSolve}, sysdate,
 				#{jobintvViewer} )
 	</insert>
+	<select id="userCheck" parameterType="string" resultMap="authInfo">
+		SELECT emp_id, '직원' AS ADMIN
+			FROM EMPLOYEE
+			WHERE emp_id = #{empId}
+		UNION
+		SELECT mem_id, '고객'
+			FROM MEMBER
+			WHERE mem_id = #{memId}
+		UNION
+		SELECT teach_id, '강사'
+			FROM teacher
+			WHERE teach_id = #{teachId}
+	</select>
 </mapper>
