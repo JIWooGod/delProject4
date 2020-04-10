@@ -28,6 +28,7 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
   <link rel="icon" type="image/png" href="images/favicon.png" />
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
     <script>
@@ -74,7 +75,7 @@
                     }
                 });
                 //성공시 이동할 페이지
-               location.href='main'
+               $("#kakaoSubmit").submit();
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
@@ -86,6 +87,20 @@
         
     });
     </script> 
- 
+    					<form action="diningResSuccess" method="POST" name="kakaoSubmit" id="kakaoSubmit">
+    						<!-- 결제내역 전달하는 값 -->
+ 							<input type="hidden" id="rstNo" name="rstNo" value="${ res3.rstNo }">
+							<input type="hidden" id="fromdate" name="fromdate" value="${ res3.fromdate }">
+							<input type="hidden" id="resTime" name="resTime" value="${ res3.resTime }">
+							<input type="hidden" id="resMans" name="resMans" value="${ res3.resMans }">
+							<input type="hidden" id="resName" name="resName" value="${ res3.resName }">
+							<input type="hidden" id="resTel" name="resTel" value="${ res3.resTel }">
+							<input type="hidden" id="emailVal1" name="emailVal1" value="${ res3.emailVal1 }">
+							<input type="hidden" id="emailVal2" name="emailVal2" value="${ res3.emailVal2 }">
+							<input type="hidden" id="resCnt" name="resCnt" value="${ res3.resCnt }">
+							<input type="hidden" id="menuName" name="menuName" value="${ res3.menuName }">
+							<input type="hidden" id="menuPrice" name="menuPrice" value="${ pay.payPrice }">
+							<input type="hidden" id="rstTbl" name="rstTbl" value="${ res3.rstTbl }">
+						</form>
 </body>
 </html>

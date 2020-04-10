@@ -229,12 +229,20 @@ public class DiningController {
 		menuDeleteService.execute(menuNo, rstNo);
 		return "redirect:/mgMenuList";
 	}
+	
+	//예약결제
 	@RequestMapping("/kakaoPayRes")
-	public String kakaoPay(dReservationCommand dReservationCommand, HttpServletRequest request, HttpSession session) {
-		diningPayService.execute(dReservationCommand, request, session);
+	public String kakaoPay(dReservationCommand dReservationCommand, HttpServletRequest request, HttpSession session, Model model) {
+		diningPayService.execute(dReservationCommand, request, session, model);
 		return "dining/kakaoPay";
 	}
 
+	// 결제성공 DB insert
+	@RequestMapping(value="/diningResSuccess", method = RequestMethod.POST)
+	public String diningResSuccess(dReservationCommand dReservationCommand, HttpServletRequest request, HttpSession session, Model model) {
+		diningPayService.success(dReservationCommand, request, session, model);
+		return "dining/diningResSuccess";
+	}
 
 }
 

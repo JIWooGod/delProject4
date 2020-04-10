@@ -173,7 +173,9 @@
 	</insert>
 	
 	<insert id="insertPay" parameterType="dpaydto">
-		insert into payment(pay_no,pay_price,pay_mtd,pay_date,pay_who)values(#{payNo},#{payPrice},#{payMtd},sysdate,#{payWho})
+		insert into
+		payment(pay_no,pay_price,pay_mtd,pay_date,pay_who) 
+		values(#{payNo},#{payPrice},#{payMtd},sysdate,#{payWho})
 	</insert>
 	
 </mapper>
