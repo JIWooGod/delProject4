@@ -10,6 +10,7 @@ import model.dto.dining.Menu3DTO;
 import model.dto.dining.MenuDTO;
 import model.dto.dining.RstDTO;
 import model.dto.dining.SeatPlaceDTO;
+import model.dto.dining.dReservationDTO;
 
 public class DiningRepository {
 	@Autowired
@@ -117,6 +118,13 @@ public class DiningRepository {
 		String statement = namespace + ".tblDeleteList";
 		return sqlSession.selectList(statement, rstNo);
 	}
+
+	public dReservationDTO resMenuOneSelect(dReservationDTO dto) {
+		String statement = namespace + ".resMenuOneSelect";
+		return sqlSession.selectOne(statement, dto);
+	}
+
+	
 
 
 }

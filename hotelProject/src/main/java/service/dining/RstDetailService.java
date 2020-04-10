@@ -19,6 +19,7 @@ public class RstDetailService {
 		model.addAttribute("rst", dto);
 	}
 
+	//레스토랑예약 기본정보입력
 	public void resStep2(Long rstNo, Model model, dReservationCommand dreservationCommand) {
 		dReservationDTO dto = new dReservationDTO();
 		dto.setEmailVal1(dreservationCommand.getEmailVal1());
@@ -32,5 +33,55 @@ public class RstDetailService {
 		dto.setRstNo(rstNo);
 		model.addAttribute("res", dto);
 	}
+
+	//기본정보입력 후 메뉴선택
+	public void resStep3(Long rstNo, Model model, dReservationCommand dreservationCommand) {
+		dReservationDTO dto = new dReservationDTO();
+		dto.setMenuNo(dreservationCommand.getMenuNo());
+		dto.setRstNo(rstNo);
+		
+		dto = diningRepository.resMenuOneSelect(dto);
+		
+		dto.setEmailVal1(dreservationCommand.getEmailVal1());
+		dto.setEmailVal2(dreservationCommand.getEmailVal2());
+		dto.setFromdate(dreservationCommand.getFromdate());
+		dto.setResCnt(dreservationCommand.getResCnt());
+		dto.setResMans(dreservationCommand.getResMans());
+		dto.setResName(dreservationCommand.getResName());
+		dto.setResTel(dreservationCommand.getResTel());
+		dto.setResTime(dreservationCommand.getResTime());
+		model.addAttribute("res2", dto);
+	}
+
+	public void resStep4(Long rstNo, Model model, dReservationCommand dreservationCommand) {
+		dReservationDTO dto = new dReservationDTO();
+		dto.setEmailVal1(dreservationCommand.getEmailVal1());
+		dto.setEmailVal2(dreservationCommand.getEmailVal2());
+		dto.setFromdate(dreservationCommand.getFromdate());
+		dto.setResCnt(dreservationCommand.getResCnt());
+		dto.setResMans(dreservationCommand.getResMans());
+		dto.setResName(dreservationCommand.getResName());
+		dto.setResTel(dreservationCommand.getResTel());
+		dto.setResTime(dreservationCommand.getResTime());
+		dto.setRstNo(rstNo);
+		dto.setMenuNo(dreservationCommand.getMenuNo());
+		dto.setRstTbl(dreservationCommand.getRstTbl());
+		model.addAttribute("res3", dto);
+	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

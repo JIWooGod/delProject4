@@ -152,6 +152,19 @@
 		GROUP BY r.RST_NO, r.RST_NAME, r.RST_ADDR, r.RST_TEL, r.RST_EMAIL, r.RST_IMG
 	</select>
 	
+	<resultMap id="resBaseMap" type="res">
+		<id property="rstNo" jdbcType="BIGINT" column="RST_NO"/>
+		<id property="menuNo" jdbcType="BIGINT" column="EMNU_NO"/>
+		<result property="menuName" jdbcType="VARCHAR" column="MENU_NAME"/>
+		<result property="menuPrice" jdbcType="BIGINT" column="MENU_PRICE"/>
+		<result property="menuImg" jdbcType="VARCHAR" column="MENU_IMG"/>
+	</resultMap>
+	
+	<select id="resMenuOneSelect" parameterType="long" resultMap="resBaseMap">
+		SELECT MENU_NAME, MENU_PRICE, MENU_IMG
+		FROM MENU
+		WHERE RST_NO=#{rstNo} AND MENU_NO=#{menuNo}
+	</select>
 	
 	
 </mapper>

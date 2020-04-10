@@ -12,6 +12,7 @@ public class DiningTblListService {
 	@Autowired
 	private DiningRepository reservationRepository;
 	public void execute(Model model) {
+		System.out.println("좌석 서비스 들어옴");
 		List<SeatPlaceDTO> list1 = reservationRepository.seatPlace1();
 		model.addAttribute("gwoong", list1);
 		

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.dining.MenuCommand;
@@ -101,19 +102,34 @@ public class DiningController {
 		return "dining/diningMenuList";
 	}
 
-	//식당예약시작
+	//식당예약시작 예약정보입력
 	@RequestMapping("/dReservation")
 	public String dReservation(@RequestParam(value="rno") Long rstNo, Model model) {
 		rstDetailService.execute(rstNo, model);
 		return "dining/dReservation";
 	}
 
-	//식당예약2단계
-	@RequestMapping("/dReservationStep2")
+	//식당예약2단계 메뉴선택
+	@RequestMapping(value="/dReservationStep2", method=RequestMethod.POST)
 	public String dReservationStep2(@RequestParam(value="rno") Long rstNo, Model model, dReservationCommand dreservationCommand) {
 		rstDetailService.resStep2(rstNo, model, dreservationCommand);
 		menuSelectService.execute(rstNo, model);
 		return "dining/dReservation2";
+	}
+	
+	//식당예약3단계 좌석선택
+	@RequestMapping(value="/dReservationStep3", method = RequestMethod.POST)
+	public String dReservationStep3(@RequestParam(value="rno") Long rstNo, Model model, dReservationCommand dreservationCommand) {
+		//rstDetailService.resStep3(rstNo, model, dreservationCommand);
+		diningTblListService.execute(model);
+		return "dining/dReservationStep3";
+	}
+	
+	//식당예약4단계 결제
+	@RequestMapping(value="/dReservationStep4", method = RequestMethod.POST)
+	public String dReservationStep4(@RequestParam(value="rno") Long rstNo, Model model, dReservationCommand dreservationCommand) {
+		rstDetailService.resStep4(rstNo, model, dreservationCommand);
+		return "dining/dReservationStep4";
 	}
 
 	@RequestMapping("/tblList")

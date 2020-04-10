@@ -10,7 +10,21 @@ public class dReservationCommand {
 	String emailVal1;
 	String emailVal2;
 	String resCnt;
+	Long menuNo;
+	Long rstTbl;
 	
+	public Long getMenuNo() {
+		return menuNo;
+	}
+	public void setMenuNo(Long menuNo) {
+		this.menuNo = menuNo;
+	}
+	public Long getRstTbl() {
+		return rstTbl;
+	}
+	public void setRstTbl(Long rstTbl) {
+		this.rstTbl = rstTbl;
+	}
 	public Long getRstNo() {
 		return rstNo;
 	}
