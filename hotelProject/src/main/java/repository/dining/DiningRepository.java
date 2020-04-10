@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import model.dto.dining.DiningPayDTO;
 import model.dto.dining.Menu2DTO;
 import model.dto.dining.Menu3DTO;
 import model.dto.dining.MenuDTO;
@@ -123,6 +124,17 @@ public class DiningRepository {
 		String statement = namespace + ".resMenuOneSelect";
 		return sqlSession.selectOne(statement, dto);
 	}
+
+	public void insertDiningRes(dReservationDTO dto) {
+		String statement = namespace + ".insertDiningRes";
+		sqlSession.insert(statement, dto);
+	}
+
+	public void insertPayDining(DiningPayDTO pay) {
+		String statement = namespace + ".insertPay";
+		sqlSession.insert(statement, pay);
+	}
+
 
 	
 

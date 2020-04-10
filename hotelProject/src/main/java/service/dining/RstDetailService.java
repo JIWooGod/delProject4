@@ -40,7 +40,8 @@ public class RstDetailService {
 		dto.setMenuNo(dreservationCommand.getMenuNo());
 		dto.setRstNo(rstNo);
 		
-		dto = diningRepository.resMenuOneSelect(dto);
+		dReservationDTO dto2 = diningRepository.resMenuOneSelect(dto);
+		
 		
 		dto.setEmailVal1(dreservationCommand.getEmailVal1());
 		dto.setEmailVal2(dreservationCommand.getEmailVal2());
@@ -51,6 +52,7 @@ public class RstDetailService {
 		dto.setResTel(dreservationCommand.getResTel());
 		dto.setResTime(dreservationCommand.getResTime());
 		model.addAttribute("res2", dto);
+		model.addAttribute("resMenu", dto2);
 	}
 
 	public void resStep4(Long rstNo, Model model, dReservationCommand dreservationCommand) {
@@ -66,6 +68,9 @@ public class RstDetailService {
 		dto.setRstNo(rstNo);
 		dto.setMenuNo(dreservationCommand.getMenuNo());
 		dto.setRstTbl(dreservationCommand.getRstTbl());
+		dto.setMenuName(dreservationCommand.getMenuName());
+		dto.setMenuPrice(dreservationCommand.getMenuPrice());
+		dto.setMenuImg(dreservationCommand.getMenuImg());
 		model.addAttribute("res3", dto);
 	}
 	

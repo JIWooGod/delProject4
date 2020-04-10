@@ -1,6 +1,7 @@
 package Controller.DiningController;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import command.dining.MenuCommand;
 import command.dining.ResTblCommand;
 import command.dining.dReservationCommand;
+import service.dining.DiningPayService;
 import service.dining.DiningTblListService;
 import service.dining.MenuDeleteService;
 import service.dining.MenuInsertService;
@@ -58,6 +60,9 @@ public class DiningController {
 
 	@Autowired
 	private TblDeleteListService tblDeleteListService;
+	
+	@Autowired
+	private DiningPayService diningPayService;
 
 	@RequestMapping("/dining1")
 	public String dining1() {
@@ -120,7 +125,7 @@ public class DiningController {
 	//식당예약3단계 좌석선택
 	@RequestMapping(value="/dReservationStep3", method = RequestMethod.POST)
 	public String dReservationStep3(@RequestParam(value="rno") Long rstNo, Model model, dReservationCommand dreservationCommand) {
-		//rstDetailService.resStep3(rstNo, model, dreservationCommand);
+		rstDetailService.resStep3(rstNo, model, dreservationCommand);
 		diningTblListService.execute(model);
 		return "dining/dReservationStep3";
 	}
@@ -223,6 +228,11 @@ public class DiningController {
 	public String d1menuDelete(@RequestParam(value="mno") Long menuNo, @RequestParam(value="rno") Long rstNo) {
 		menuDeleteService.execute(menuNo, rstNo);
 		return "redirect:/mgMenuList";
+	}
+	@RequestMapping("/kakaoPayRes")
+	public String kakaoPay(dReservationCommand dReservationCommand, HttpServletRequest request, HttpSession session) {
+		diningPayService.execute(dReservationCommand, request, session);
+		return "dining/kakaoPay";
 	}
 
 

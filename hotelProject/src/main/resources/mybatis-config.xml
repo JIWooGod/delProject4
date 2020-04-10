@@ -25,6 +25,7 @@
 		<typeAlias type="model.dto.dining.RstDTO" alias="rst" />
 		<typeAlias type="model.dto.member.MemberDTO" alias="memdto" />
 		<typeAlias type="model.dto.dining.dReservationDTO" alias="res" />
+		<typeAlias type="model.dto.dining.DiningPayDTO" alias="dpaydto" />
 
 		<typeAlias type="model.dto.hr.AnswerDTO" alias="ans" />
 		<typeAlias type="model.dto.hr.AttendDTO" alias="attend" />

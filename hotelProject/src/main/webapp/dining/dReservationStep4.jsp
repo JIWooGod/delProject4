@@ -37,10 +37,10 @@
 			slideshowSpeed : 4000
 		});
 	});
-	
-	function change1(obj,num){
-		
-    }
+
+	function kakaopay(){
+		   $("#writeF").submit();
+		}
 </script>
 <body>
 	<input type="hidden" id="btnCk" />
@@ -105,7 +105,7 @@
 				<div class="hs_reservation">
 					<div class="hs_reservation_section hs_reservation_box1"
 						align="center">
-						<form action="" method="post" name="">
+						<form action="kakaoPayRes" method="post" name="writeF" id="writeF">
 
 							<div>
 								이름 : ${ res3.resName } <br />
@@ -115,28 +115,29 @@
 								예약시간 : ${ res3.resTime } <br />
 								예약인원 : ${ res3.resMans } <br />
 								요청사항 : ${ res3.resCnt } <br />
-								예약메뉴 : ${ res3.menuNo } <br />
-								예약좌석번호 : ${ res3.rstTbl }
+								예약메뉴 : ${ res3.menuName } 이미지:${ res3.menuImg } <br />
+								예약좌석번호 : ${ res3.rstTbl }<br />
+								결제 금액: ${ res3.menuPrice }
 							</div>
 
 							<!-- 기본정보입력에서 가져온정보 -->
-							<input type="hidden" id="rstNo" name="rstNo"
-								value="${ res.rstNo }"> <input type="hidden"
-								id="fromdate" name="fromdate" value="${ res.fromdate }">
-							<input type="hidden" id="resTime" name="resTime"
-								value="${ res.resTime }"> <input type="hidden"
-								id="resMans" name="resMans" value="${ res.resMans }"> <input
-								type="hidden" id="resName" name="resName"
-								value="${ res.resName }"> <input type="hidden"
-								id="resTel" name="resTel" value="${ res.resTel }"> <input
-								type="hidden" id="emailVal1" name="emailVal1"
-								value="${ res.emailVal1 }"> <input type="hidden"
-								id="emailVal2" name="emailVal2" value="${ res.emailVal2 }">
-							<input type="hidden" id="resCnt" name="resCnt"
-								value="${ res.resCnt }">
+							<input type="hidden" id="rstNo" name="rstNo" value="${ res3.rstNo }">
+							<input type="hidden" id="fromdate" name="fromdate" value="${ res3.fromdate }">
+							<input type="hidden" id="resTime" name="resTime" value="${ res3.resTime }">
+							<input type="hidden" id="resMans" name="resMans" value="${ res3.resMans }">
+							<input type="hidden" id="resName" name="resName" value="${ res3.resName }">
+							<input type="hidden" id="resTel" name="resTel" value="${ res3.resTel }">
+							<input type="hidden" id="emailVal1" name="emailVal1" value="${ res3.emailVal1 }">
+							<input type="hidden" id="emailVal2" name="emailVal2" value="${ res3.emailVal2 }">
+							<input type="hidden" id="resCnt" name="resCnt" value="${ res3.resCnt }">
+							<input type="hidden" id="menuName" name="menuName" value="${ res3.menuName }">
+							<input type="hidden" id="menuPrice" name="menuPrice" value="${ res3.menuPrice }">
+							<input type="hidden" id="rstTbl" name="rstTbl" value="${ res3.rstTbl }">
+							
 							<!-- 기본정보 끝 -->
+							
 							<div class="hs_reservation_btn_set">
-							<a href="" class="hs_reservation_btn_poin"
+							<a href="javascript:kakaopay();" class="hs_reservation_btn_poin"
 								style="color: #FFFFFF;">다음단계</a>
 						</div>
 						</form>

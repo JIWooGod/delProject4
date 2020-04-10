@@ -12,7 +12,28 @@ public class dReservationCommand {
 	String resCnt;
 	Long menuNo;
 	Long rstTbl;
+	String menuName;
+	Long menuPrice;
+	String menuImg;
 	
+	public String getMenuName() {
+		return menuName;
+	}
+	public void setMenuName(String menuName) {
+		this.menuName = menuName;
+	}
+	public Long getMenuPrice() {
+		return menuPrice;
+	}
+	public void setMenuPrice(Long menuPrice) {
+		this.menuPrice = menuPrice;
+	}
+	public String getMenuImg() {
+		return menuImg;
+	}
+	public void setMenuImg(String menuImg) {
+		this.menuImg = menuImg;
+	}
 	public Long getMenuNo() {
 		return menuNo;
 	}

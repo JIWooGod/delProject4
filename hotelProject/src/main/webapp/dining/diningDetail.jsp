@@ -58,6 +58,11 @@
 		location.href = "dReservation?rno=" + $(".resBtn").val();
 	}
 	
+	function diningReservationX() {
+		alert("로그인 후 이용해주세요");
+		location.href = "signInForm";
+	}
+	
 	function modal() {
 
 		$('#myModal').show();
@@ -154,7 +159,12 @@
 		</div>
 	</div>
 	<div align="center">
+	<c:if test="${ !empty authInfo }">
 		<button class="resBtn" onclick="javascript:diningReservation()" value="${ rst.rstNo }">예약하기</button>
+	</c:if>
+	<c:if test="${ empty authInfo }">
+		<button class="resBtn" onclick="javascript:diningReservationX()" value="${ rst.rstNo }">예약하기</button>
+	</c:if>
 	</div>
 </body>
 </html>

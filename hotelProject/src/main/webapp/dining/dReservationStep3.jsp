@@ -112,7 +112,7 @@
 									<tr>
 										<c:if test="${ !empty gwoong }">
 											<c:forEach items="${ gwoong }" var="g" varStatus="status">
-												<td>ㅁㄴㅇ<c:if test="${ g.rstSeat eq 2 }">
+												<td><c:if test="${ g.rstSeat eq 2 }">
 														<img alt='' src='dining/img/table-icon.png'
 															style="width: 60px; height: 60px; margin: 5px">
 													</c:if> <c:if test="${ g.rstSeat eq 4 }">
@@ -156,10 +156,14 @@
 							<input type="hidden" id="resCnt" name="resCnt"
 								value="${ res2.resCnt }"><input type="hidden"
 								id="menuNo" name="menuNo" value="${ res2.menuNo }">
+							<input type="hidden" id="menuName" name="menuName" value="${ resMenu.menuName }">
+							<input type="hidden" id="menuPrice" name="menuPrice" value="${ resMenu.menuPrice }">
+							<input type="hidden" id="menuImg" name="menuImg" value="${ resMenu.menuImg }">
+							
 							<!-- 기본정보 끝 -->
 							<div class="hs_reservation_btn_set">
 							<a href="javascript:sb();" class="hs_reservation_btn_poin"
-								style="color: #FFFFFF;">다음단계 ${ res2.menuName }</a>
+								style="color: #FFFFFF;">다음단계 </a>
 						</div>
 						</form>
 					</div>
