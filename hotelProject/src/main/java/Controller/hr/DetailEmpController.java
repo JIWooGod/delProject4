@@ -17,7 +17,7 @@ public class DetailEmpController {
 	public String empDetail(@PathVariable(value="empNo") Long empNo,
 			Model model) {
 		empDetailService.action(empNo, model);
-		return "hr/detail";
+		return "manager/hr/detail";
 	}
 }
 //

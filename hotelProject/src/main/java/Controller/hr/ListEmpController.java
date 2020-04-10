@@ -18,13 +18,13 @@ public class ListEmpController {
 	@RequestMapping("/personnel")
 	public String list(Model model) {
 		empListService.view(model);
-		return "hr/personList";
+		return "manager/hr/personList";
 	}
 	
 	@RequestMapping("/teacher")
 	public String list2(Model model) {
 		tchListService.view(model);
-		return "hr/teacherList";
+		return "manager/hr/teacherList";
 	}
 }
 //

@@ -22,7 +22,7 @@ public class ApplyTchController {
 	public String empApply(@RequestParam(value="job") String job, Model model) {
 		model.addAttribute("job",job);
 		model.addAttribute("apply2Command",new Apply2Command());
-		return "hr/apply2";
+		return "manager/hr/apply2";
 	}
 
 	@RequestMapping(value="/personnel/teacher/appling2", method=RequestMethod.POST)

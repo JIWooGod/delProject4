@@ -20,7 +20,7 @@ public class FormTchController {
 			Apply2Command applyCommand) {
 		tchDetailService.action(teachNo, model);
 		model.addAttribute("apply2Command",applyCommand);
-		return "hr/modify2";
+		return "manager/hr/modify2";
 	}
 }
 //

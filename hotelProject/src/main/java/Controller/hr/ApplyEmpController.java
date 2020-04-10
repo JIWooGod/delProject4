@@ -24,14 +24,14 @@ public class ApplyEmpController {
 	public String empApply(@RequestParam(value="job") String job, Model model) {
 		model.addAttribute("job",job);
 		model.addAttribute("applyCommand",new ApplyCommand());
-		return "hr/apply";
+		return "manager/hr/apply";
 	}
 	@RequestMapping(value="/personnel/staff/appling", method=RequestMethod.POST)
 	public String empApplying(HttpServletRequest request,ApplyCommand applyCommand,
 			Model model,Errors errors,@RequestParam(value="job") String job) {
 		//new ApplyCommandValidator().validate(applyCommand,errors);	
 		applyService.action(request,applyCommand,errors);
-		return "hr/welcome";
+		return "manager/hr/welcome";
 	}
 }
 //

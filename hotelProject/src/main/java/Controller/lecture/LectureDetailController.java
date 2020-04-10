@@ -17,7 +17,7 @@ public class LectureDetailController {
 	@RequestMapping("/lecture/teacher/{subjNo}")
 	public String detail(@PathVariable(value="subjNo") Long subjNo, Model model) {
 		lectureDetailService.action(subjNo, model);
-		return "lec/lectureView";
+		return "manager/lec/lectureView";
 	}
 }
 //

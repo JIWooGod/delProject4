@@ -20,12 +20,12 @@ public class InterviewEmpController {
 	@RequestMapping("/personnel/interview/{num}")
 	public String contract(@PathVariable(value="num") Long num,Model model) {
 		empDetailService.action(num, model);
-		return "hr/interviewEmp";
+		return "manager/hr/interviewEmp";
 	}
 	@RequestMapping(value="/personnel/interview/interviewer", method=RequestMethod.POST)
 	public String interviewer(@RequestParam(value="empNo") Long empNo,Model model) {
 		empDetailService.action(empNo, model);
-		return "hr/result";
+		return "manager/hr/result";
 	}
 }
 //

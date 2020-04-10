@@ -21,7 +21,7 @@ public class FormEmpController {
 			ApplyCommand applyCommand) {
 		empDetailService.action(empNo, model);
 		model.addAttribute("applyCommand",applyCommand);
-		return "hr/modify";
+		return "manager/hr/modify";
 	}
 }
 //

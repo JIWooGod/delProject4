@@ -44,5 +44,37 @@ function load(){
 	}
 	dayLong.addEventListener("blur",overRange,false);
 	unitNum.addEventListener("blur",check,false);
+	
+	var totalTime; //총 재생시간
+	var mine; //내 재생시간
+	var current; //현재 재생시간
+	var mineTime = document.getElementById("mineTime");
+	var mineLoc = document.getElementById("mineLoc");
+	var frm1 = document.getElementById("frm1");
+	var frm1 = document.getElementById("frm2");
+
+
+	function checkTime(){
+		var ok = confirm("내 재생시간은 "+mine+"입니다. 정말 종료하시겠습니까?");
+		if(ok==true){
+			mineTime.value = mine;
+			mineLoc.value = current;
+			frm2.submit();
+			window.close();
+		}else{
+			videoUp.attr.autoplay = "autoplay";
+		}
+	}
+	function finished(){
+		document.getElementById("mineTime").value = mine;
+	}
+	function moved(){
+		current = event.currentTime;
+		document.getElementById("mineLoc").value = current;
+	}
+	//videoUp.addEventListener("play",setTime,false);
+	//videoUp.addEventListener("ended",finished,false);
+
+	//window.addEventListener("close",checkTime,false);
 }
 window.addEventListener("load",load,false);

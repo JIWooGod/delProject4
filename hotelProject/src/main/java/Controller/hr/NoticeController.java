@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class NoticeController {
 	@RequestMapping("/notice")
 	public String notice() {
-		return "hr/notice";
+		return "manager/hr/notice";
 	}
 }
 //

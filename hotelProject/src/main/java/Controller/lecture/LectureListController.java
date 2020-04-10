@@ -15,7 +15,7 @@ public class LectureListController {
 	@RequestMapping("/lecture")
 	public String list(Model model) {
 		lectureListService.action(model);
-		return "lec/lectureList";
+		return "manager/lec/lectureList";
 	}
 }
 //

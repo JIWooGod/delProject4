@@ -16,9 +16,9 @@ public class MailingEmpController {
 			@RequestParam(value="empId") String empId) {
 		Integer i = applyService.joinAction(num, receiver, empId);
 		if(i>0) {
-			return "hr/success";
+			return "manager/hr/success";
 		}else {
-			return "hr/fail";
+			return "manager/hr/fail";
 		}
 	}
 	@RequestMapping

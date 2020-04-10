@@ -18,7 +18,7 @@ public class LectureModifyController {
 	@RequestMapping(value="/lecture/teacher/modify", method = RequestMethod.GET)
 	public String update(@RequestParam(value="num") Long num, Model model) {
 		lectureDetailService.action(num, model);
-		return "lec/lectureModify";
+		return "manager/lec/lectureModify";
 	}
 }
 //

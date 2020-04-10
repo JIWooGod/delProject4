@@ -29,7 +29,7 @@ function getTime(){
 		frm1.submit();
 	}
 }
-function check(){
+function checkTime(){
 	var ok = confirm("내 재생시간은 "+mine+"입니다. 정말 종료하시겠습니까?");
 	if(ok==true){
 		mineTime.value = mine;
@@ -51,7 +51,7 @@ function moved(){
 //videoUp.addEventListener("load",getTime,false);
 //videoUp.addEventListener("ended",finished,false);
 
-//window.addEventListener("close",check,false);
+//window.addEventListener("close",checkTime,false);
 </script>
 </head>
 
@@ -87,7 +87,6 @@ function moved(){
 	<input type="hidden" name="mineLoc" id="mineLoc"/>
 </form>
 </div>
-<button onclick="loaction.href='#'">시험보기</button>
 <button onclick="location.href='../lecture/teacher/modify?num=${list.subjNo }'">강의내용 수정</button>
 <button onclick="location.href='../lecture/teacher/deleting?num=${list.subjNo }'">강의 삭제하기</button>
 <button onclick="location.href='../lecture'">강좌목록</button>

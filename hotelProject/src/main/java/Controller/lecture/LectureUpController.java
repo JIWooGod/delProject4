@@ -20,7 +20,7 @@ public class LectureUpController {
 	@RequestMapping(value="/lecture/teahcer/upload", method=RequestMethod.GET)
 	public String upload(Model model) {
 		model.addAttribute("subjectCommand", new SubjectCommand());
-		return "lec/lectureUp";
+		return "manager/lec/lectureUp";
 	}
 	@RequestMapping(value="/lecture/uploading", method=RequestMethod.POST)
 	public String upload2(HttpServletRequest request, Model model,

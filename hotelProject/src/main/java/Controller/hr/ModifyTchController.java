@@ -25,7 +25,7 @@ public class ModifyTchController {
 		if(i>0) {
 			return "redirect:/teacher/detail/"+teachNo;
 		}else {
-			return "hr/modify2";
+			return "manager/hr/modify2";
 		}
 	}
 }

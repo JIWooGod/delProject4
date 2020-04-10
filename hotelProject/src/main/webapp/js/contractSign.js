@@ -129,6 +129,18 @@ function wrapAll(){
 	cancel.addEventListener("click",warp,false);
 }
 
+//컨버스 저장
+function canvasToImage(){
+	var canvas = document.getElementById("drawCanvas");
+	var image = canvas.toDateURL("image/png");
+	var blobBin = atob(image);
+	var file = new Blob([new Uint8Array(blobBin)], {type: 'image/png'});
+	var formdata = new FormData();	// formData 생성
+	formdata.append("file", file);
+	
+	submit();
+}
+
 //동영상
 function aboutVideo(){
 	function fileUpload(e){
@@ -150,4 +162,5 @@ function aboutVideo(){
 	}
 	videoUp.addEventListener("change",fileUpload,false);
 	//video.addEventListener("change",getTime,false);
+	//videoUp.addEventListener("load",getTime,false);
 }

@@ -9,7 +9,7 @@ public class ContractEmpController {
 	@RequestMapping("/personnel/contract/{num}")
 	public String contract(@PathVariable(value="num") Long num) {
 		
-		return "hr/contractEmp";
+		return "manager/hr/contractEmp";
 	}
 }
 //

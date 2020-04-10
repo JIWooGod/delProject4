@@ -23,7 +23,7 @@ public class ModifyEmpController {
 		if(i>0) {
 			return "redirect:/personnel/detail/"+empNo;
 		}else {
-			return "hr/modify";
+			return "manager/hr/modify";
 		}
 	}
 }

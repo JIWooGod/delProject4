@@ -8,7 +8,7 @@ public class TestQestController {
 	@RequestMapping(value="/lecture/teacher/test/form",method=RequestMethod.GET)
 	public String examUp() {
 		
-		return "lec/test";
+		return "manager/lec/test";
 	}
 	
 	@RequestMapping(value="/lecture/teacher/test/teacherWho",method=RequestMethod.POST)
