@@ -5,14 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
-import org.springframework.web.multipart.MultipartFile;
 
 import command.hr.ApplyCommand;
 import model.dto.hr.EmployeeDTO;
-import model.dto.hr.TeacherDTO;
 import repository.hr.ApplyRepository;
+import repository.hr.UserCheckRepository;
 
 @Service
 public class ApplyService {
@@ -20,11 +18,14 @@ public class ApplyService {
 	private BCryptPasswordEncoder bcryptPasswordEncoder;
 	@Autowired
 	private ApplyRepository applyRepository;
+	@Autowired
+	private UserCheckRepository userCheckRepository;
 
 	public void action(HttpServletRequest request, ApplyCommand applyCommand,
 			Errors errors) {
 		String password = bcryptPasswordEncoder.encode(applyCommand.getPw());
-
+		String check = userCheckRepository.check(applyCommand.getId()).getId();
+		
 		EmployeeDTO dto = new EmployeeDTO();
 
 		dto.setDeptNo(applyCommand.getDeptNo());
@@ -34,7 +35,12 @@ public class ApplyService {
 		dto.setEmpAddr(applyCommand.getAddr());
 		dto.setEmpCarr(applyCommand.getCareer());
 		dto.setEmpCerti(applyCommand.getCerti());
-		dto.setEmpId(applyCommand.getId());
+		if(check==null) {
+			dto.setEmpId(applyCommand.getId());
+		}else {
+			System.out.println(":::::::아이디 중복체크 처리하셈::::::");
+			//errors.rejectValue("duplicatedId", "중복된 아이디입니다.");
+		}
 		if(bcryptPasswordEncoder.matches(applyCommand.getRePw(), password)) {
 			dto.setEmpPw(password);
 		}else {
@@ -45,7 +51,7 @@ public class ApplyService {
 		applyRepository.applyPut(dto);
 	}
 
-	public Integer joinAction(String num, String reciver, String empId) {
+	public Integer joinAction(String num, String receiver, String empId) {
 		return null;
 	}
 }

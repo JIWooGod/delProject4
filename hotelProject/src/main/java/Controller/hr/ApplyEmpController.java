@@ -28,10 +28,14 @@ public class ApplyEmpController {
 	}
 	@RequestMapping(value="/personnel/staff/appling", method=RequestMethod.POST)
 	public String empApplying(HttpServletRequest request,ApplyCommand applyCommand,
-			Model model,Errors errors,@RequestParam(value="job") String job) {
+			Model model,Errors errors) {
 		//new ApplyCommandValidator().validate(applyCommand,errors);	
 		applyService.action(request,applyCommand,errors);
-		return "manager/hr/welcome";
+		if(errors.hasErrors()) {
+			return "manager/hr/apply";
+		}else {
+			return "manager/hr/welcome";
+		}
 	}
 }
 //

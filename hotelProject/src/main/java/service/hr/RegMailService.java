@@ -14,13 +14,13 @@ public class RegMailService {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	public void sendMail(String reciver, String empId) {
+	public void sendMail(String receiver, String empId) {
 		MimeMessage msg = mailSender.createMimeMessage();
 		SimpleDateFormat dateForm = new SimpleDateFormat("yyyyMMddHHmmss");
 		String num = dateForm.format(new Date());
 		String content = "<html><body><br/><br/><p style='text-align:center'>" + 
 			"아래 링크를 눌러 가입을 완료하고, 로그인하십시오.<br/>" + 
-			"<a href='http://192.168.4.117:9080/hotelProject/applyMailing?num="+num+"&reciver="+reciver+"&empId="+empId+"'>"+
+			"<a href='http://192.168.4.117:9080/hotelProject/applyMailing?num="+num+"&reciver="+receiver+"&empId="+empId+"'>"+
 			"<b></b></a>"+
 			"</p><br/><br/></body></html>";
 		String subject = "가입환영인사";
@@ -28,11 +28,10 @@ public class RegMailService {
 			msg.setHeader("content-type", "text/html;charset=UTF-8");
 			msg.setContent(content, "text/html;charset=UTF-8");
 			msg.setSubject(subject);
-			msg.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(reciver));
+			msg.setRecipient(MimeMessage.RecipientType.TO, new InternetAddress(receiver));
 			mailSender.send(msg);
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
 	}
 }
-//
