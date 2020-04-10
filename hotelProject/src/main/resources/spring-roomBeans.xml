@@ -7,6 +7,7 @@
 	<!-- service -->
 	<bean id = "roomFromService" class = "service.room.RoomFormService" />
 	 <bean id = "reservationService" class = "service.room.ReservationService" />
+	 <bean id = "reservationChkService" class = "service.room.ReservationChkService" />
    
    
    

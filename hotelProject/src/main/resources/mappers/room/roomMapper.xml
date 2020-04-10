@@ -94,6 +94,10 @@
 		select rm_no from room where rm_grade = #{roomGrade} and rm_bed = #{roomBed} and rm_view = #{roomView}
 	</select>
 	
+	<select id = "myReservation" parameterType="String" resultMap="reservationmap">
+		select <include refid="basecolumn2"/> from roombook where mem_id = #{userId} order by rmbk_date desc
+	</select>
+	
 	<select id ="selectReservationOk" parameterType="String" resultMap="reservationmap">
 		 select distinct <include refid="basecolumn2"/> from (select * from roombook order by rmbk_date desc)
 		<where>

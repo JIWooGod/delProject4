@@ -7,4 +7,5 @@
 	<bean class="Controller.Room.RoomController"/>
 	<bean class="Controller.Room.ReservationController"/>
 	<bean class="Controller.Room.RoomFormController"/>
+	<bean class="Controller.Room.ResevationChkController"/>
 </beans>

@@ -144,6 +144,6 @@ public class ReservationService {
 				+ "체크인 날짜:"+dto.getRmbkChkIn()+", 체크 아웃날짜:"+dto.getRmbkChkOut()+"호 수:"+ dto.getRoomNo();
 		SmsSend sms = new SmsSend();
 		sms.smsSend(dto.getUserPh(), textMassage);
-
+		
 	}
 }
