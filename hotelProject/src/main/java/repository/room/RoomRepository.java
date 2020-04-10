@@ -73,8 +73,9 @@ public class RoomRepository {
 	}
 	public ReservationDTO ReservationDetail(String rmbkNo)
 	{
-		String statement = namespace+".reservationDetail";
-		return sqlSession.selectOne(statement,rmbkNo);
+		//String statement = namespace+".reservationDetail";
+		//return sqlSession.selectOne(statement,rmbkNo);\
+		return null;
 	}
 	
 	
