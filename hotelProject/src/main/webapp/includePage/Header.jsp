@@ -65,6 +65,7 @@
 						<li class='navmenu_ul_li3'><a href='javascript:memModal();'>Member</a>
 							<ul class='navmenu_ul_ul3'>
 								<li class='navmenu_ul_ul_li3'><a href='javascript:memModal();'>회원정보</a></li>
+								<li class='navmenu_ul_ul_li3'><a href='roomReservation?id=${authInfo.id }'>객실 예약 내역</a></li>
 								<li class='navmenu_ul_ul_li3'><a href='logout'>로그아웃</a></li>
 							</ul></li>
 					</c:if>
