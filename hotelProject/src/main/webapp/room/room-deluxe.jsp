@@ -52,7 +52,7 @@ function loginAlert(){
 	<div class='sub_detail'>
 딜럭스 룸은 창 밖으로 펼쳐지는 한강과 아차산의 수려한 경관을 조망할 수 있어 상쾌함과 편안함을 선사합니다.
 
-PRINT SHARE
+
 
 </div>
 <div class='sub_room'>
@@ -73,7 +73,7 @@ PRINT SHARE
 	<div class='box'>
 		<div class='time'><span>Check-in</span> 14:00 ~ <span>Check-out</span> 12:00</div>
 		<div class='basic'>
-			<span>객실크기</span> 51.93m², 59.93m²<br>
+			<span>객실크기</span> 43㎡<br>
 			<span>기준인원</span> 2명<br>
 		</div>
 		<div class='tel'>
@@ -85,16 +85,13 @@ PRINT SHARE
 	</div>
 	<div class='line_height40'></div>
 
-	<div class='tl'>편의시설</div>
+	<div class='tl'>시설안내</div>
 	<div class='con'>
 		<li>* 유/무선 인터넷</li>
 		<li>* TV</li>
-		<li>* 헤어 드라이기</li>
-		<li>* 샴푸, 비누</li>
-		<li>* 1회용 칫솔</li>
-		<li>* 수건</li>
-		<li>* 목욕 가운</li>
-		<li>* 에어컨</li>
+		<li>* 디지털 개인금고</li>
+		<li>* 고급스러운 객실 어매니티</li>
+		<li>* 최고급 BEDDING(폴란드 구스)</li>
 	</div>
 	<div class='line_height30'></div>
 	<div class='line_box'></div>

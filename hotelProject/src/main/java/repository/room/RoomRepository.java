@@ -73,9 +73,19 @@ public class RoomRepository {
 	}
 	public ReservationDTO ReservationDetail(String rmbkNo)
 	{
-		//String statement = namespace+".reservationDetail";
-		//return sqlSession.selectOne(statement,rmbkNo);\
-		return null;
+		String statement = namespace+".reservationDetail";
+		return sqlSession.selectOne(statement,rmbkNo);
+	}
+	//예약 취소
+	public void ReservationDelete(String rmbkNo)
+	{
+		String statement = namespace+".reservationDelete";
+		sqlSession.update(statement,rmbkNo);
+	}
+	public List<ReservationDTO> reservationList()
+	{
+		String statement = namespace+".reservationList";
+		return sqlSession.selectList(statement);
 	}
 	
 	

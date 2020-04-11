@@ -30,7 +30,7 @@ public class ReservationService {
 	{
 		RoomDTO dto = roomRepository.roomReservation(roomGrade);
 		session.setAttribute("room", dto);
-		
+
 	}
 	public void execute2(ReservationCommand reservationCommand,Model model,HttpSession session)
 	{
@@ -40,7 +40,7 @@ public class ReservationService {
 		dto.setRmbkChkOut(new Timestamp(reservationCommand.getTodate().getTime()));
 		dto.setRoomDays(reservationCommand.getDays());
 		dto.setRoomCount(reservationCommand.getRoomCount());
-		
+
 		session.setAttribute("reservation",dto);
 	}
 	public void execute3(ReservationCommand reservationCommand,Model model,HttpSession session)
@@ -62,17 +62,17 @@ public class ReservationService {
 		dto.setRoomDays(reservationCommand.getDays());
 		dto.setRoomCount(reservationCommand.getRoomCount());
 		session.setAttribute("reservation",dto);
-		
+
 		System.out.println(reservationCommand.getRoomGrade());
 		System.out.println(dto.getRmbkChkIn());
 		System.out.println(dto.getRmbkChkOut());
-		
-		
-		
+
+
+
 		RoomDTO room = roomRepository.selectRoom(dto);
-		
+
 		model.addAttribute("room",room);
-		
+
 	}
 	public void ajaxExecute(Model model,String roomLoc,String chkIn,String chkOut,String roomGrade,String roomBed,String roomView) {
 		ReservationChkDTO dto = new ReservationChkDTO();
@@ -81,39 +81,39 @@ public class ReservationService {
 		dto.setRoomGrade(roomGrade);
 		dto.setRoomBed(roomBed);
 		dto.setRoomView(roomView);
-		
+
 		List<ReservationDTO> reservation = roomRepository.reservationCheck(dto);
 		model.addAttribute("reservationChk",reservation);
 		System.out.println(reservation);
-		
+
 		List<RoomDTO> rooms = roomRepository.selectRooms(null);
 		String ho= "1404";
 		model.addAttribute("ho", ho);
 		model.addAttribute("roomLoc", roomLoc);
 		model.addAttribute("rooms",rooms);
-		
+
 		List<RoomDTO> room = roomRepository.roomCheckOk(dto);
 		model.addAttribute("roomChk",room);
-		
+
 	}
-	
+
 	public void execute4(ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)
 	{
-		
+
 		PayDTO pay = new PayDTO();
 		SimpleDateFormat  formatter = new SimpleDateFormat("MMddhhmmss");
 		String payNo =  formatter.format(new Date());
-		
+
 		pay.setPayNo((Integer.parseInt(payNo)));
 		pay.setPayPrice(reservationCommand.getRoomPrice());
 		pay.setPayMtd("kakaoPay");
 		pay.setPayWho("room");
-		
+
 		roomRepository.insertPay(pay);
-		
+
 		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 		ReservationDTO dto = new ReservationDTO();
-		
+
 		dto.setMemId(authInfo.getId());
 		dto.setDndMode(reservationCommand.getDndMode());
 		dto.setNoFeader(reservationCommand.getNoFeader());
@@ -131,19 +131,30 @@ public class ReservationService {
 		dto.setPayNo((Integer.parseInt(payNo)));
 		dto.setRoomNo((Integer.parseInt(reservationCommand.getRoomSelect())));
 		roomRepository.insertReservation(dto);
-		
+
 		request.setAttribute("totalPrice",dto.getRmbkPrice());
 		request.setAttribute("userId",authInfo.getId() );
-		
+
 	}
 	public void execute5(String userId,ReservationCommand reservationCommand,Model model,HttpSession session,HttpServletRequest request)
 	{
+
+
+
 		ReservationDTO dto = roomRepository.selectReservationOk(userId);	
 		model.addAttribute("reservationOk",dto);
-		String textMassage = dto.getUserName()+"님 예약해주셔서 감사합니다."
-				+ "체크인 날짜:"+dto.getRmbkChkIn()+", 체크 아웃날짜:"+dto.getRmbkChkOut()+"호 수:"+ dto.getRoomNo();
+		
+
+		Date fromdate = dto.getRmbkChkIn();
+		Date todate = dto.getRmbkChkOut();
+		SimpleDateFormat chkIn, chkOut;
+		
+		chkIn = new SimpleDateFormat("yyyy년MM월dd일"); 
+		chkOut = new SimpleDateFormat("yyyy년MM월dd일"); 
+	
+		String textMassage = dto.getUserName()+"님 예약해주셔서 감사합니다."+"체크인 :"+chkIn.format(fromdate)+",체크아웃:"+chkOut.format(todate);
 		SmsSend sms = new SmsSend();
 		sms.smsSend(dto.getUserPh(), textMassage);
-		
+
 	}
 }

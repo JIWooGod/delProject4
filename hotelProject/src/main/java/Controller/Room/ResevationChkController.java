@@ -27,5 +27,22 @@ public class ResevationChkController {
 		reservationChkService.execute2(rmbkNo,model,session);
 		return "room/ReservationDetail";
 	}
-	
+	@RequestMapping(value = "/reservationDelete")
+	public String reservation3(@RequestParam(value = "id")String userId,@RequestParam(value = "userPh")String userPh,@RequestParam(value = "no")String rmbkNo,Model model,HttpSession session)
+	{
+		reservationChkService.execute3(rmbkNo,userPh,model,session);
+		return "redirect:/roomReservation?id="+userId;
+	}
+	@RequestMapping(value = "/reservationList")
+	public String reservation4(Model model,HttpSession session)
+	{
+		reservationChkService.execute4(model,session);
+		return "room/reservationList";
+	}
+	@RequestMapping(value = "/reservationDetailManager")
+	public String reservation5(@RequestParam(value = "no")String rmbkNo,Model model,HttpSession session)
+	{
+		reservationChkService.execute2(rmbkNo,model,session);
+		return "room/ReservationDetailManager";
+	}
 }

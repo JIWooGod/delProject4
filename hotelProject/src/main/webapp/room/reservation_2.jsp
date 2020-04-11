@@ -15,15 +15,19 @@
 <script src="./js/jquery-1.8.3.min.js"></script>
 <script src="./js/jquery.rolling.js"></script>
 <script src="./js/jquery.flexslider.js"></script>
-<script>
-$(window).load(function() {
-  $('.flexslider').flexslider({
-	animation: "slide",
-	controlsContainer: $(".custom-controls-container"),
-	customDirectionNav: $(".custom-navigation a"),
-	slideshowSpeed :4000
-  });
+<script type="text/javascript">
+
+$(function(){
+	$("#writeF").submit(function(){
+		if($("#userName").val() == null){
+			$("#userName").focus();
+			alert("예약자 성명을 입력하세요.");
+			return false;
+		}
+		
+	});
 });
+
 </script>
 <body>
 	<jsp:include page="../includePage/Header.jsp" flush="true" />
@@ -85,7 +89,7 @@ $(window).load(function() {
 						</tr>
 					</table>
 					</div>
-						<div class="hs_reservation_left"style="padding: 0 20px 0 50px;width:30%">
+						<div class="hs_reservation_right"style="padding: 0 20px 0 50px;width:30%">
 							<ul class="hs_reservation_litt">
 									<li><strong>체크인</strong> 
 										 &nbsp;  <fmt:formatDate value="${ reservation.rmbkChkIn }" type = "date" pattern="yyyy년MM월dd일"/>
@@ -93,9 +97,7 @@ $(window).load(function() {
 									<li><strong>체크아웃</strong> 
 										 &nbsp;  <fmt:formatDate value="${ reservation.rmbkChkOut }" type = "date" pattern="yyyy년MM월dd일"/>
 									</li>
-									<li><strong>객실수</strong> 
-										 &nbsp; ${reservation.roomCount}
-									</li>
+									
 									<li><strong>인원 수</strong> 
 										 &nbsp; ${reservation.rmbkPeople}
 									</li>
@@ -217,8 +219,6 @@ $(window).load(function() {
 								
 								특별 요청 사항<br/><br/>
 								<textarea name="rmbkContent" style="width:350px; height:100px;"></textarea>
-									
-							
 							</div>
 							<!--//옵션-->
 					</div>

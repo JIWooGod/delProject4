@@ -198,14 +198,10 @@ function reservationCancel(){
 				//-->
 				</script>
 				<div class="hs_reservation_btn_set">
-							<a href="main" class="hs_reservation_btn_poin"
+							<a href="manager" class="hs_reservation_btn_poin"
 								style="color: #FFFFFF;">메인으로</a>
 						</div>
-				&nbsp;&nbsp;&nbsp;
-				<div class="hs_reservation_btn_set">
-							<a href='#' class="hs_reservation_btn_poin"
-								style="color: #FFFFFF;" onclick="reservationCancel();">예약 취소</a>
-				</div>
+			
 				
 				</div>
 	

@@ -107,4 +107,16 @@
 		</where>
 	</select>
 	
+	<delete id="reservationDelete" parameterType="String">
+		delete from roombook where rmbk_no = #{rmbkNo}
+	</delete>
+	
+	<select id="reservationDetail" parameterType="String" resultMap="reservationmap">
+		select <include refid="basecolumn2"/> from roombook where rmbk_no = #{rmbkNo}
+	</select>
+	
+	<select id="reservationList" parameterType="String" resultMap="reservationmap">
+		select <include refid="basecolumn2"/> from roombook order by rmbk_date desc
+	</select>
+	
 </mapper>

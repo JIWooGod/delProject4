@@ -25,6 +25,6 @@ public class RoomFormController {
 	public String roomFormPro(RoomCommand roomCommand,HttpServletRequest request)
 	{
 		roomFormService.execute(roomCommand,request);
-		return"redirect:/main";
+		return"redirect:/manager";
 	}
 }

@@ -49,12 +49,11 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">객실관리</h6>
-            <a class="collapse-item" href="buttons.html">객실등록</a>
-            <a class="collapse-item" href="cards.html">객실수정</a>
+            <a class="collapse-item" href="roomForm">객실등록</a>
             <div class="collapse-divider"></div>
-            <h6 class="collapse-header">시설관리</h6>
-            <a class="collapse-item" href="404.html">시설점검요청내역</a>
-            <a class="collapse-item active" href="blank.html">Blank Page</a>
+            <h6 class="collapse-header">예약관리</h6>
+            <a class="collapse-item" href="reservationList">예약 현황</a>
+
           </div>
         </div>
       </li>

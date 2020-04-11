@@ -84,12 +84,21 @@
 						</tr>
 					</table>
 					</div>
-						<div class="hs_reservation_left">
+						<div class="hs_reservation_right">
 							<ul class="hs_reservation_litt">
-									<li><strong>KRW</strong> 
-										 &nbsp; ${room.roomPrice}~ &nbsp;[1박,1객실]
-										</li>
 									
+									<li><strong>전망:</strong> 
+											오션 뷰 / 도심 뷰
+										</li>
+									<li><strong>침대옵션:</strong> 
+											더블 / 트윈 / 패밀리
+									</li>
+									<li><strong>추가옵션:</strong> 
+											DoNotDisturb / 깃털없는 객실 / 장애인 편의 객실
+									</li>
+									<li><strong>룸구성:</strong> 
+											침실, 거실, 욕실, 화장실
+									</li>
 									
 								</ul>
 						</div>
@@ -128,19 +137,7 @@
 									<li><strong>체크아웃</strong> <input type="text" id="todate"
 										name="todate" class="hs_input hs_disabled" readonly> <!-- 예약 종료일 -->
 									</li>
-									<li><strong>객실수</strong> <select name="roomCount" id="roomCount"
-										class="hs_input">
-											<option value='1'>1</option>
-											<option value='2'>2</option>
-											<option value='3'>3</option>
-											<option value='4'>4</option>
-											<option value='5'>5</option>
-											<option value='6'>6</option>
-											<option value='7'>7</option>
-											<option value='8'>8</option>
-											<option value='9'>9</option>
-											<option value='10'>10</option>
-									</select></li>
+									
 									<li><strong>투숙인원</strong> <select class="hs_input"
 										name="people" id="people">
 											<option value='1'>1</option>

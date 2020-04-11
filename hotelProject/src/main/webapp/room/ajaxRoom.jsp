@@ -11,9 +11,16 @@
 </head>
 <body>
 
-<div class="hs_reservat" id = "room${roomLoc}" style="padding: 0 20px 0 50px;">
+<div class="hs_reservat" id = "room${roomLoc}" style="padding: 0 20px 0 50px;" >
+<div class="hs_reservation_section hs_reservation_box1" float = right>
+	
+<div align = center class="hs_reservation_left"  style="
+background-image:url(room/img/roomView4.png); 
+float:right;width:500px;
+">
+
 	<h3 class="hs_reservation_title">&nbsp;&nbsp;&nbsp;${roomLoc}F</h3>
-	<br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/>
 		<div id = "selectRomm" align =center>
 			<c:set var="i" value="0" />
 			<c:forEach items="${rooms }" var="room" varStatus="status" >
@@ -27,24 +34,24 @@
 					<c:forEach items="${reservationChk }" var="ttt">
 					
 						<c:if test="${room.roomNo == ttt.roomNo}">
-		  					<label for="male">${room.roomNo }</label>
+		  					<label for="male"style=color:red>${room.roomNo }</label><input type="radio" id="roomSelect" disabled="disabled">&nbsp;&nbsp;&nbsp;
 						</c:if>	
 						<c:if test="${room.roomNo != ttt.roomNo}">
 							<c:set var="ii" value="0"/>
 							<c:forEach items="${roomChk }" var="aaa">
 								<c:if test="${roomLoc == fn:substring(aaa.roomNo , 0, fn:length(aaa.roomNo)-2) }" >
 									<c:if test="${room.roomNo == aaa.roomNo}">
-										<label for="male">${room.roomNo }</label><input type="radio" id="roomSelect" name="roomSelect" value="${room.roomNo }">&nbsp;&nbsp;&nbsp;&nbsp;
+										<label for="male" style=color:green>${room.roomNo }</label><input type="radio" id="roomSelect" name="roomSelect" value="${room.roomNo }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<c:set var="ii" value="1"/>
 									</c:if>
 									<c:if test="${room.roomNo != aaa.roomNo}">
-										<label for="male">${room.roomNo }</label>
+										<label for="male" style=color:red>${room.roomNo }</label><input type="radio" id="roomSelect" disabled="disabled">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 										<c:set var="ii" value="1"/>
 									</c:if>
 								</c:if>
 							</c:forEach>
 							<c:if test="${ii == 0 }">
-								<label for="male">${room.roomNo }</label>
+								<label for="male" style=color:red>${room.roomNo }</label><input type="radio" id="roomSelect" disabled="disabled">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 							</c:if>
 						</c:if>		
 					</c:forEach>
@@ -54,22 +61,26 @@
 						<c:forEach items="${roomChk }" var="aaa">
 							<c:if test="${roomLoc == fn:substring(aaa.roomNo , 0, fn:length(aaa.roomNo)-2) }" >
 								<c:if test="${room.roomNo == aaa.roomNo}">
-									<label for="male">${room.roomNo }</label><input type="radio" id="roomSelect" name="roomSelect" value="${room.roomNo }">&nbsp;&nbsp;&nbsp;&nbsp;
+									<label for="male"  style=color:green>${room.roomNo }</label><input type="radio" id="roomSelect" name="roomSelect" value="${room.roomNo }">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<c:set var="ii" value="1"/>
 								</c:if>
 								<c:if test="${room.roomNo != aaa.roomNo}">
-									<label for="male">${room.roomNo }</label>
+									<label for="male" style=color:red>${room.roomNo }</label><input type="radio" id="roomSelect" disabled="disabled">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									<c:set var="ii" value="1"/>
 								</c:if>
 							</c:if>
 						</c:forEach>
 						<c:if test="${ii == 0 }">
-							<label for="male">${room.roomNo }</label>
+							<label for="male" style=color:red>${room.roomNo }</label><input type="radio" id="roomSelect" disabled="disabled">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						</c:if>
 					</c:if>
 				</c:if>
 			</c:forEach>
 		</div>
+		<br/><br/><br/><br/><br/><br/><br/><br/>
+		</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>

@@ -26,9 +26,15 @@ $(window).load(function() {
 	slideshowSpeed :4000
   });
 });
+
 function kakaopay(){
 	writeF.submit();
 }
+
+
+
+
+
 function selectRoom(n){
 	//location.href="ajaxRoom?n="+n+"&rmbkChkIn=${ reservation.rmbkChkIn }&rmbkChkOut=${ reservation.rmbkChkOut }&rmbkView=${reservation.roomView }&rmbkGrade=${room.roomGrade }&rmbkBed=${reservation.roomBed}";
   	  $.ajax({
@@ -40,12 +46,13 @@ function selectRoom(n){
 	         $("#selectroom").html(result);
 	      },
 	      error: function() {
-	         alert('응 에러');
+	         alert('ajax error');
 	         return;
 	      }
 	   });  
 }
 selectRoom(4)
+
 </script>
 <body>
 	<jsp:include page="../includePage/Header.jsp" flush="true" />
@@ -107,7 +114,7 @@ selectRoom(4)
 						</tr>
 					</table>
 					</div>
-						<div class="hs_reservation_left"style="padding: 0 20px 0 50px;width:30%">
+						<div class="hs_reservation_right"style="padding: 0 20px 0 50px;width:30%">
 							<ul class="hs_reservation_litt">
 									<li>
 										<strong>체크인</strong> &nbsp;  <fmt:formatDate value="${ reservation.rmbkChkIn }" type = "date" pattern="yyyy년MM월dd일"/>
@@ -116,8 +123,7 @@ selectRoom(4)
 									<li><strong>체크아웃</strong> 
 										 &nbsp;  <fmt:formatDate value="${ reservation.rmbkChkOut }" type = "date" pattern="yyyy년MM월dd일"/>
 									</li>
-									<li><strong>객실수</strong> 
-										 &nbsp; ${reservation.roomCount} 개
+									
 										 		
 									<li><strong>인원 수</strong> 
 										 &nbsp; ${reservation.rmbkPeople} 명
@@ -236,11 +242,13 @@ selectRoom(4)
 								<br/>
 							<br/>
 							</div>
-							
-								
-				<div class="hs_reservat" id = "selectroom" style="padding: 0 20px 0 50px;">
+							<br/>
+						
+				<div class="hs_reservat" id = "selectroom" align = center >
 				
+					</div>
 				</div>
+			
 							
 						
 					<div class="hs_reservation_section hs_reservation_bottom">
