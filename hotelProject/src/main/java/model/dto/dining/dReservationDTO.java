@@ -20,14 +20,11 @@ public class dReservationDTO implements Serializable {
 	Long menuPrice;
 	String memId;
 	Integer PayNo;
+	String rstName;
 	
-	public dReservationDTO() {
-		
-	}
-
 	public dReservationDTO(Long rstNo, String fromdate, String resTime, Long resMans, String resName, String resTel,
 			String emailVal1, String emailVal2, String resCnt, Long menuNo, Long rstTbl, String menuName,
-			String menuImg, Long menuPrice, String memId, Integer payNo) {
+			String menuImg, Long menuPrice, String memId, Integer payNo, String rstName) {
 		super();
 		this.rstNo = rstNo;
 		this.fromdate = fromdate;
@@ -45,6 +42,19 @@ public class dReservationDTO implements Serializable {
 		this.menuPrice = menuPrice;
 		this.memId = memId;
 		PayNo = payNo;
+		this.rstName = rstName;
+	}
+
+	public String getRstName() {
+		return rstName;
+	}
+
+	public void setRstName(String rstName) {
+		this.rstName = rstName;
+	}
+
+	public dReservationDTO() {
+		
 	}
 
 

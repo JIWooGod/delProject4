@@ -41,6 +41,10 @@
 		writeF2.submit();
 	}
 	
+	function kakaopay(){
+		$("#writeF").submit();
+	}
+	
 </script>
 <body>
 	<jsp:include page="../includePage/Header.jsp" flush="true" />
@@ -68,9 +72,17 @@
 			<div class='sub_reservation'>
 				<!-- 레스토랑 정보 시작 -->
 				<div class='tl' align="center">
-					<c:forEach items="${ menus }" var="menu" end="0">
-							-${ menu.rstName }- <br /> 메뉴를 선택하세요.
+					<c:if test="${ res.rstNo eq 1 or res.rstNo eq 2 }">
+						<c:forEach items="${ menus }" var="menu" end="0">
+								-${ menu.rstName }- <br /> 메뉴를 선택하세요.
 						</c:forEach>
+					</c:if>
+					<c:if test="${ res.rstNo eq 3 }">
+						<c:forEach items="${ menus }" var="menu" end="0">
+								-${ menu.rstName }- 
+						</c:forEach>
+						 -더 델루나-<br /><br />예약내역
+					</c:if>
 				</div>
 
 
@@ -110,6 +122,7 @@
 						align="center">
 						<form action="dReservationStep3?rno=${ res.rstNo }" method="POST" name="writeF2" id="writeF2">
 						<table style="padding: 30px;">
+						<c:if test="${ res.rstNo eq 1 or res.rstNo eq 2 }">
 							<c:if test="${ !empty menus }">
 								<c:forEach items="${ menus }" var="menu" varStatus="status">
 									<tr>
@@ -122,7 +135,7 @@
 											</c:forTokens></td>
 										<td style="padding-top: 2px;"><b style="font-size: 15px;">${ menu.menuName }
 												&nbsp;&nbsp;...................&nbsp;&nbsp; ${ menu.menuPrice } \
-												&nbsp;<input type="checkbox" value="${ menu.menuNo }" id="menuNo" name="menuNo">
+												&nbsp;<input type="radio" value="${ menu.menuNo }" id="menuNo" name="menuNo" checked="checked">
 												</b></td>
 									</tr>
 									<tr>
@@ -133,7 +146,9 @@
 							<c:if test="${ empty menus }">
 								<div align="center" style="padding: 200px;">메뉴를 준비중입니다.</div>
 							</c:if>
+							</c:if>
 						</table>
+						
 						<!-- 기본정보입력에서 가져온정보 -->
 						<input type="hidden" id="rstNo" name="rstNo" value="${ res.rstNo }">
 						<input type="hidden" id="fromdate" name="fromdate" value="${ res.fromdate }">
@@ -144,9 +159,75 @@
 						<input type="hidden" id="emailVal1" name="emailVal1" value="${ res.emailVal1 }">
 						<input type="hidden" id="emailVal2" name="emailVal2" value="${ res.emailVal2 }">
 						<input type="hidden" id="resCnt" name="resCnt" value="${ res.resCnt }">
+						<input type="hidden" id="menuName" name="menuName" value="${ res.resMans }인 이용권">
+						<input type="hidden" id="menuPrice" name="menuPrice" value="${ res.resMans * 119000 }">
+						<input type="hidden" id="rstTbl" name="rstTbl" value="${ res3.rstTbl }">
 						<!-- 기본정보 끝 -->
-						<a href="javascript:submit();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">다음단계</a>
+						
+						<c:if test="${ !empty menus }">
+							<c:if test="${ res.rstNo eq 1 or res.rstNo eq 2 }">
+								<a href="javascript:submit();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">다음단계</a>
+							</c:if>
+						</c:if>
+						
+						
+						
+						<c:if test="${ empty menus }">
+							<c:if test="${ res.rstNo eq 1 or res.rstNo eq 2 }">
+								<a href="main" class="hs_reservation_btn_poin" style="color: #FFFFFF;">메인으로</a>
+							</c:if>
+						</c:if>
 						</form>
+						
+						<form action="kakaoPayRes" method="post" name="writeF" id="writeF">
+						<c:if test="${ res.rstNo eq 3 }">
+							<div align="center">예약정보</div>
+							<table>
+								<tr>
+									<td>예약날짜</td><td>${ res.fromdate }</td>
+								</tr>
+								<tr>
+									<td>예약시간</td><td>${ res.resTime }</td>
+								</tr>
+								<tr>
+									<td>인원 수</td><td>${ res.resMans }</td>
+								</tr>
+								<tr>
+									<td>예약자 이름</td><td>${ res.resName }</td>
+								</tr>
+								<tr>
+									<td>전화번호</td><td>${ res.resTel }</td>
+								</tr>
+								<tr>
+									<td>요청사항</td><td>${ res.resCnt }</td>
+								</tr>
+								<tr>
+									<td>결제상품</td><td>델루나 뷔페 ${ res.resMans }인 이용</td>
+								</tr>
+								<tr>
+									<td>결제금액</td><td> ${ res.resMans * 119000 } \</td>
+								</tr>
+							</table>
+							<br /><br /><br />
+							<input type="hidden" id="rstNo" name="rstNo" value="${ res.rstNo }">
+							<input type="hidden" id="fromdate" name="fromdate" value="${ res.fromdate }">
+							<input type="hidden" id="resTime" name="resTime" value="${ res.resTime }">
+							<input type="hidden" id="resMans" name="resMans" value="${ res.resMans }">
+							<input type="hidden" id="resName" name="resName" value="${ res.resName }">
+							<input type="hidden" id="resTel" name="resTel" value="${ res.resTel }">
+							<input type="hidden" id="emailVal1" name="emailVal1" value="${ res.emailVal1 }">
+							<input type="hidden" id="emailVal2" name="emailVal2" value="${ res.emailVal2 }">
+							<input type="hidden" id="resCnt" name="resCnt" value="${ res.resCnt }">
+							<input type="hidden" id="menuName" name="menuName" value="${ res.resMans }인 이용권">
+							<input type="hidden" id="menuPrice" name="menuPrice" value="${ res.resMans * 119000 }">
+							<input type="hidden" id="rstTbl" name="rstTbl" value="${ res3.rstTbl }">
+						</c:if>
+						
+						<c:if test="${ res.rstNo eq 3 }">
+							<a href="javascript:kakaopay();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">결제</a>
+						</c:if>
+						</form>
+						
 					</div>
 					<div class="hs_reservation_section hs_reservation_bottom">
 						<div class="hs_reservation_btn_set">

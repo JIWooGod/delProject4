@@ -15,13 +15,15 @@ public class MemberDTO implements Serializable{
 	String joinChk;
 	String memIp;
 	String memNo;
+	String admin;
 	
 	public MemberDTO() {
 		
 	}
 
 	public MemberDTO(String memId, String memPw, String memName, String memEmail, String memAddr, String memTel,
-			Timestamp memRegDt, String joinChk, String memIp, String memNo) {
+			Timestamp memRegDt, String joinChk, String memIp, String memNo, String admin) {
+		super();
 		this.memId = memId;
 		this.memPw = memPw;
 		this.memName = memName;
@@ -32,6 +34,15 @@ public class MemberDTO implements Serializable{
 		this.joinChk = joinChk;
 		this.memIp = memIp;
 		this.memNo = memNo;
+		this.admin = admin;
+	}
+
+	public String getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(String admin) {
+		this.admin = admin;
 	}
 
 	public String getMemId() {

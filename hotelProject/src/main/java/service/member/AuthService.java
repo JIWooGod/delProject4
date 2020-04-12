@@ -23,10 +23,11 @@ public class AuthService {
 
 	public String execute(LoginCommand loginCommand, HttpSession session) {
 		String result = null;
+		
 		MemberDTO dto = new MemberDTO();
 		dto.setMemId(loginCommand.getId());
-		dto = memberRepository.chk(dto);
-
+		dto = memberRepository.chkTest(dto);
+		
 		//로그인 실패
 		if(dto == null) {
 			result = "0";
@@ -35,10 +36,22 @@ public class AuthService {
 		//로그인 성공
 		} else {
 			if(bcryptPasswordEncoder.matches(loginCommand.getPw(), dto.getMemPw())) {
-				authInfo = new AuthInfo(dto.getMemId(), dto.getMemEmail(), dto.getMemName(), dto.getMemPw(), dto.getMemTel(), dto.getMemAddr(), dto.getMemNo());
-				session.setAttribute("authInfo", authInfo);
-				result = "1";
-				return result;
+				if(dto.getAdmin().equals("manager")) {
+					authInfo = new AuthInfo(dto.getMemId(), dto.getMemEmail(), dto.getMemName(), dto.getMemPw(), dto.getMemTel(), dto.getMemAddr(), dto.getMemNo());
+					session.setAttribute("manager", authInfo);
+					result = "1";
+					return result;
+				} else if(dto.getAdmin().equals("member")) {
+					authInfo = new AuthInfo(dto.getMemId(), dto.getMemEmail(), dto.getMemName(), dto.getMemPw(), dto.getMemTel(), dto.getMemAddr(), dto.getMemNo());
+					session.setAttribute("authInfo", authInfo);
+					result = "1";
+					return result;
+				} else if(dto.getAdmin().equals("teacher")) {
+					authInfo = new AuthInfo(dto.getMemId(), dto.getMemEmail(), dto.getMemName(), dto.getMemPw(), dto.getMemTel(), dto.getMemAddr(), dto.getMemNo());
+					session.setAttribute("teacher", authInfo);
+					result = "1";
+					return result;
+				}
 			}
 			result = "0";
 			return result;

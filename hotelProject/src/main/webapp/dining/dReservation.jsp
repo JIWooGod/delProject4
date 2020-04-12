@@ -36,6 +36,37 @@ $(window).load(function() {
 		slideshowSpeed : 4000
 	});
 });
+
+function submit1(){
+	var i = 0;
+	if($("#resTime").val() == 0){
+		document.getElementById("rspan1").innerHTML = "  *";
+		i += 1;
+	}
+	if($("#resName").val() == ""){
+		document.getElementById("rspan2").innerHTML = "  *";
+		i += 1;
+	}
+	if($("#resTel").val() == ""){
+		document.getElementById("rspan3").innerHTML = "  *";
+		i += 1;
+	}
+	if($("#emailVal1").val() == ""){
+		document.getElementById("rspan4").innerHTML = "  *";
+		i += 1;
+	}
+	if($("#emailVal2").val() == 0){
+		document.getElementById("rspan4").innerHTML = "  *";
+		i += 1;
+	}
+	if(i <= 0){
+		writeF.submit();
+	}else{
+		return false;
+	}
+	
+}
+
 </script>
 <body>
 	<jsp:include page="../includePage/Header.jsp" flush="true" />
@@ -104,7 +135,7 @@ $(window).load(function() {
 								<h3 class="hs_reservation_title">예약날짜</h3>
 							</div>
 						</div>
-						<form name="writeF" method="POST" action="dReservationStep2?rno=${ rst.rstNo }">
+						<form id="writeF" name="writeF" method="POST" action="dReservationStep2?rno=${ rst.rstNo }">
 							<div class="hs_reservation_right">
 								<ul class="hs_reservation_litt">
 									<li><strong>날짜</strong> <input type="text" id="fromdate"
@@ -131,7 +162,7 @@ $(window).load(function() {
 						<option value="오후  20:00">20:00</option>
 						<option value="오후  20:30">20:30</option>
 						<option value="오후  21:00">21:00</option>
-					</select>
+					</select><span id="rspan1" style="font-size: 12px; color: red;"></span>
 									</li>
 									<li><strong>인원 수</strong>
 										<select name="resMans" id="resMans">
@@ -144,10 +175,10 @@ $(window).load(function() {
 					</select>
 									</li>
 									<li><strong>이름</strong>
-										<input type="text" size="10" name="resName" id="resName"/>
+										<input type="text" size="10" name="resName" id="resName"/><span id="rspan2" style="font-size: 12px; color: red;"></span>
 									</li>
 									<li><strong>전화번호</strong>
-										<input type="text" size="10" name="resTel" id="resTel"/>
+										<input type="text" size="10" name="resTel" id="resTel"/><span id="rspan3" style="font-size: 12px; color: red;"></span>
 									</li>
 									<li><strong>이메일</strong>
 										<input type="text" size="10" name="emailVal1" id="emailVal1" />
@@ -160,21 +191,32 @@ $(window).load(function() {
 						<option value="gmail.com">gmail.com</option>
 						<option value="nate.com">nate.com</option>
 						<option value="yahoo.co.kr">yahoo.co.kr</option>
-					</select>
+					</select><span id="rspan4" style="font-size: 12px; color: red;"></span>
 									</li>
 									<li><strong>요청사항</strong>
 										<textarea style="resize: none;" cols="40" rows="5" name="resCnt" id="resCnt"></textarea>
 									</li>
 								</ul>
 							</div>
-						</form>
-
-					</div>
+							
 					<div class="hs_reservation_section hs_reservation_bottom">
 						<div class="hs_reservation_btn_set">
-							<a href="javascript:writeF.submit();" class="hs_reservation_btn_poin"
-								style="color: #FFFFFF;">다음단계</a>
+							<c:if test="${ rst.rstNo eq 1 }">
+							<a href="javascript:submit1();" class="hs_reservation_btn_poin"
+								style="color: #FFFFFF;">다음단계 </a>
+							</c:if>
+							<c:if test="${ rst.rstNo eq 2 }">
+							<a href="javascript:submit1();" class="hs_reservation_btn_poin"
+								style="color: #FFFFFF;">다음단계 </a>
+							</c:if>
+							<c:if test="${ rst.rstNo eq 3 }">
+							<a href="javascript:submit1();" class="hs_reservation_btn_poin"
+								style="color: #FFFFFF;">다음단계 </a>
+							</c:if>
 						</div>
+					</div>
+						</form>
+
 					</div>
 				</div>
 				<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"

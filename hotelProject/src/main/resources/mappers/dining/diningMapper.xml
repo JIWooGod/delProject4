@@ -178,6 +178,27 @@
 		values(#{payNo},#{payPrice},#{payMtd},sysdate,#{payWho})
 	</insert>
 	
+	<resultMap type="res" id="memResC">
+		<result column="MEM_ID" jdbcType="VARCHAR" property="memId"/>
+		<result column="RSTBK_FROMDATE" jdbcType="VARCHAR" property="fromdate"/>
+		<result column="RSTBK_RESTIME" jdbcType="VARCHAR" property="resTime"/>
+		<result column="RSTBK_RESMANS" jdbcType="BIGINT" property="resMans"/>
+		<result column="RSTBK_RESNAME" jdbcType="VARCHAR" property="resName"/>
+		<result column="RSTBK_RESTEL" jdbcType="VARCHAR" property="resTel"/>
+		<result column="RSTBK_RESCNT" jdbcType="VARCHAR" property="resCnt"/>
+		<result column="RSTBK_MENUNAME" jdbcType="VARCHAR" property="menuName"/>
+		<result column="RSTBK_RSTTBL" jdbcType="BIGINT" property="rstTbl"/>
+		<result column="rst_name" jdbcType="VARCHAR" property="rstName"/>
+		<result column="PAY_PRICE" jdbcType="BIGINT" property="menuPrice"/>
+	</resultMap>
+	
+	<select id="memResChk" parameterType="String" resultMap="memResC">
+		SELECT b.MEM_ID, b.RSTBK_RSTNO, b.RSTBK_FROMDATE, b.RSTBK_RESTIME, b.RSTBK_RESMANS,
+		b.RSTBK_RESNAME, b.RSTBK_RESTEL, b.RSTBK_RESCNT, b.RSTBK_MENUNAME, b.RSTBK_RSTTBL, r.rst_name, p.PAY_PRICE
+		from RESTRBOOK b, RESTAURANT r, PAYMENT p
+		where b.RSTBK_RSTNO = r.RST_NO AND b.MEM_ID = #{id} AND p.PAY_NO = b.PAY_NO
+	</select>
+
 </mapper>
 
 

@@ -33,4 +33,62 @@
 		MEM_REGDT, MEM_IP, JOIN_CHK, mem_no from member
 		WHERE mem_id=#{memId}
 	</select>
+	
+	<!-- 로그인 분리 (회원,관리자,강사) -->
+	<resultMap type="memdto" id="authInfo">
+		<id column="ID" jdbcType="VARCHAR" property="memId"/>
+		<result column="ADMIN" jdbcType="VARCHAR" property="admin"/>
+		<result column="EMP_PW" jdbcType="VARCHAR" property="memPw"/>
+		<result column="EMP_NAME" jdbcType="VARCHAR" property="memName"/>
+		<result column="EMP_EMAIL" jdbcType="VARCHAR" property="memEmail"/>
+		<result column="EMP_ADDR" jdbcType="VARCHAR" property="memAddr"/>
+		<result column="EMP_TEL" jdbcType="VARCHAR" property="memTel"/>
+	</resultMap>
+	
+	<select id="userCheck" parameterType="string" resultMap="authInfo">
+		SELECT emp_id AS ID, 'manager' AS ADMIN, EMP_PW, EMP_NAME, EMP_EMAIL, EMP_ADDR, EMP_TEL
+			FROM EMPLOYEE
+			WHERE emp_id = #{memId}
+		UNION
+		SELECT mem_id, 'member', MEM_PW, MEM_NAME, MEM_EMAIL, MEM_ADDR, MEM_TEL
+			FROM MEMBER
+			WHERE mem_id = #{memId}
+		UNION
+		SELECT teach_id, 'teacher', TEACH_PW, TEACH_NAME, TEACH_EMAIL, TEACH_ADDR, TEACH_TEL
+			FROM teacher
+			WHERE teach_id = #{memId}
+	</select>
+	
+	<!-- ID 중복체크 -->
+	<resultMap type="memdto" id="idChk">
+		<id column="ID" jdbcType="VARCHAR" property="memId"/>
+	</resultMap>
+	
+	<select id="idChk" parameterType="string" resultMap="idChk">
+		SELECT EMP_ID AS id
+			FROM DELUNA.EMPLOYEE
+			WHERE emp_id = #{memId}
+		UNION
+		SELECT mem_id
+			FROM DELUNA."MEMBER" m
+			WHERE mem_id = #{memId}
+		UNION
+		SELECT teach_id
+			FROM deluna.teacher
+			WHERE teach_id = #{memId}
+	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

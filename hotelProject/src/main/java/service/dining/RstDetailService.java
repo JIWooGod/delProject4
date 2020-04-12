@@ -1,5 +1,7 @@
 package service.dining;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -19,7 +21,7 @@ public class RstDetailService {
 		model.addAttribute("rst", dto);
 	}
 
-	//레스토랑예약 기본정보입력
+	//레스토랑예약 기본정보입력후 실행
 	public void resStep2(Long rstNo, Model model, dReservationCommand dreservationCommand) {
 		dReservationDTO dto = new dReservationDTO();
 		dto.setEmailVal1(dreservationCommand.getEmailVal1());
@@ -37,11 +39,10 @@ public class RstDetailService {
 	//기본정보입력 후 메뉴선택
 	public void resStep3(Long rstNo, Model model, dReservationCommand dreservationCommand) {
 		dReservationDTO dto = new dReservationDTO();
+		
 		dto.setMenuNo(dreservationCommand.getMenuNo());
 		dto.setRstNo(rstNo);
-		
 		dReservationDTO dto2 = diningRepository.resMenuOneSelect(dto);
-		
 		
 		dto.setEmailVal1(dreservationCommand.getEmailVal1());
 		dto.setEmailVal2(dreservationCommand.getEmailVal2());

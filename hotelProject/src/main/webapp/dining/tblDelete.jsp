@@ -9,6 +9,10 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 function aa(){
+	if($("#sno").val() == "선택하세요"){
+		alert("삭제하실 좌석(룸)을 선택하세요.");
+		return false;
+	}
 	location.href="d1tblDeleteAction?sno=" + $("#sno").val() + "&rno=" + $("#rno").val();
 }
 </script>
@@ -20,7 +24,7 @@ function aa(){
 <select id="sno">
 <option>선택하세요</option>
 	<c:forEach items="${ seats }" var="seat">
-		<option value="${ seat.rstTbl }">${ seat.rstTbl }번좌석 (${ seat.rstSeat }인석)</option>
+		<option value="${ seat.rstTbl }">${ seat.rstTbl }번 룸</option>
 	</c:forEach>
 </select>
 <button onclick="aa()">삭제</button>

@@ -40,6 +40,10 @@ function dMoreBtn(){
 }
 
 function tblInsert(){
+	if($("#rstSeat").val() == ""){
+		alert("좌석(룸) 종류를 선택하세요.");
+		return false;
+	}
 	if($("#rstNo").val() != "" && $("#rstSeat").val() != "" ){
 		tblFrm.submit();	
 	}
@@ -103,8 +107,8 @@ function clearText(y){
       	<h3 class="hs_reservation_title">좌석종류
       	<select id="seatSel" name="seatSel">
       		<option value="0">선택하세요</option>
-      		<option value=2>2인석</option>
-      		<option value=4>4인석</option>
+      		<option value=1>4인 이하</option>
+      		<option value=2>5인 이상</option>
       	</select>
       	<div id="div2"></div>
       	</h3>
@@ -118,7 +122,7 @@ function clearText(y){
             <input type="text" id="rstNo" name="rstNo" value="${ rst.rstNo }" readonly>
           </li>
           <li>
-            <strong style="width: 600px;">의자 갯수</strong>
+            <strong style="width: 600px;">좌석 종류</strong>
             <input type="text" id="rstSeat" name="rstSeat" readonly>
           </li>
         </ul>

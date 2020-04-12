@@ -135,6 +135,21 @@ public class DiningRepository {
 		sqlSession.insert(statement, pay);
 	}
 
+	//예약단계중 메뉴 여러개 선택
+	public List<dReservationDTO> reservaltionMenus(dReservationDTO dto) {
+		String statement = namespace + ".reservaltionMenus";
+		return sqlSession.selectList(statement, dto);
+	}
+
+	public List<dReservationDTO> memResChk(String id) {
+		String statement = namespace + ".memResChk";
+		return sqlSession.selectList(statement, id);
+	}
+
+	
+
+	
+
 
 	
 

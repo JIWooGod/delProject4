@@ -17,6 +17,14 @@ public class MemberRepository {
 		String statement = namespace + ".memChk";
 		return sqlSession.selectOne(statement, dto);
 	}
+	public MemberDTO chkTest(MemberDTO dto) {
+		String statement = namespace + ".userCheck";
+		return sqlSession.selectOne(statement, dto);
+	}
+	public MemberDTO idChk(String memId) {
+		String statement = namespace + ".idChk";
+		return sqlSession.selectOne(statement, memId);
+	}
 	
 	
 	

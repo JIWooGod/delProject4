@@ -112,11 +112,115 @@
 									<tr>
 										<c:if test="${ !empty gwoong }">
 											<c:forEach items="${ gwoong }" var="g" varStatus="status">
-												<td><c:if test="${ g.rstSeat eq 2 }">
-														<img alt='' src='dining/img/table-icon.png'
+												<td><c:if test="${ g.rstSeat eq 1 }">
+														<img alt='' src='dining/img/seat4.png'
 															style="width: 60px; height: 60px; margin: 5px">
-													</c:if> <c:if test="${ g.rstSeat eq 4 }">
-														<img alt='' src='dining/img/table4-icon.png'
+															<br/>
+															<p align="center" style="font-size: 11px; color: #8f8f8f">
+																<a href="#">${ g.rstTbl }번 룸(4인 이하)</a>
+																<input type="radio" value="${ g.rstTbl }" id="rstTbl" name="rstTbl" checked="checked">
+															</p>
+													</c:if> <c:if test="${ g.rstSeat eq 2 }">
+														<img alt='' src='dining/img/seat5.png'
+															style="width: 60px; height: 60px; margin: 5px">
+															<br/>
+															<p align="center" style="font-size: 11px; color: #8f8f8f">
+																<a href="#">${ g.rstTbl }번 룸(5인 이상)</a>
+																<input type="radio" value="${ g.rstTbl }" id="rstTbl" name="rstTbl" checked="checked">
+															</p>
+													</c:if> <c:if test="${ g.rstSeat eq 6 }">
+														<img alt='' src='dining/img/table6-icon.png'
+															style="width: 60px; height: 60px; margin: 5px">
+													</c:if> <br />
+													</td>
+												<c:if test="${ status.count%5 eq 0 }">
+													<tr></tr>
+												</c:if>
+											</c:forEach>
+											<div id="div1"></div>
+										</c:if>
+										<c:if test="${ empty gwoong }">
+											좌석 준비중입니다.
+									</c:if>
+									</tr>
+								</table>
+								<br />
+								<c:if test="${ empty gwoong }">
+								<div class="hs_reservation_btn_set">
+									<a href="main" class="hs_reservation_btn_poin" style="color: #FFFFFF;">메인으로 </a>
+								</div>
+								</c:if>
+								<c:if test="${ !empty gwoong }">
+								<div class="hs_reservation_btn_set">
+									<a href="javascript:sb();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">다음단계 </a>
+								</div>
+								</c:if>
+							</c:if>
+							<!-- 궁궐일때 출력 끝 -->
+							
+							<!-- 황룡일때 출력 -->
+							<c:if test="${ res2.rstNo eq 2 }">
+								<table>
+									<tr>
+										<c:if test="${ !empty dragon }">
+											<c:forEach items="${ dragon }" var="g" varStatus="status">
+												<td><c:if test="${ g.rstSeat eq 1 }">
+														<img alt='' src='dining/img/seat4.png'
+															style="width: 60px; height: 60px; margin: 5px">
+															<br/>
+															<p align="center" style="font-size: 11px; color: #8f8f8f">
+																<a href="#">${ g.rstTbl }번 룸(4인 이하)</a>
+																<input type="radio" value="${ g.rstTbl }" id="rstTbl" name="rstTbl" checked="checked">
+															</p>
+													</c:if> <c:if test="${ g.rstSeat eq 2 }">
+														<img alt='' src='dining/img/seat5.png'
+															style="width: 60px; height: 60px; margin: 5px">
+															<br/>
+															<p align="center" style="font-size: 11px; color: #8f8f8f">
+																<a href="#">${ g.rstTbl }번 룸(5인 이상)</a>
+																<input type="radio" value="${ g.rstTbl }" id="rstTbl" name="rstTbl" checked="checked">
+															</p>
+													</c:if> <c:if test="${ g.rstSeat eq 6 }">
+														<img alt='' src='dining/img/table6-icon.png'
+															style="width: 60px; height: 60px; margin: 5px">
+													</c:if> <br />
+													</td>
+												<c:if test="${ status.count%5 eq 0 }">
+													<tr></tr>
+												</c:if>
+											</c:forEach>
+											<div id="div1"></div>
+										</c:if>
+										<c:if test="${ empty dragon }">
+											좌석 준비중입니다.
+									</c:if>
+									</tr>
+								</table>
+								<br />
+								<c:if test="${ empty dragon }">
+								<div class="hs_reservation_btn_set">
+									<a href="main" class="hs_reservation_btn_poin" style="color: #FFFFFF;">메인으로 </a>
+								</div>
+								</c:if>
+								<c:if test="${ !empty dragon }">
+								<div class="hs_reservation_btn_set">
+									<a href="javascript:sb();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">다음단계 </a>
+								</div>
+								</c:if>
+							</c:if>
+							<!-- 황룡일때 출력 끝 -->
+							
+							<!-- 더 델루나일때 출력 -->
+							<c:if test="${ res2.rstNo eq 3 }">
+								<table>
+									<tr>
+										<c:if test="${ !empty deluna }">
+											<c:forEach items="${ deluna }" var="g" varStatus="status">
+												<td><c:if test="${ g.rstSeat eq 1 }">
+														<img alt='' src='dining/img/seat4.png'
+															style="width: 60px; height: 60px; margin: 5px">
+													</c:if> <c:if test="${ g.rstSeat eq 2 }">
+														<img alt='' src='dining/img/seat5.png'
 															style="width: 60px; height: 60px; margin: 5px">
 													</c:if> <c:if test="${ g.rstSeat eq 6 }">
 														<img alt='' src='dining/img/table6-icon.png'
@@ -132,13 +236,24 @@
 											</c:forEach>
 											<div id="div1"></div>
 										</c:if>
-										<c:if test="${ empty gwoong }">
+										<c:if test="${ empty deluna }">
 											좌석 준비중입니다.
 									</c:if>
 									</tr>
 								</table>
+								<br />
+								<c:if test="${ empty deluna }">
+								<div class="hs_reservation_btn_set">
+									<a href="main" class="hs_reservation_btn_poin" style="color: #FFFFFF;">메인으로 </a>
+								</div>
+								</c:if>
+								<c:if test="${ !empty deluna }">
+								<div class="hs_reservation_btn_set">
+									<a href="javascript:sb();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">다음단계 </a>
+								</div>
+								</c:if>
 							</c:if>
-							<!-- 궁궐일때 출력 끝 -->
+							<!-- 더 델루나일때 출력 끝 -->
 
 							<!-- 기본정보입력에서 가져온정보 -->
 							<input type="hidden" id="rstNo" name="rstNo"
@@ -159,12 +274,14 @@
 							<input type="hidden" id="menuName" name="menuName" value="${ resMenu.menuName }">
 							<input type="hidden" id="menuPrice" name="menuPrice" value="${ resMenu.menuPrice }">
 							<input type="hidden" id="menuImg" name="menuImg" value="${ resMenu.menuImg }">
-							
 							<!-- 기본정보 끝 -->
+							
+							<!-- 
 							<div class="hs_reservation_btn_set">
-							<a href="javascript:sb();" class="hs_reservation_btn_poin"
-								style="color: #FFFFFF;">다음단계 </a>
-						</div>
+								<a href="javascript:sb();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">다음단계 </a>
+							</div>
+							-->
+						
 						</form>
 					</div>
 					<div class="hs_reservation_section hs_reservation_bottom">

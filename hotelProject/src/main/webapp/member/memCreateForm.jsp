@@ -24,7 +24,7 @@
 		});
 	});
 */
-
+	
 	function createBtn(){
 		var i = 0;
 		if($("#userId").val() == ""){
@@ -61,6 +61,10 @@
 			alert("ph를 입력해 주세요.");
 			$("#userPh").focus();
 			i += 1;
+			return false;
+		}
+		else if($("#confirmNumY").val() == "0"){
+			alert("중복확인을 해주세요.");
 			return false;
 		}
 		if(i <= 0){
@@ -159,20 +163,25 @@
 <body>
 	<div class="login-page">
 		<div class="form">
-		
-			
-			<!-- 로그인 form -->
-			<form action="loginAction" id="login" name="login" method="post" class="login-form">
-				<input type="text" placeholder="id" id="id" name="id" /> <div id="id-validate" style="color: red">${ error }</div> 
-				<input type="password" placeholder="password" name="pw" />
-				<c:if test="${ idChk eq 0 }">
-					<input type="hidden" id="idChk" name="idChk" value="${ idChk }">
-				</c:if>
-				<button onclick="loginBtn(); return false;">login</button>
+		<!-- 회원가입 form -->
+			<form action="memCreateForm" id="memCreate" name="memCreate" method="POST" class="register-form" >
+				<input type="text" placeholder="id" name="userId" id="userId" />
+				<input type="hidden" name = "confirmNumY" id = "confirmNumY" value="0">
+				<div>${ error }</div>
+				<button type="button" onclick="idChkPop()">중복체크</button>
+				<input type="password" placeholder="password" name="userPw" id="userPw" />
+				<input type="text" placeholder="name" name="userName" id="userName" />
+				<input type="text" placeholder="email address" name="userEmail" id="userEmail" />
+				<button type="button" class="btn btn-warning" onclick="goPopup()">주소검색</button>
+				<input type="text" id="userAddr" name="userAddr" class="form-control" placeholder="Enter Addr" required="true" readonly="true"/>
+				<input type="text" placeholder="cellphone" name="userPh" id="userPh" />
+				<button type="button" onclick="createBtn()">create</button>
+				
 				<p class="message">
-					Not registered? <a href="memCreateForm">Create an account</a>
+					Already registered? <a href="signInForm">Sign In</a>
 				</p>
 			</form>
+			
 		</div>
 	</div>
 </body>

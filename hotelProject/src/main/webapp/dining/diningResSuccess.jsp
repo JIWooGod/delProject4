@@ -61,8 +61,31 @@
 				<div class='con'>
 				<div class="hs_reservation">
 					<div class="hs_reservation_section hs_reservation_box1">
-					<div class="hs_reservation_left">
-					
+					<div class="hs_reservation_left" align="center" style="width: 1200px;">
+						<table border="1">
+							<tr>
+								<td>예약자 이름</td>
+								<td>예약자 전화번호</td>
+								<td>예약날짜</td>
+								<td>예약시간</td>
+								<c:if test="${ res3.rstNo eq 1 or res3.rstNo eq 2 }">
+									<td>예약 테이블(룸)번호</td>
+								</c:if>
+								<td>예약 메뉴</td>
+								<td>결제 금액</td>
+							</tr>
+							<tr>
+								<td>${ res3.resName }</td>
+								<td>${ res3.resTel }</td>
+								<td>${ res3.fromdate }</td>
+								<td>${ res3.resTime }</td>
+								<c:if test="${ res3.rstNo eq 1 or res3.rstNo eq 2 }">
+									<td>${ res3.rstTbl }</td>
+								</c:if>
+								<td>${ res3.menuName }</td>
+								<td>${ res3.menuPrice }</td>
+							</tr>
+						</table>
 					</div>
 						<div class="hs_reservation_left" width = 20%>
 							<ul class="hs_reservation_litt">

@@ -19,5 +19,6 @@
 	<bean id = "mgMenuSelectService" class = "service.dining.MgMenuSelectService" />
 	<bean id = "tblDeleteListService" class = "service.dining.TblDeleteListService" />
 	<bean id = "diningPayService" class = "service.dining.DiningPayService" />
+	<bean id = "memResInfoService" class = "service.dining.MemResInfoService" />
 	
 </beans>

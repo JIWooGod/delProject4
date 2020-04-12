@@ -2,6 +2,7 @@ package Controller.DiningController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.OnMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import command.dining.ResTblCommand;
 import command.dining.dReservationCommand;
 import service.dining.DiningPayService;
 import service.dining.DiningTblListService;
+import service.dining.MemResInfoService;
 import service.dining.MenuDeleteService;
 import service.dining.MenuInsertService;
 import service.dining.MenuSelectService;
@@ -63,6 +65,9 @@ public class DiningController {
 	
 	@Autowired
 	private DiningPayService diningPayService;
+	
+	@Autowired
+	private MemResInfoService memResInfoService;
 
 	@RequestMapping("/dining1")
 	public String dining1() {
@@ -242,6 +247,19 @@ public class DiningController {
 	public String diningResSuccess(dReservationCommand dReservationCommand, HttpServletRequest request, HttpSession session, Model model) {
 		diningPayService.success(dReservationCommand, request, session, model);
 		return "dining/diningResSuccess";
+	}
+	
+	//웹소켓
+	@OnMessage
+	public void onmessage(dReservationCommand dReservationCommand, HttpServletRequest request, HttpSession session, Model model) throws Exception {
+		diningPayService.success(dReservationCommand, request, session, model);
+	}
+	
+	//회원 예약/결제내역 보기
+	@RequestMapping("/memResInfo")
+	public String memResInfo(HttpSession session, Model model) {
+		memResInfoService.execute(session, model);
+		return "member/memResInfo";
 	}
 
 }
