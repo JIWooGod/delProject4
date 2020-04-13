@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 
 import command.hr.ApplyCommand;
 import model.dto.hr.EmployeeDTO;
+import model.dto.member.AuthInfo;
 import repository.hr.ApplyRepository;
 import repository.hr.UserCheckRepository;
 
@@ -24,17 +25,10 @@ public class ApplyService {
 	public void action(HttpServletRequest request, ApplyCommand applyCommand,
 			Errors errors) {
 		String password = bcryptPasswordEncoder.encode(applyCommand.getPw());
-		String check = userCheckRepository.check(applyCommand.getId()).getId();
+		AuthInfo check = userCheckRepository.check(applyCommand.getId());
 		
 		EmployeeDTO dto = new EmployeeDTO();
 
-		dto.setDeptNo(applyCommand.getDeptNo());
-		dto.setEmpName(applyCommand.getName());
-		dto.setEmpTel(applyCommand.getTel());
-		dto.setEmpEmail(applyCommand.getEmail());
-		dto.setEmpAddr(applyCommand.getAddr());
-		dto.setEmpCarr(applyCommand.getCareer());
-		dto.setEmpCerti(applyCommand.getCerti());
 		if(check==null) {
 			dto.setEmpId(applyCommand.getId());
 		}else {
@@ -45,8 +39,16 @@ public class ApplyService {
 			dto.setEmpPw(password);
 		}else {
 			System.out.println("::::::비밀번호 틀림 메시지+유효성검사 할 것::::::");
+			//errors.rejectValue("dismatched", "비밀번호가 맞지 않습니다.");
 		}
 		dto.setEmpIp(request.getRemoteAddr());
+		dto.setDeptNo(applyCommand.getDeptNo());
+		dto.setEmpName(applyCommand.getName());
+		dto.setEmpTel(applyCommand.getTel());
+		dto.setEmpEmail(applyCommand.getEmail());
+		dto.setEmpAddr(applyCommand.getAddr());
+		dto.setEmpCarr(applyCommand.getCareer());
+		dto.setEmpCerti(applyCommand.getCerti());
 
 		applyRepository.applyPut(dto);
 	}

@@ -22,7 +22,7 @@ public class LectureUpController {
 		model.addAttribute("subjectCommand", new SubjectCommand());
 		return "manager/lec/lectureUp";
 	}
-	@RequestMapping(value="/lecture/uploading", method=RequestMethod.POST)
+	@RequestMapping(value="/lecture/teacher/uploading", method=RequestMethod.POST)
 	public String upload2(HttpServletRequest request, Model model,
 			SubjectCommand subjectCommand) {
 		model.addAttribute("subjectCommand", subjectCommand);

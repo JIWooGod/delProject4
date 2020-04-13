@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 
 import command.hr.Apply2Command;
 import model.dto.hr.TeacherDTO;
+import model.dto.member.AuthInfo;
 import repository.hr.ApplyRepository;
 import repository.hr.UserCheckRepository;
 
@@ -24,20 +25,10 @@ public class Apply2Service {
 	public void action(HttpServletRequest request, Apply2Command applyCommand,
 			Errors errors) {
 		String password = bcryptPasswordEncoder.encode(applyCommand.getPw());
-		String check = userCheckRepository.check(applyCommand.getId()).getId();
-		System.out.println(applyCommand.getName()+"이 대체 뭐기에 값이 크대?");
-		System.out.println("authinfo 유저체크 레퍼지토리에서 가져오는 아이디값이 "+check);
+		AuthInfo check = userCheckRepository.check(applyCommand.getId());
 		
 		TeacherDTO dto = new TeacherDTO();
 
-		dto.setTeachName(applyCommand.getName());
-		dto.setTeachTel(applyCommand.getTel());
-		dto.setTeachEmail(applyCommand.getEmail());
-		dto.setTeachAddr(applyCommand.getAddr());
-		dto.setTeachCarr(applyCommand.getCareer());
-		dto.setTeachCerti(applyCommand.getCerti());
-		dto.setTeachViol(applyCommand.getViolate());
-		
 		if(check==null) {
 			dto.setTeachId(applyCommand.getId());
 		}else {
@@ -49,6 +40,13 @@ public class Apply2Service {
 		}else {
 			System.out.println("::::::비밀번호 틀림 메시지+유효성 검사하셈::::::");
 		}
+		dto.setTeachName(applyCommand.getName());
+		dto.setTeachTel(applyCommand.getTel());
+		dto.setTeachEmail(applyCommand.getEmail());
+		dto.setTeachAddr(applyCommand.getAddr());
+		dto.setTeachCarr(applyCommand.getCareer());
+		dto.setTeachCerti(applyCommand.getCerti());
+		dto.setTeachViol(applyCommand.getViolate());
 		dto.setTeachIp(request.getRemoteAddr());
 
 		applyRepository.applyPut2(dto);

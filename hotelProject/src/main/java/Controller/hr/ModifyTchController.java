@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import command.hr.Apply2Command;
-import command.hr.ApplyCommand;
-import service.hr.EmpModifyService;
 import service.hr.TchModifyService;
 
 @Controller
@@ -29,4 +27,3 @@ public class ModifyTchController {
 		}
 	}
 }
-//

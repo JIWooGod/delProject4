@@ -20,4 +20,3 @@ public class DetailEmpController {
 		return "manager/hr/detail";
 	}
 }
-//
