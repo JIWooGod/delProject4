@@ -2,7 +2,6 @@ package Controller.DiningController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.OnMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -250,10 +249,6 @@ public class DiningController {
 	}
 	
 	//웹소켓
-	@OnMessage
-	public void onmessage(dReservationCommand dReservationCommand, HttpServletRequest request, HttpSession session, Model model) throws Exception {
-		diningPayService.success(dReservationCommand, request, session, model);
-	}
 	
 	//회원 예약/결제내역 보기
 	@RequestMapping("/memResInfo")
@@ -262,6 +257,7 @@ public class DiningController {
 		return "member/memResInfo";
 	}
 	
+	// (관리가자) 회원 예약/결제내역 보기
 	@RequestMapping("mgDResList")
 	public String mgDResList(Model model) {
 		memResInfoService.mgResList(model);

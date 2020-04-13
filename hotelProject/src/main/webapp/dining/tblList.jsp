@@ -54,10 +54,6 @@
 		});
 	}
 	
-	//회원 예약내역 보기 TEST
-	function memResInfo(){
-		location.href="memResInfo";
-	}
 </script>
 <body>
 	<jsp:include page="../includePage/Header.jsp" flush="true" />
@@ -83,7 +79,7 @@
 
 		<div class='content_box'>
 			<div class='sub_detail2'>
-				관리자 전용 레스토랑 좌석 관리페이지 입니다.<br><c:if test="${ !empty authInfo }"><button id="memResInfo" onclick="memResInfo()">TEST 예약내역 보기</button></c:if>
+				관리자 전용 레스토랑 좌석 관리페이지 입니다.<br>
 				<p style="font-size: 11px;">
 					새로운 테이블을 추가하거나 수정,삭제 할 수 있습니다.<br /> 새로운 테이블을 등록하시려면 밑에 테이블 등록 버튼을
 					클릭하세요.
