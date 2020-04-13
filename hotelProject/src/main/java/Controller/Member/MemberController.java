@@ -54,8 +54,10 @@ public class MemberController {
 		if(result.equals("0")) {
 			model.addAttribute("error", "아이디 비밀번호를 확인하세요.");
 			return "member/signInForm";
-		} else {
+		} else if(result.equals("1")) {
 			return "redirect:/main";
+		} else {
+			return "manager/managerIndex";
 		}
 	}
 	

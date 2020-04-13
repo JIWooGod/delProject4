@@ -146,6 +146,11 @@ public class DiningRepository {
 		return sqlSession.selectList(statement, id);
 	}
 
+	public List<dReservationDTO> mgDResList() {
+		String statement = namespace + ".mgDResList";
+		return sqlSession.selectList(statement);
+	}
+
 	
 
 	

@@ -24,5 +24,10 @@ public class MemResInfoService {
 		List<dReservationDTO> list = diningRepository.memResChk(authInfo.getId());
 		model.addAttribute("resList", list);
 	}
+
+	public void mgResList(Model model) {
+		List<dReservationDTO> list = diningRepository.mgDResList();
+		model.addAttribute("lists", list);
+	}
 	
 }

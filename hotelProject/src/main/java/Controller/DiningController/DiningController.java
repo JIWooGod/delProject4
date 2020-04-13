@@ -261,6 +261,12 @@ public class DiningController {
 		memResInfoService.execute(session, model);
 		return "member/memResInfo";
 	}
+	
+	@RequestMapping("mgDResList")
+	public String mgDResList(Model model) {
+		memResInfoService.mgResList(model);
+		return "manager/mgDResList";
+	}
 
 }
 

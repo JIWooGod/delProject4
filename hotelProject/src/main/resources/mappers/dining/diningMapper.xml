@@ -198,6 +198,13 @@
 		from RESTRBOOK b, RESTAURANT r, PAYMENT p
 		where b.RSTBK_RSTNO = r.RST_NO AND b.MEM_ID = #{id} AND p.PAY_NO = b.PAY_NO
 	</select>
+	
+	<select id="mgDResList" resultMap="memResC">
+		SELECT b.MEM_ID, b.RSTBK_RSTNO, b.RSTBK_FROMDATE, b.RSTBK_RESTIME, b.RSTBK_RESMANS,
+		b.RSTBK_RESNAME, b.RSTBK_RESTEL, b.RSTBK_RESCNT, b.RSTBK_MENUNAME, b.RSTBK_RSTTBL, r.rst_name, p.PAY_PRICE
+		from RESTRBOOK b, RESTAURANT r, PAYMENT p
+		where b.RSTBK_RSTNO = r.RST_NO AND p.PAY_NO = b.PAY_NO
+	</select>
 
 </mapper>
 

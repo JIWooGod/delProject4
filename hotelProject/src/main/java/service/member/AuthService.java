@@ -39,7 +39,7 @@ public class AuthService {
 				if(dto.getAdmin().equals("manager")) {
 					authInfo = new AuthInfo(dto.getMemId(), dto.getMemEmail(), dto.getMemName(), dto.getMemPw(), dto.getMemTel(), dto.getMemAddr(), dto.getMemNo());
 					session.setAttribute("manager", authInfo);
-					result = "1";
+					result = "2";
 					return result;
 				} else if(dto.getAdmin().equals("member")) {
 					authInfo = new AuthInfo(dto.getMemId(), dto.getMemEmail(), dto.getMemName(), dto.getMemPw(), dto.getMemTel(), dto.getMemAddr(), dto.getMemNo());
@@ -49,7 +49,7 @@ public class AuthService {
 				} else if(dto.getAdmin().equals("teacher")) {
 					authInfo = new AuthInfo(dto.getMemId(), dto.getMemEmail(), dto.getMemName(), dto.getMemPw(), dto.getMemTel(), dto.getMemAddr(), dto.getMemNo());
 					session.setAttribute("teacher", authInfo);
-					result = "1";
+					result = "2";
 					return result;
 				}
 			}
