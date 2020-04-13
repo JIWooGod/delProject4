@@ -37,7 +37,6 @@ public class goodsListService {
 	public void rbList(HttpSession session, Model model) {
 		List<cartDTO> list= shopRepository.rbList(session);
 		model.addAttribute("rbChk", list);
-		
 	}
 	
 }

@@ -101,23 +101,18 @@
                             </div>
                         </div>
                      	</c:forEach>
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <p class="in-name">연락처2</p>
-                            </div>
-                            <div class="col-lg-10">
-                                <input type="text" placeholder="선택사항">
-                            </div>
-                        </div>
-                        <c:if test="${ !empty rmChk}" >
+                        
+                        <c:if test="${ !empty rbChk }" >
                          <div class="row">
                             <div class="col-lg-2">
                                 <p class="in-name">배송</p>
                             </div>
                             <div class="col-lg-10">
-                               객실배달 서비스
+                               객실배달 서비스<br/> 객실 이용일선택 :
                                <select name="ship">
-                               
+                               <c:forEach var="rb" items="${rbChk }" varStatus="status">
+                               <option value="${rb.rmbkChkIn }">${rb.rmbkChkIn }</option>
+                               </c:forEach>
                                </select>
                             </div>
                         </div>

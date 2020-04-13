@@ -31,6 +31,7 @@ public class shopCheckOutController {
 		}else if(ship.equals("c"))
 			shopListService.cartList(session, model);
 			shopListService.memList(session, model);
+			shopListService.rbList(session,model);
 		return "shop/check-Out";
 		
 		

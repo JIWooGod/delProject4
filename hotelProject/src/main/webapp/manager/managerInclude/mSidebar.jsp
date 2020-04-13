@@ -17,9 +17,9 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+       
         </div>
-        <div class="sidebar-brand-text mx-3"><img src ="/hotelProject/manager/img/logo.png" /></div>
+        <div class="sidebar-brand-text mx-3"><img src ="/hotelProject/manager/img/mLogo.png" /></div>
       </a>
 
       <!-- Divider -->
@@ -60,11 +60,11 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo2" aria-expanded="true" aria-controls="collapseTwo2">
           <i class="fas fa-fw fa-cog"></i>
           <span>레스토랑 관리</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">메뉴관리</h6>
             <a class="collapse-item" href="mgMenuList">메뉴등록</a>
@@ -83,7 +83,7 @@
           <i class="fas fa-fw fa-folder"></i>
           <span>쇼핑몰관리</span>
         </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">상품관리</h6>
             <a class="collapse-item" href="login.html">상품등록</a>
@@ -108,11 +108,11 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item active">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
           <i class="fas fa-fw fa-folder"></i>
           <span>직원관리</span>
         </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="login.html">Login</a>
