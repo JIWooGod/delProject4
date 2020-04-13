@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>      
     
 <%
  //   String name = (String)request.getAttribute("name");
@@ -13,8 +13,8 @@
   
      String phone = "1";
     
-     String stotalPrice = (String)request.getAttribute("totalPrice");
-     int totalPrice = Integer.parseInt(stotalPrice);
+     //String stotalPrice = (String)request.getAttribute("totalPrice");
+     int totalPrice = 1111;
 	
  
 %>
@@ -41,7 +41,7 @@
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
             name : '호텔 델루나 결제',
-            amount : <%=totalPrice%>,
+            amount : ${price} ,
             buyer_name : '<%=name%>',
             buyer_tel : '<%=phone%>',
      
@@ -74,7 +74,8 @@
                     }
                 });
                 //성공시 이동할 페이지
-               location.href='reservationOk?id=${userId}'
+                sendKakao.submit();
+            	
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
@@ -86,6 +87,17 @@
         
     });
     </script> 
- 
+  <div style=display:none >
+            	<form action="payChk" method="post" name="sendKakao" enctype="application/x-www-form-urlencoded">
+            
+                	
+					 
+					<input value="${command.memTel}" name="memTel">  
+              		
+          
+                	<input value="택배배송" name="shipName">
+              
+                </form>
+           </div>     
 </body>
 </html>

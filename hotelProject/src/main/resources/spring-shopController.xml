@@ -16,6 +16,7 @@
 	<bean class="Controller.shop.shopCheckOutController" />
 	<bean class="Controller.shop.shopMemberController" />
 	<bean class="Controller.shop.shopCouponController" />
+	<bean class="Controller.shop.shopKakaoController" />
 	
 	
 	

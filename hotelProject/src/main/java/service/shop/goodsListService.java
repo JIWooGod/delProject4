@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import command.shop.shopChkCommand;
 import model.dto.member.AuthInfo;
 import model.dto.shop.cartDTO;
 import model.dto.shop.shopDTO;
@@ -37,6 +38,13 @@ public class goodsListService {
 	public void rbList(HttpSession session, Model model) {
 		List<cartDTO> list= shopRepository.rbList(session);
 		model.addAttribute("rbChk", list);
+	}
+	
+	public void kakaoPay(shopChkCommand cCommand,Model model, HttpSession session) {
+		Integer price = cCommand.getPayPrice();
+		System.out.println("price= " + price);
+		model.addAttribute("command",cCommand);
+		model.addAttribute("price", price);
 	}
 	
 }

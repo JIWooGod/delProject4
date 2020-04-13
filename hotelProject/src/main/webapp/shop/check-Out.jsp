@@ -35,9 +35,7 @@
 	<div class="search-model">
 		<div class="h-100 d-flex align-items-center justify-content-center">
 			<div class="search-close-switch">+</div>
-			<form class="search-model-form">
-				<input type="text" id="search-input" placeholder="Search here.....">
-			</form>
+	
 		</div>
 	</div>
 	<!-- Search model end -->
@@ -66,7 +64,36 @@
     <!-- Cart Total Page Begin -->
     <section class="cart-total-page spad">
         <div class="container">
-            <form action="#" class="checkout-form">
+            <div style=display:none >
+            	<form action="kakaoPay" method="post" name="sendKakao" enctype="application/x-www-form-urlencoded">
+                <c:forEach var="carts" items="${cartList }" varStatus="status">
+                	<input value="${carts.goodsName }" name="goodsName">
+					<input value="${carts.cartQty}" name="cartQty">  
+                <c:if test= "${carts.aSum < '100000'}" >
+                	<input value="${carts.aSum + '3000' }" name="payPrice">  
+                </c:if>
+                <c:if test= "${carts.aSum > '100000'}" >
+                	<input value="${carts.aSum }" name="payPrice">  
+                </c:if>
+                </c:forEach>
+               	<c:forEach var="mem" items="${memList }" varStatus="status">
+                <input value="${mem.memName }" name="memName">
+                <input value="${mem.memAddr }" name="memAddr">
+                <input value="${mem.memTel }" name="memTel">
+				</c:forEach>
+				<c:if test="${ !empty rbChk }" >
+					<input value="객실배송" name="shipName">
+					<c:forEach var="rb" items="${rbChk }" varStatus="status">
+					<input value=" ${rb.rmbkChkIn }" name="rmbkChkIn">
+					<input value=" ${rb.rmbkChkOut}" name="rmbkChkOut">
+					</c:forEach>
+                </c:if>
+                <c:if test="${ empty rbChk }" >
+                	<input value="택배배송" name="shipName">
+                </c:if>	
+                </form>
+             </div>
+             <div class="checkout-form">   
                 <div class="row">
                     <div class="col-lg-12">
                         <h3>주문자 정보</h3>
@@ -88,7 +115,6 @@
                             </div>
                             <div class="col-lg-10">
                                 <input type="text" value="${mem.memAddr }">
-                                <input type="text">
                             </div>
                         </div>
                        
@@ -172,15 +198,15 @@
                             <h3>Payment</h3>
                             <ul>
                                 <li>
-									dddd
                                 </li>
                             </ul>
-                            <button type="submit">Place your order</button>
+                           
+                        	<button type="button" onclick="javascript:sendKakao.submit()"> Place your order</button>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+           </div>
+        
     </section>
     <!-- Cart Total Page End -->
 
