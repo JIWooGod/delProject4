@@ -5,7 +5,7 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class DepartmentDTO implements Serializable{
 	Integer deptNo;
-	String detpName;
+	String deptName;
 	String deptTel;
 	String deptAddr;
 	
@@ -15,11 +15,11 @@ public class DepartmentDTO implements Serializable{
 	public void setDeptNo(Integer deptNo) {
 		this.deptNo = deptNo;
 	}
-	public String getDetpName() {
-		return detpName;
+	public String getDeptName() {
+		return deptName;
 	}
-	public void setDetpName(String detpName) {
-		this.detpName = detpName;
+	public void setDeptName(String deptName) {
+		this.deptName = deptName;
 	}
 	public String getDeptTel() {
 		return deptTel;

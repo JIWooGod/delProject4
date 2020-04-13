@@ -59,7 +59,7 @@
 		<td>${emp.empTel }</td>
 		<td>${emp.empEmail }</td>
 		<td>${emp.deptNo }</td>
-		<td id="pass">${emp.passState } 
+		<td id="pass">${emp.passState }
 		<c:choose>
 			<c:when test="${empty emp.passState || emp.passState == '지원대기자' }">
 				<button id="applierBtn" onclick="location.href='./personnel/detail/${emp.empNo }'">지원서 조회</button>

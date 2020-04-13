@@ -20,6 +20,14 @@ public class EmployeeDTO implements Serializable{
 	String passState;
 	String empIp;
 	
+	DepartmentDTO dpt = new DepartmentDTO();
+	
+	public DepartmentDTO getDpt() {
+		return dpt;
+	}
+	public void setDpt(DepartmentDTO dpt) {
+		this.dpt = dpt;
+	}
 	public Long getEmpNo() {
 		return empNo;
 	}

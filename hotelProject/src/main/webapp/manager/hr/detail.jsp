@@ -51,12 +51,8 @@
 		<td>${applier.empNo }</td>
 	</tr>
 	<tr>
-		<td>부서</td>
+		<td>부서번호</td>
 		<td>${applier.deptNo }</td>
-	</tr>
-	<tr>
-		<td>직급</td>
-		<td></td>
 	</tr>
 	<tr>
 		<td>사원명</td>
@@ -92,30 +88,24 @@
 		<td>${applier.empCerti }</td>
 	</tr>
 	</c:if>
-	<c:if test="${applier.passState=='정규사원' }">
 	<tr>
-		<td>승진등급</td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>승진점수</td>
-		<td></td>
-	</tr>
-	</c:if>
-</table>
-<button onclick="location.href='../modify?empNo=${applier.empNo }'">정보수정</button>
-<button onclick="location.href='/hotelProject/personnel'">메인으로</button>
-<c:choose>
+		<td colspan="2">
+		<button onclick="location.href='../modify?empNo=${applier.empNo }'">정보수정</button>
+		<button onclick="location.href='/hotelProject/personnel'">메인으로</button>
+		<c:choose>
 	<c:when test="${empty applier.passState || applier.passState == '지원대기자'}">
 		<button onclick="javascript:pass1st()">서류합격</button>
 	</c:when>
-	<c:when test='${applier.passState == "서류합격자" }'>
+	<c:when test='${applier.passState == "서류합격자" && emp.passState == "정규직원"}'>
 		<button onclick="location.href='../interview/${applier.empNo}'">면접보기</button>
 	</c:when>
 	<c:when test='${applier.passState == "면접합격자" }'>
 		<button onclick="location.href='../contract/${applier.empNo }'">계약하기</button>
 	</c:when>
 </c:choose>
+		</td>
+	</tr>
+</table>
 
        <!-- 메인 내용 작성 구역 --> 
        <!-- Sidebar Toggle (Topbar) -->

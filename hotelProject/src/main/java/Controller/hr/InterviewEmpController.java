@@ -28,4 +28,3 @@ public class InterviewEmpController {
 		return "manager/hr/result";
 	}
 }
-//
