@@ -17,11 +17,11 @@ public class LectureDetailService {
 		dto.setSubjNo(subjNo);
 		dto = lectureDetailRepository.reposit(dto);
 		
-		String extension = "mp4";
+		//String extension = "mp4";
 		
 		System.out.println("상세보기 페이지 파일명: "+dto.getSubjStore());
 		//재생시간 insert
 		model.addAttribute("list", dto);
-		model.addAttribute("extension",extension);
+		//model.addAttribute("extension",extension);
 	}
 }

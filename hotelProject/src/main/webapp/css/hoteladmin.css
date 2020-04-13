@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {margin:10px 10px 10px 10px;
 						font-stretch:ultra-condensed;
 						padding:5px;
 						color:#382f29;
-						text-align:lef;}
+						text-align:left;}
 a {font-family:inherit;
 	text-decoration:none;
 	font-weight:bold;
@@ -188,8 +188,10 @@ textarea {text-align:left;
 label {position:absolute;
 		top:1px;
 		left:1px;}
-table {max-width:1000px;
-	height:auto;}
+table {max-width:80%;
+		height:auto;
+		margin-left:auto;
+		margin-right:auto;}
 #content_form th {text-align:right;
 		  		font-family:inherit;
 		  		padding:5px;

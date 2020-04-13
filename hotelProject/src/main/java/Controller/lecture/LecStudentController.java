@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 //학생들이 출석했을 때
 public class LecStudentController {
-	@RequestMapping("/lecture/class/{aa}")
+	@RequestMapping("/lecture/stutdent/class/{aa}")
 	public String detail(@PathVariable(value="aa") Long aa,
 			@RequestParam(value="totalTime") Long totalIme,
 			@RequestParam(value="mineLoc") Long mineLoc,
