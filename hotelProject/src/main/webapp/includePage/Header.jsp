@@ -24,10 +24,9 @@
 							<li class='navmenu_ul_ul_li1'><a href='about2'>오시는 길</a></li>
 						</ul></li>
 					<li class='navmenu_ul_li2'><a
-						href='./room/accommodation_1.jsp'>ROOM</a>
+						href='standard'>ROOM</a>
 						<ul class='navmenu_ul_ul2'>
-							<li class='navmenu_ul_ul_li2'><a href='#'>종합 안내</a></li>
-							<li class='navmenu_ul_ul_li2'><a href='./standard'>스탠다드</a></li>
+							<li class='navmenu_ul_ul_li2'><a href='standard'>스탠다드</a></li>
 							<li class='navmenu_ul_ul_li2'><a href='deluxe'>디럭스</a></li>
 							<li class='navmenu_ul_ul_li2'><a href='deluxeSuite'>디럭스
 									스위트</a></li>
@@ -35,8 +34,6 @@
 									스위트</a></li>
 							<li class='navmenu_ul_ul_li2'><a href='preSuite'>프리미어
 									스위트</a></li>
-							<li class='navmenu_ul_ul_li2'><a href='roomForm'>객실
-									등록(test)</a></li>
 						</ul></li>
 					<li class='navmenu_ul_li3'><a href='dining1'>Dining&Bar</a>
 						<ul class='navmenu_ul_ul3'>
@@ -49,10 +46,7 @@
 							<li class='navmenu_ul_ul_li3'><a href='tblList'>좌석관리</a></li>
 							<li class='navmenu_ul_ul_li3'><a href='mgMenuList'>메뉴관리</a></li>
 						</ul></li>
-					<li class='navmenu_ul_li4'><a href='./reservation_1.html'>RESERVATION</a>
-						<ul class='navmenu_ul_ul4'>
-							<li class='navmenu_ul_ul_li4'><a href=''>실시간 예약</a></li>
-						</ul></li>
+					
 					<li class='navmenu_ul_li5'><a href='delshop/main'>Shopping
 							Mall</a>
 						<ul class='navmenu_ul_ul5'>

@@ -176,7 +176,7 @@
 					숙박<span id="day_span">0</span>일
 				</div>
 				<div class='reservation'>
-					<a href="javascript:chkReserForm();" style="color: #FFFFFF;">
+					<a href="#" style="color: #FFFFFF;">
 						예약하기</a>
 				</div>
 			</div>

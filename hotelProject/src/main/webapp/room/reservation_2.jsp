@@ -15,18 +15,26 @@
 <script src="./js/jquery-1.8.3.min.js"></script>
 <script src="./js/jquery.rolling.js"></script>
 <script src="./js/jquery.flexslider.js"></script>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 <script type="text/javascript">
 
-$(function(){
-	$("#writeF").submit(function(){
-		if($("#userName").val() == null){
-			$("#userName").focus();
-			alert("예약자 성명을 입력하세요.");
-			return false;
-		}
-		
-	});
-});
+function submit1(){
+	var i = 0;
+	if($("#userName").val() == 0){
+		document.getElementById("rspan1").innerHTML ="필수 항목입니다";
+		i += 1;
+	}
+	if($("#userPh3").val() == ""){
+		document.getElementById("rspan2").innerHTML ="필수 항목입니다";
+		i += 1;
+	}
+	if(i <= 0){
+		writeF.submit();
+	}else{
+		return false;
+	}
+	
+}
 
 </script>
 <body>
@@ -131,6 +139,7 @@ $(function(){
 								<ul class="hs_reservation_room_select">
 								<li>
 									성명&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="userName" id="userName" class="input_text" style="width: 123px;" req fname="성명/단체명" maxlength="20" />
+									<span id="rspan1" style="font-size: 12px; color: red;"></span>
 								</li>
 								<li>
 								연락처
@@ -144,9 +153,9 @@ $(function(){
 													<option value='019'>019</option>
 											</select>&nbsp;- <input type="text" name="userPh2" id="userPh2"
 												class="input_text numOnly" style="width: 48px;" req num
-												fname="휴대폰 번호" maxlength="4" />&nbsp;- <input type="text"
-												name="userPh3" id="userPh3" class="input_text numOnly"
-												style="width: 48px;" req num fname="휴대폰 번호" maxlength="4" />
+												fname="휴대폰 번호" maxlength="4" />&nbsp;- 
+												<input type="text" name="userPh3" id="userPh3" class="input_text numOnly" style="width: 48px;" req num fname="휴대폰 번호" maxlength="4" />
+												<span id="rspan2" style="font-size: 12px; color: red;"></span>
 								</li>
 								<li></li>
 									
@@ -224,7 +233,7 @@ $(function(){
 					</div>
 					<div class="hs_reservation_section hs_reservation_bottom">
 						<div class="hs_reservation_btn_set" id="btnNext">
-							<a href="javascript:writeF.submit();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">다음단계</a>
+							<a href="javascript:submit1();" class="hs_reservation_btn_poin" style="color: #FFFFFF;">다음단계</a>
 						</div>
 					</div>
 					

@@ -28,7 +28,7 @@ $(window).load(function() {
 });
 
 function kakaopay(){
-	writeF.submit();
+		writeF.submit();
 }
 
 
