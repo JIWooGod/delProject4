@@ -22,6 +22,7 @@
 						<ul class='navmenu_ul_ul1'>
 							<li class='navmenu_ul_ul_li1'><a href='about'>인사말</a></li>
 							<li class='navmenu_ul_ul_li1'><a href='about2'>오시는 길</a></li>
+							<li class='navmenu_ul_ul_li1'><a href='notice'>채용공고</a></li>
 						</ul></li>
 					<li class='navmenu_ul_li2'><a
 						href='standard'>ROOM</a>
