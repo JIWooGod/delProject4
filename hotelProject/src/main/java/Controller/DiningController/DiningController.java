@@ -144,7 +144,7 @@ public class DiningController {
 	@RequestMapping("/tblList")
 	public String tblList(Model model) {
 		diningTblListService.execute(model);
-		return "dining/tblList";
+		return "manager/tblList";
 	}
 
 	@RequestMapping("/d1tblDetail")
@@ -167,7 +167,7 @@ public class DiningController {
 	@RequestMapping("/tblInsert")
 	public String tblInsert(@RequestParam(value="rno") Long rstNo, Model model) {
 		rstDetailService.execute(rstNo, model);
-		return "dining/tblInsert";
+		return "manager/tblInsert";
 	}
 
 	@RequestMapping("/tblInsertAction")
@@ -208,14 +208,14 @@ public class DiningController {
 	@RequestMapping("/menuDetail")
 	public String menuUpdate(@RequestParam(value="mno") Long menuNo, @RequestParam(value="rno") Long rstNo, Model model) {
 		menuDetailService.menuOneSelect(menuNo, rstNo, model);
-		return "dining/menuDetail";
+		return "manager/menuDetail";
 	}
 
 	//메뉴 수정버튼 (디테일이랑 서비스 같음 -> onselect)
 	@RequestMapping("/menuUpdate")
 	public String menuUpdateGo(@RequestParam(value="mno") Long menuNo, @RequestParam(value="rno") Long rstNo, Model model) {
 		menuDetailService.menuOneSelect(menuNo, rstNo, model);
-		return "dining/menuUpdate";
+		return "manager/menuUpdate";
 	}
 
 	@RequestMapping("/menuUpdateAction")

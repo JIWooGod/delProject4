@@ -50,7 +50,6 @@ function menuDeleteAction(){
 }
 </script>
 <body>
-<jsp:include page="../includePage/Header.jsp" flush="true" />
 
 <div id='content_wrapper'>
 	
@@ -62,24 +61,17 @@ function menuDeleteAction(){
 
 		<div class='tl'>
 			<div class='line'></div>
-			<div class='title'>메뉴 관리</div>
+			<div class='title' style="color: gray;">메뉴 관리</div>
 			<div class='line'></div>
 		</div>
 	</div>
 
 	<div class='content_box'>
 	<div class='sub_detail'>
-관리자 전용 레스토랑 메뉴 관리페이지 입니다.<br>
 </div>
 <div class='line_height30'></div>
 <div class='sub_reservation'>
-	<div class='tl'>등록 설명</div>
-	<div class='con'>
-		1. 이용시 시설물 훼손과 분실에 대한 책임은 투숙객에게 있으니 유의 부탁드립니다.<br>
-		2. 투숙객의 편안한 여행을 위해 무분별한 오락과 음주, 고성방가를 금합니다.<br>
-		3. 보호자 동반없는 미성년자는 이용하실 수 없습니다.<br>
-		4. 예약하신 후 <span>입금자순으로 예약완료가 처리</span>가 됩니다. 예약을 먼저 하셨더라도 입금이 늦어지면 예약이 취소될 수 있습니다.<br>
-	</div>
+	
 	<div class='line_height50'></div>
 	<div class='line_box'></div>
 	<div class='line_height30'></div>
@@ -146,6 +138,5 @@ function menuDeleteAction(){
 		</div>
 </div>
 
-<jsp:include page="../includePage/Footer.jsp" flush="true" /> 
 </body>
 </html>
