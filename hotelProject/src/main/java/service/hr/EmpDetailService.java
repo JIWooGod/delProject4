@@ -21,5 +21,10 @@ public class EmpDetailService {
 		}
 		model.addAttribute("applier",dto);
 	}
+	public void action2(String empId, Model model) {
+		EmployeeDTO dto = new EmployeeDTO();
+		dto.setEmpId(empId);
+		dto = empDetailRepository.reposit(dto);
+		model.addAttribute("applier",dto);
+	}
 }
-//

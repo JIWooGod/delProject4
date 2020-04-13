@@ -20,7 +20,7 @@ public class RegMailService {
 		String num = dateForm.format(new Date());
 		String content = "<html><body><br/><br/><p style='text-align:center'>" + 
 			"아래 링크를 눌러 가입을 완료하고, 로그인하십시오.<br/>" + 
-			"<a href='http://192.168.4.117:9080/hotelProject/applyMailing?num="+num+"&reciver="+receiver+"&empId="+empId+"'>"+
+			"<a href='http://192.168.4.117:9080/hotelProject/applyMailing?reciver="+receiver+"&empId="+empId+"'>"+
 			"<b></b></a>"+
 			"</p><br/><br/></body></html>";
 		String subject = "가입환영인사";

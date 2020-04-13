@@ -19,6 +19,8 @@ import service.hr.EmpDetailService;
 public class ApplyEmpController {
 	@Autowired
 	private ApplyService applyService;
+	@Autowired
+	private EmpDetailService empDetailService;
 	
 	@RequestMapping("/personnel/staff/apply")
 	public String empApply(@RequestParam(value="job") String job, Model model) {
@@ -31,9 +33,11 @@ public class ApplyEmpController {
 			Model model,Errors errors) {
 		//new ApplyCommandValidator().validate(applyCommand,errors);	
 		applyService.action(request,applyCommand,errors);
+		
 		if(errors.hasErrors()) {
 			return "manager/hr/apply";
 		}else {
+			empDetailService.action2(applyCommand.getId(), model);
 			return "manager/hr/welcome";
 		}
 	}
