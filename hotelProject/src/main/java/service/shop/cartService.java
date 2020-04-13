@@ -1,5 +1,7 @@
 package service.shop;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +33,21 @@ public class cartService {
 		shopRepository.gtyDown(dto);
 		
 	}
+	public void delOne(String goodsCode, HttpSession session) {
+		cartDTO dto = new cartDTO();
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		String memId = authInfo.getId();
+		dto.setMemId(memId);
+		dto.setGoodsCode(goodsCode);
+		
+		shopRepository.oneDel(dto);
+		
+	}
+	public void chkCoupon(String coupon, Model model ) {
+		List<cartDTO> list= shopRepository.chkCode(coupon);
+		System.out.println("어트리뷰트 추가");
+		model.addAttribute("chkCode", list);
+	}
+	
 
 }

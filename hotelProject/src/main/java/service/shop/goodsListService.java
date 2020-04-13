@@ -29,5 +29,15 @@ public class goodsListService {
 		List<cartDTO> list= shopRepository.cartList(model, session);
 		model.addAttribute("cartList", list);
 	}
+	public void memList(HttpSession session, Model model) {
+		List<cartDTO> list= shopRepository.memList(session);
+		model.addAttribute("memList", list);
+		
+	}
+	public void rbList(HttpSession session, Model model) {
+		List<cartDTO> list= shopRepository.rbList(session);
+		model.addAttribute("rbChk", list);
+		
+	}
 	
 }

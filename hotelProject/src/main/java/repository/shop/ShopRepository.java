@@ -51,18 +51,45 @@ public class ShopRepository {
 
 	public int gtyUp(cartDTO dto) {
 		String statement = namespace + ".cartQtyUp";
-		
 		return sqlSession.update(statement, dto);
 		
 	}
 	public int gtyDown(cartDTO dto) {
 		String statement = namespace + ".cartQtyDown";
-		
 		return sqlSession.update(statement, dto);
-
 		
 	}
+	public int delcart(HttpSession session) {
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		String memId = authInfo.getId();
+		String statement = namespace + ".cartDel";
+		return sqlSession.delete(statement, memId);
+		
+	}
+	public void oneDel(cartDTO dto) {
+		String statement = namespace + ".cartOneDel";
+		sqlSession.delete(statement, dto);
+	}
+	public List<cartDTO> memList(HttpSession session) {
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		String memId = authInfo.getId();
+		String statement = namespace + ".memSelect";
+
+		return  sqlSession.selectList(statement, memId);
 	
+	}
+	public List<cartDTO> rbList(HttpSession session) {
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
+		String memId = authInfo.getId();
+		String statement = namespace + ".rbSelect";
+
+		return  sqlSession.selectList(statement, memId);
+	}
+	public List<cartDTO> chkCode(String coupon) {
+		String statement = namespace + ".chkCode";
+		return sqlSession.selectList(statement, coupon);
+	}
+
 
 
 

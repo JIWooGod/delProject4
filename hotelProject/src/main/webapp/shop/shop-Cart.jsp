@@ -11,7 +11,7 @@
     <meta name="keywords" content="Yoga, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Violet | Template</title>
+    <title>DelLuna Cart</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
@@ -118,7 +118,7 @@
                             </td>
                             <td class="total"><fmt:formatNumber type="currency" value="${carts.gAvg }"/></td>
                     
-                            <td class="product-close">x</td>
+                            <td class="product-close"><a href="cartOneDel?code=${carts.goodsCode }" id ="qbtn" >x</a></td>
                             
                         	</c:forEach>
                         	</c:if>
@@ -131,12 +131,14 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="coupon-input">
-                            <input type="text" placeholder="Enter cupone code">
+                            <form action="codeChk" method="get" name="coupon" >
+                            <input type="text" name="cd" placeholder="Enter cupone code">
+                            </form>
                         </div>
                     </div>
                     <div class="col-lg-5 offset-lg-1 text-left text-lg-right">
-                        <div class="site-btn clear-btn">Clear Cart</div>
-                        <div class="site-btn update-btn">Update Cart</div>
+                        <div class="site-btn clear-btn"><a href="javascript:coupon.submit();" id="qbtn" >쿠폰 입력</a></div>
+                        <div class="site-btn update-btn"><a href="cartDel" id="qbtn" >Clear Cart</a></div>
                     </div>
                 </div>
             </div>
@@ -149,26 +151,28 @@
                             <h5>Choose a shipping</h5>
                             <div class="chose-shipping">
                                 <div class="cs-item">
-                                    <input type="radio" name="cs" id="one">
-                                    <label for="one" class="active">
+                                	<form action="chkOut" method="get" name="shipment" >
+                                    <input type="radio" name="cs" id="one" value="a">
+                                    <label for="one" >
                                         일반 택배배송
                                         <span>CJ대한통운 배송일 1-3일 </span>
                                     </label>
                                 </div>
                                 <div class="cs-item">
-                                    <input type="radio" name="cs" id="two">
+                                    <input type="radio" name="cs" id="two" value="b">
                                     <label for="two">
                                         객실배송 
                                          <span>객실 이용일 3일전까지만 이용가능하며 <br/>날짜를 초과한경우 택배로 발송됩니다. </span>
                                     </label>
                                 </div>
                                 <div class="cs-item last">
-                                    <input type="radio" name="cs" id="three">
+                                    <input type="radio" name="cs" id="three" value="c">
                                     <label for="three">
-                                        객실배송 + 홈배달서비스(+1만원)
+                                        객실배송 + 홈배달서비스
                                         <span>집으로 가는 발걸음도 가볍게 홈배달 서비스를 같이 이용해 보세요</span>
                                     </label>
                                 </div>
+                                </form>
                             </div>
                         </div>
                         <div class="total-info">
@@ -178,7 +182,7 @@
                                         <tr>
                                             <th>Total</th>
                                             <th>Shipping</th>
-                                            <th class="total-cart">Total Cart</th>
+                                            <th class="total-cart">Total Cart ${chkCode.cCode }</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -188,16 +192,33 @@
                                             <td class="total"><fmt:formatNumber type="currency" value="${cart.aSum }"/></td>
                                             <!-- 배송비 무료 -->
                                             <c:if test= "${cart.aSum > '100000'}" >
+                                          		<c:if test="${ empty chkCode }">
+                                            		<td class="shipping"><fmt:formatNumber type="currency" value="0"/></td>
+                                            		<td class="total-cart-p"><fmt:formatNumber type="currency" value="${cart.aSum + '0' }"/></td>
+                                            	</c:if>
+                                            	<c:if test="${ !empty chkCode }">
+                                            		<td class="shipping"><fmt:formatNumber type="currency" value="0"/></td>
+                                            		<td class="total-cart-p"><fmt:formatNumber type="currency" value="${cart.aSum * '0.9' }"/></td>
+                                            	</c:if>
+                                            </c:if>
+                                            <c:if test= "${cart.aSum > '100000' && !empty chkCode}" >
                                             <c:set var="i" value="0" />
                                             <td class="shipping"><fmt:formatNumber type="currency" value="${i }"/></td>
-                                            <td class="total-cart-p"><fmt:formatNumber type="currency" value="${cart.aSum + '0' }"/></td>
+                                            <td class="total-cart-p"><fmt:formatNumber type="currency" value="${cart.aSum * '0.9' }"/></td>
                                             </c:if>
+                                           
                                             <!-- 배송비 추가 -->
-                                            <c:if test= "${cart.aSum < '100000'}" >
+                                            <c:if test= "${cart.aSum < '100000' && empty chkCode}" >
                                             <c:set var="i" value="3000" />
                                             <td class="shipping"><fmt:formatNumber type="currency" value="${i }"/></td>
                                             <td class="total-cart-p"><fmt:formatNumber type="currency" value="${cart.aSum + '3000' }"/></td>
                                             </c:if>
+                                            <c:if test= "${cart.aSum < '100000' && !empty chkCode}" >
+                                            <c:set var="i" value="0" />
+                                            <td class="shipping"><fmt:formatNumber type="currency" value="${i }"/></td>
+                                            <td class="total-cart-p"><fmt:formatNumber type="currency" value="${cart.aSum * '0.9' }"/></td>
+                                            </c:if>
+                                            
                                             </c:forEach>
                                         </tr>
                                     </tbody>
@@ -205,7 +226,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 text-right">
-                                    <a href="#" class="primary-btn chechout-btn">Proceed to checkout</a>
+                                    <a href="javascript:shipment.submit();" class="primary-btn chechout-btn">Proceed to checkout</a>
                                 </div>
                             </div>
                         </div>

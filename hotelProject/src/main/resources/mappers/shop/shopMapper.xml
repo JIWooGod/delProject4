@@ -33,9 +33,29 @@
 		<result column="gavg" jdbcType="BIGINT" property="gAvg" />
 		<result column="asum" jdbcType="BIGINT" property="aSum" />
 	</resultMap>
+	
+	<resultMap type="memdto" id="shopmem">
+		<id column="mem_name" jdbcType="VARCHAR" property="memName" />
+		<result column="mem_addr" jdbcType="VARCHAR" property="memAddr" />
+		<result column="mem_tel" jdbcType="VARCHAR" property="memTel" />
+	</resultMap>
+	
+	<resultMap type="reservationdto" id="rblist">
+		<id column="rmbk_chkin" jdbcType="TIMESTAMP" property="rmbkChkIn"/>
+		<result column="rmbk_chkout" jdbcType="TIMESTAMP" property="rmbkChkOut"/>
+	</resultMap>
+	
+	<resultMap type="coupondto" id="coupon">
+		<id column="couponcode" jdbcType="VARCHAR" property="cCode"/>
+	</resultMap>
+	
 	<!-- 카트 시작 -->
 	
-	<select id="cartList" resultMap="cartmap" parameterType="string">
+	<insert id="insertCart">
+		insert into cart  (<include refid="cartcolumn"/>) values(num_seq.nextval, #{goodsCode},#{goodsPrice},#{goodsQty},#{memId})
+	</insert>
+	
+	<select id="cartList" resultMap="cartmap" parameterType="String">
 		SELECT g.GOODS_PRICE gprice, g.GOODS_NAME, c.CART_QTY, g.GOODS_PRICE * c.CART_QTY gavg, g.GOODS_CODE gcode, SUM(g.GOODS_PRICE * c.CART_QTY ) OVER (PARTITION BY c.MEM_ID) asum
 		FROM DELUNA.GOODS g , DELUNA.CART c WHERE c.GOODS_CODE = g.GOODS_CODE AND c.MEM_ID = #{memId} 
 		group by c.MEM_ID, GOODS_PRICE, GOODS_NAME, c.CART_QTY, g.GOODS_CODE
@@ -52,22 +72,31 @@
 		set CART_QTY = CART_QTY + 1
 		where mem_id = #{memId} and goods_code = #{goodsCode}
 	</update>
+	
+	<delete id="cartDel">
+		DELETE FROM cart WHERE MEM_ID = #{memId}
+	</delete>
+	
+	<delete id="cartOneDel">
+		DELETE FROM cart WHERE MEM_ID = #{memId} AND GOODS_CODE = #{goodsCode}
+	</delete>
+	
+	<select id="chkCode" resultMap="coupon" parameterType="string" >
+		select couponcode from coupon where couponcode = #{coupon}
+	</select>
+	
 	<!-- 카트 끝 -->
+	<!-- 상품 시작 -->
 	
 	<insert id="insertGoods" parameterType="shopdto" >
 		insert into goods (<include refid="basecolumn"/>) values(#{goodsCode},#{goodsName},#{goodsPrice},#{goodsPic},#{goodsOpt},#{goodsCategory})
 	</insert>
-	
-	<insert id="insertCart">
-		insert into cart  (<include refid="cartcolumn"/>) values(num_seq.nextval, #{goodsCode},#{goodsPrice},#{goodsQty},#{memId})
-	</insert>
-	
 
 	<select id="goodsList" resultMap="shopmap" parameterType="long">
 		select <include refid="basecolumn" /> from goods
 	</select>
 	
-	<select id="goodsCateList" resultMap="shopmap" parameterType="string">
+	<select id="goodsCateList" resultMap="shopmap" parameterType="String">
 		select <include refid="basecolumn" /> from goods where goods_category = #{goodsCategory}
 	</select>
 	
@@ -75,5 +104,17 @@
 		select <include refid="basecolumn" /> from goods where goods_code = #{goodsCode}
 	</select>
 	
+	<!-- 상품 끝 -->
+	
+	<!-- 결제 시작 -->
+	<select id="memSelect" resultMap="shopmem" parameterType="String">
+		SELECT MEM_NAME, MEM_ADDR, MEM_TEL from MEMBER WHERE MEM_ID = #{memId}
+	</select>
+	
+	<select id="rbSelect" resultMap="rblist" parameterType="String">
+		select rmbk_chkin, rmbk_chkout from roombook where mem_id = #{memId}
+	</select>
+	
+	<!--  결제 끝 -->
 
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,15 +25,23 @@
                 <div class="header-right">
                     <img src="/hotelProject/shop/img/icons/search.png" alt="" class="search-trigger">
                     <img src="/hotelProject/shop/img/icons/man.png" alt="">
-                    <a href="#">
+                    <a href="cart">
                         <img src="/hotelProject/shop/img/icons/bag.png" alt="">
-                        <span>2</span>
+                        
                     </a>
                 </div>
+                <c:if test="${ empty authInfo }">
                 <div class="user-access">
-                    <a href="/hotelProject/signInForm">Sign In</a>
+                    <a href="/hotelProject/delshop/signInForm">Sign In</a>
                  
                 </div>
+                </c:if>
+                  <c:if test="${ !empty authInfo }">
+                <div class="user-access">
+                    <a href="/hotelProject/delshop/logout">Log Out</a>
+                 
+                </div>
+                </c:if>
                 <nav class="main-menu mobile-menu">
                     <ul>
                         <li><a class="active" href="main">Home</a></li>
