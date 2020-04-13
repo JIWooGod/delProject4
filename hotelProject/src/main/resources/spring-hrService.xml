@@ -11,6 +11,8 @@
 	<bean id="empModifyService" class="service.hr.EmpModifyService"/>
 	<bean id="pass1stEmpService" class="service.hr.Pass1stEmpService"/>
 	<bean id="jobInterviewService" class="service.hr.JobInterviewService"/>
+	<bean id="empContractService" class="service.hr.EmpContractSerivce"/>
+<!--<bean id="regMailService" class="service.hr.RegMailService"/> -->
 	
 	<!-- promote service -->
 

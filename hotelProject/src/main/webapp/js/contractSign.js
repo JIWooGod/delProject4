@@ -137,30 +137,5 @@ function canvasToImage(){
 	var file = new Blob([new Uint8Array(blobBin)], {type: 'image/png'});
 	var formdata = new FormData();	// formData 생성
 	formdata.append("file", file);
-	
-	submit();
-}
 
-//동영상
-function aboutVideo(){
-	function fileUpload(e){
-		var file = e.target.flies;
-		var reader = new FileReader();
-		document.getElementById("videoContent").innerHTML = "<video src='' width='300px' height='auto' id='video' type='video/mp4'>";
-		video.src = e.target.result;
-		reader.readAsDataURL(f);
-	}
-
-	//재생 시간 산출
-	function getTime(){
-		console.log("재생시간 "+videoUp);
-		if(videoUp!=null){
-			var totalTime = Math.floor(Player.currentMedia.duration); // 총 재생시간 추출
-			document.getElementById("fullTime").innerHTML = changeTimeType(totalTime);
-			document.getElementById("subjTime").value = changeTimeType(totalTime);
-		}
-	}
-	videoUp.addEventListener("change",fileUpload,false);
-	//video.addEventListener("change",getTime,false);
-	//videoUp.addEventListener("load",getTime,false);
 }

@@ -32,7 +32,6 @@
 	
   <!-- Page Wrapper -->
   <div id="wrapper">
-	<jsp:include page="../managerInclude/mSidebar.jsp" flush="true" /> 
  
 
     <!-- Content Wrapper -->

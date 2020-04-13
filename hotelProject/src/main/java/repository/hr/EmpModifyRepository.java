@@ -3,7 +3,6 @@ package repository.hr;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import model.dto.hr.EmployeeDTO;
 
@@ -18,4 +17,3 @@ public class EmpModifyRepository {
 		return sqlSession.update(statement,dto);
 	}
 }
-//

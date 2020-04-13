@@ -33,7 +33,6 @@
 	
   <!-- Page Wrapper -->
   <div id="wrapper">
-	<jsp:include page="../managerInclude/mSidebar.jsp" flush="true" /> 
  
 
     <!-- Content Wrapper -->
@@ -56,28 +55,28 @@
 	<tr>
 		<td>비밀번호 *</td>
 		<td>
-			<form:password path="pw" placeholder="비밀번호를 입력하시오"/>
+			<form:password path="pw" id="pw" placeholder="비밀번호를 입력하시오"/>
 			<form:errors path="pw" class="error"/>
 		</td>
 	</tr>
 	<tr>
 		<td>비밀번호 확인 *</td>
 		<td>
-			<form:password path="rePw" placeholder="비밀번호를 다시 입력하시오"/>
+			<form:password path="rePw" id="rePw" placeholder="비밀번호를 다시 입력하시오"/>
 			<form:errors path="rePw" class="error"/>
 		</td>
 	</tr>
 	<tr>
 		<td>이름 *</td>
 		<td>
-			<form:input path="name" placeholder="이름을 입력하시오"/>
+			<form:input path="name" id="name" placeholder="이름을 입력하시오"/>
 			<form:errors path="name" class="error"/>
 		</td>
 	</tr>
 	<tr>
 		<td>연락처 *</td>
 		<td>
-			<form:input path="tel" placeholder="-를 제외한 숫자를 입력하시오"/>
+			<form:input path="tel" id="tel" placeholder="-를 제외한 숫자를 입력하시오"/>
 			<form:errors path="tel" class="error"/>
 		</td>
 	</tr>
@@ -91,7 +90,7 @@
 	<tr>
 		<td>주소 *</td>
 		<td>
-			<form:input path="addr" placeholder="주소를 입력하시오"/>
+			<form:input path="addr" id="addr" placeholder="주소를 입력하시오"/>
 		</td>
 	</tr>
 	<tr>
@@ -118,10 +117,10 @@
 		<td><form:textarea path="career" placeholder="경력사항을 자세히 입력하시오"/></td>
 	</tr>
 	<tr>
-		<td></td>
-		<td>
+		<td colspan="2">
 		<input type="submit" id="send" value="지원하기">
 		<input type="reset" value="초기화">
+		<input type="button" onclick='location.href="/hotelProject/notice"' value="취소"/>
 		</td>
 	</tr>
 </table>
@@ -133,9 +132,6 @@
             	<i class="fa fa-bars"></i>
      	</button>
 
- 
-
-        
 
       </div>
       <!-- End of Main Content -->
@@ -166,7 +162,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/hotelProject/manager/js/sb-admin-2.min.js"></script>
-
 </body>
 
 </html>

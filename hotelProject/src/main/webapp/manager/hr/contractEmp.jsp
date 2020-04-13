@@ -32,7 +32,6 @@
 	
   <!-- Page Wrapper -->
   <div id="wrapper">
-	<jsp:include page="../managerInclude/mSidebar.jsp" flush="true" /> 
  
 
     <!-- Content Wrapper -->
@@ -47,40 +46,30 @@
 <form action="empContracting" method="post" commandName="empContractCommand">
 <table id="tableForm">
 	<tr>
-		<td>계약번호</td>
-		<td>
-			<input type="text" name="paperNo" value="${empCtrt.employmentNo }" readonly="readonly"/>
-		</td>
-	</tr>
-	<tr>
 		<td>사원번호</td>
 		<td><input type="text" name="empNo" value="${applier.empNo }" readonly="readonly"/></td>
 	</tr>
 	<tr>
 		<td>성명</td>
-		<td><input type="text" name="name" placeholder="성명을 정확히 기입하시오"/></td>
-	</tr>
-	<tr>
-		<td>급여</td>
-		<td><input type="number" name="salary" value="${empCtrt.employmentSign }" readonly="readonly"/>원</td>
+		<td><input type="text" name="name" value="${applier.empName }" readonly="readonly"/></td>
 	</tr>
 	<tr>
 		<td>직급</td>
 		<td>
 			<select name="position">
 				<option value="">직급선택</option>
+				<c:forEach items="${job }" var="job">
+				<option value="${job.positNo }">${job.employmentPosi }</option>
+				</c:forEach>
 			</select>
 		</td>
-	</tr>
-	<tr>
-		<td>계약일자</td>
-		<td>${empCtrt.employmentDate }</td>
 	</tr>
 	<tr>
 		<td>서명</td>
 		<td>* 아래 서명란에 서명하시오 <input type="button" onclick="javascript:onClear();" value="다시하기"/><br/>
 			<canvas id="drawCanvas" width="300" height="150" style=" position: relative; border: 1px solid #000;"></canvas>
     		<img id="myImage" style="display:none" name="myImage"/>
+			<input type="button" id="id_copy" value="서명확인" />
 		</td>
 	</tr>
 </table>

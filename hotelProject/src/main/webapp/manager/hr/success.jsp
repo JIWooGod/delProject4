@@ -14,5 +14,6 @@
 가입을 축하합니다.<br/>
 <a style="text-align:center" href="/hotelProject/main"><b>메인페이지로</b></a>
 </p>
+<br/>
 </body>
 </html>

@@ -76,45 +76,46 @@
 	</tr>
 	<tr>
 		<td>언어능력</td>
-		<td><input type="radio" name="q1st" value="1"></td>
-		<td><input type="radio" name="q1st" value="2"></td>
-		<td><input type="radio" name="q1st" value="3"></td>
-		<td><input type="radio" name="q1st" value="4"></td>
-		<td><input type="radio" name="q1st" value="5"></td>
+		<td><input type="radio" name="q1st" id="q1st" value="1"></td>
+		<td><input type="radio" name="q1st" id="q1st" value="2"></td>
+		<td><input type="radio" name="q1st" id="q1st" value="3"></td>
+		<td><input type="radio" name="q1st" id="q1st" value="4"></td>
+		<td><input type="radio" name="q1st" id="q1st" value="5"></td>
 	</tr>
 		<tr>
 		<td>응대능력</td>
-		<td><input type="radio" name="q2nd" value="1"></td>
-		<td><input type="radio" name="q2nd" value="2"></td>
-		<td><input type="radio" name="q2nd" value="3"></td>
-		<td><input type="radio" name="q2nd" value="4"></td>
-		<td><input type="radio" name="q2nd" value="5"></td>
+		<td><input type="radio" name="q2nd" id="q2nd" value="1"></td>
+		<td><input type="radio" name="q2nd" id="q2nd" value="2"></td>
+		<td><input type="radio" name="q2nd" id="q2nd" value="3"></td>
+		<td><input type="radio" name="q2nd" id="q2nd" value="4"></td>
+		<td><input type="radio" name="q2nd" id="q2nd" value="5"></td>
 	</tr>
 		<tr>
 		<td>사회성</td>
-		<td><input type="radio" name="q3rd" value="1"></td>
-		<td><input type="radio" name="q3rd" value="2"></td>
-		<td><input type="radio" name="q3rd" value="3"></td>
-		<td><input type="radio" name="q3rd" value="4"></td>
-		<td><input type="radio" name="q3rd" value="5"></td>
+		<td><input type="radio" name="q3rd" id="q3rd" value="1"></td>
+		<td><input type="radio" name="q3rd" id="q3rd" value="2"></td>
+		<td><input type="radio" name="q3rd" id="q3rd" value="3"></td>
+		<td><input type="radio" name="q3rd" id="q3rd" value="4"></td>
+		<td><input type="radio" name="q3rd" id="q3rd" value="5"></td>
 	</tr>
 		<tr>
 		<td>문제해결력</td>
-		<td><input type="radio" name="q4th" value="1"></td>
-		<td><input type="radio" name="q4th" value="2"></td>
-		<td><input type="radio" name="q4th" value="3"></td>
-		<td><input type="radio" name="q4th" value="4"></td>
-		<td><input type="radio" name="q4th" value="5"></td>
+		<td><input type="radio" name="q4th" id="q4th" value="1"></td>
+		<td><input type="radio" name="q4th" id="q4th" value="2"></td>
+		<td><input type="radio" name="q4th" id="q4th" value="3"></td>
+		<td><input type="radio" name="q4th" id="q4th" value="4"></td>
+		<td><input type="radio" name="q4th" id="q4th" value="5"></td>
 	</tr>
 	<tr>
 		<td>업무능력</td>
-		<td><input type="radio" name="q5th" value="1"></td>
-		<td><input type="radio" name="q5th" value="2"></td>
-		<td><input type="radio" name="q5th" value="3"></td>
-		<td><input type="radio" name="q5th" value="4"></td>
-		<td><input type="radio" name="q5th" value="5"></td>
+		<td><input type="radio" name="q5th" id="q5th" value="1"></td>
+		<td><input type="radio" name="q5th" id="q5th" value="2"></td>
+		<td><input type="radio" name="q5th" id="q5th" value="3"></td>
+		<td><input type="radio" name="q5th" id="q5th" value="4"></td>
+		<td><input type="radio" name="q5th" id="q5th" value="5"></td>
 	</tr>
 </table>
+<div id="sum"></div>
 <input type="submit" value="채점완료"/>
 <input type="reset" value="초기화"/>
 <input type="button" onclick="javascript:toMain()" value="취소"/>
@@ -175,9 +176,26 @@ function exposeDate(){
 	$("#dayView").html = today.getFullYear()+"/"+(today.getMonth()+1)+"/"+today.getDate();
 }
 function toMain(){
-	location.href='../personnel';
+	location.href='/hotelProject/personnel';
+}
+function getSum(){
+	var sum = document.getElementById("sum");
+	var q1st = document.getElementById("q1st");
+	var q3rd = document.getElementById("q3rd");
+	var q2nd = document.getElementById("q2nd");
+	var q4th = document.getElementById("q4th");
+	var q5th = document.getElementById("q5th");
+	var total = q1st+q2nd+q3rd+q4th+q5th;
+	var text = "";
+	if(total>=18){
+		text = "합격";
+	}else{
+		text = "불합격";
+	}
+	sum.innerHTML = "<b>총 "+total+"점으로 "+text+"입니다.</b>"
 }
 document.getElementById("dayView").addEventListener("load",exposeDate,false);
+document.getElementById("q5th").addEventListener("change",getSum,false);
 </script>
 </body>
 </html>

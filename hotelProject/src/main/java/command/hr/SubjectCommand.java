@@ -10,7 +10,14 @@ public class SubjectCommand {
 	String subjGroup;
 	Long subjDay;
 	Long subjNum;
+	Long fullTime;
 	
+	public Long getFullTime() {
+		return fullTime;
+	}
+	public void setFullTime(Long fullTime) {
+		this.fullTime = fullTime;
+	}
 	public Long getSubjNum() {
 		return subjNum;
 	}

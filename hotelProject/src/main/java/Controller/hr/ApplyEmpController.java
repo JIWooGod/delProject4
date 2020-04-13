@@ -33,7 +33,6 @@ public class ApplyEmpController {
 			Model model,Errors errors) {
 		//new ApplyCommandValidator().validate(applyCommand,errors);	
 		applyService.action(request,applyCommand,errors);
-		
 		if(errors.hasErrors()) {
 			return "manager/hr/apply";
 		}else {

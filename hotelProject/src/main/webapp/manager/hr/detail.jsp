@@ -96,7 +96,7 @@
 	<c:when test="${empty applier.passState || applier.passState == '지원대기자'}">
 		<button onclick="javascript:pass1st()">서류합격</button>
 	</c:when>
-	<c:when test='${applier.passState == "서류합격자" && emp.passState == "정규직원"}'>
+	<c:when test='${applier.passState == "서류합격자"}'>
 		<button onclick="location.href='../interview/${applier.empNo}'">면접보기</button>
 	</c:when>
 	<c:when test='${applier.passState == "면접합격자" }'>

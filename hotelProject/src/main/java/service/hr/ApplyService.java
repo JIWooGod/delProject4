@@ -11,6 +11,7 @@ import command.hr.ApplyCommand;
 import model.dto.hr.EmployeeDTO;
 import model.dto.member.AuthInfo;
 import repository.hr.ApplyRepository;
+import repository.hr.EmpModifyRepository;
 import repository.hr.UserCheckRepository;
 
 @Service
@@ -21,6 +22,8 @@ public class ApplyService {
 	private ApplyRepository applyRepository;
 	@Autowired
 	private UserCheckRepository userCheckRepository;
+	@Autowired
+	private EmpModifyRepository empModifyRepository;
 
 	public void action(HttpServletRequest request, ApplyCommand applyCommand,
 			Errors errors) {
@@ -53,7 +56,10 @@ public class ApplyService {
 		applyRepository.applyPut(dto);
 	}
 
-	public Integer joinAction(String num, String receiver, String empId) {
-		return null;
+	public void joinAction(String empId) {
+		EmployeeDTO dto = new EmployeeDTO();
+		dto.setEmpId(empId);
+		dto.setJoinChk((long)1);
+		empModifyRepository.reposit(dto);
 	}
 }

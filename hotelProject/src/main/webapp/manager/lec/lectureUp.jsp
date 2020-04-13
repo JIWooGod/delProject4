@@ -43,10 +43,14 @@
 		<!-- 메인 내용 작성 구역 --> 
        
 <h2>강의등록</h2>
-<a href="../lecture" style='text-align:right;'>강좌목록</a>
 <form action="uploading" method="post"
 	enctype="multipart/form-data" commandName="subjectCommand">
 	<table id="tableForm">
+		<tr>
+			<td colspan="2" style="text-align:right;">
+			<a href="/hotelProject/lecture">강좌목록</a>
+			</td>
+		</tr>
 		<tr>
 			<td>과목분류</td>
 			<td>
@@ -68,6 +72,7 @@
 		<tr>
 			<td>강의 동영상</td>
 			<td>
+				<input type="hidden" id="fullTime" name="fullTime" value=""/>
 				<input type="file" id="videoUp" accept="video/*" name="subjVideo" /><br/>
 				<div id="videoContent"></div>
 			</td>
@@ -80,9 +85,13 @@
 			<td>강의내용</td>
 			<td><textarea name="subjCnt" placeholder="강의 목차 및 간략한 소개를 입력하시오"></textarea></td>
 		</tr>
+		<tr>
+			<td colspan="2">
+			<input type="submit" value="등록하기">
+			<input type="reset" value="초기화">
+			</td>
+		</tr>
 	</table>
-	<input type="submit" value="등록하기">
-	<input type="reset" value="초기화">
 </form>
 
        <!-- 메인 내용 작성 구역 --> 
@@ -118,5 +127,30 @@
 
   <!-- Custom scripts for all pages-->
   <script src="/hotelProject/manager/js/sb-admin-2.min.js"></script>
+  <script type="text/javascript">
+//동영상
+  function aboutVideo(){
+  	function fileUpload(e){
+  		var file = e.target.flies;
+  		var reader = new FileReader();
+  		document.getElementById("videoContent").innerHTML = "<video src='' width='300px' height='auto' id='video' type='video/mp4'>";
+  		video.src = e.target.result;
+  		reader.readAsDataURL(f);
+  	}
+
+  	//재생 시간 산출
+  	function getTime(){
+  		if(videoUp!=null){
+  			var totalTime = Math.floor(Player.currentMedia.duration); // 총 재생시간 추출
+  			document.getElementById("fullTime").value = changeTimeType(totalTime);
+  			document.getElementById("subjTime").value = changeTimeType(totalTime);
+  		}
+  		console.log("재생시간 "+totalTime);
+  	}
+  	videoUp.addEventListener("change",fileUpload,false);
+  	//video.addEventListener("change",getTime,false);
+  	videoUp.addEventListener("load",getTime,false);
+}
+  </script>
 </body>
 </html>

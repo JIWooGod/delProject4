@@ -30,7 +30,7 @@ public class LectureModifyingController {
 									subjVideo,
 									subjDay,
 									subjCnt,request,model);
-		return "redirect:/lecture/"+subjNum;
+		return "redirect:/lecture/class/"+subjNum;
 	}
 }
 //

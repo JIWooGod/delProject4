@@ -19,6 +19,12 @@
 		JOBINTV_TASK, JOBINTV_SOCIAL, JOBINTV_SOLVE, JOBINTV_REGDATE,
 		JOBINTV_VIEWER
 	</sql>
+	<sql id="staffColumn">
+		EMPLOYMENT_NO, EMP_NO, EMPLOYMENT_SIGN, EMPLOYMENT_DATE, POSIT_NO
+	</sql>
+	<sql id="jobColumn">
+		POSIT_NO, EMPLOYMENT_SAL, EMPLOYMENT_POSI
+	</sql>
 	<resultMap type="model.dto.hr.EmployeeDTO" id="empResult">
 		<id column="EMP_NO" jdbcType="BIGINT" property="empNo"/>
 		<result column="DEPT_NO" jdbcType="BIGINT" property="deptNo"/>
@@ -65,6 +71,18 @@
 	<resultMap type="model.dto.member.AuthInfo" id="authInfo">
 		<id column="EMP_ID" jdbcType="VARCHAR" property="id"/>
 		<result column="ADMIN" jdbcType="VARCHAR" property="admin"/>
+	</resultMap>
+	<resultMap type="model.dto.hr.JobPositionDTO" id="job">
+		<id column="POSIT_NO" jdbcType="VARCHAR" property="positNo"/>
+		<result column="EMPLOYMENT_SAL" jdbcType="BIGINT" property="employmentSal"/>
+		<result column="EMPLOYMENT_POSI" jdbcType="VARCHAR" property="employmentPosi"/>
+	</resultMap>
+	<resultMap type="model.dto.hr.EmploymentDTO" id="staffResult">
+		<id column="EMPLOYMENT_NO" jdbcType="BIGINT" property="employmentNo"/>
+		<result column="EMP_NO" jdbcType="BIGINT" property="empNo"/>
+		<result column="EMPLOYMENT_SIGN" jdbcType="VARCHAR" property="employmentSign"/>
+		<result column="EMPLOYMENT_DATE" jdbcType="TIMESTAMP" property="employmentDate"/>
+		<result column="POSIT_NO" jdbcType="VARCHAR" property="positNo"/>
 	</resultMap>
 	
 	<insert id="applyInsert" parameterType="model.dto.hr.EmployeeDTO">
@@ -158,5 +176,21 @@
 		SELECT teach_id, '강사'
 			FROM teacher
 			WHERE teach_id = #{teachId}
+	</select>
+	<select id="searchJob" parameterType="Long" resultMap="job">
+		select <include refid="jobColumn"/>
+			from JOBPOSITION
+			where posit_no like #{deptNo}||'%'
+	</select>
+	<insert id="contracting">
+		insert 
+			into EMPLOYMENT(<include refid="staffColumn"/>)
+			values(num_seq.nextval,#{empNo},#{employmentSign},
+			sysdate,#{positNo})
+	</insert>
+	<select id="viewCont" parameterType="model.dto.hr.EmploymentDTO" resultMap="staffResult">
+		select <include refid="staffColumn"/>
+			from EMPLOYMENT
+			where EMP_NO = #{empNo}
 	</select>
 </mapper>

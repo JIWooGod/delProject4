@@ -67,9 +67,6 @@
 			<c:when test='${emp.passState == "서류합격자" }'>
 				<button id="interviewBtn" onclick="location.href='./personnel/interview/${emp.empNo }'">면접보기</button>
 			</c:when>
-			<c:when test='${emp.passState == "면접합격자" }'>
-				<button id="contractBtn" onclick="location.href='./personnel/contract/${emp.empNo }'">계약하기</button>
-			</c:when>
 		</c:choose>
 		</td>
 		<td>${emp.empDate }</td>

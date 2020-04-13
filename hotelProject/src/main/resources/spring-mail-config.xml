@@ -6,7 +6,7 @@
 
 <!-- 정해져 있음. javaMailProperties는 보안관련 설정-->
 
-	<bean id="mailSendet" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="port" value="465"/>
 		<property name="host" value="smtp.gmail.com"/>
 		<property name="protocol" value="smtps"/>

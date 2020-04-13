@@ -52,8 +52,8 @@
 		<th>강의분류</th>
 		<th>강의번호</th>
 		<th>강좌명</th>
-		<th>강사명</th>
-		<th>이수단위</th>
+		<th>강사번호</th>
+		<th>등록일</th>
 		<th></th>
 	</tr>
 	<c:forEach items="${list }" var="list">
@@ -61,8 +61,8 @@
 		<td>${list.subjGroup }</td>
 		<td><a href="/hotelProject/lecture/class/${list.subjNo}">${list.subjNo }</a></td>
 		<td><a href="/hotelProject/lecture/class/${list.subjNo}">${list.subjName }</a></td>
-		<td></td>
-		<td>${list.subjTime }</td>
+		<td>${list.teachNo }</td>
+		<td>${list.subjRegDate }</td>
 		<td><button onclick="location.href='/hotelProject/lecture/teacher/deleting?num=${list.subjNo}'">삭제</button></td>
 	</tr>
 	</c:forEach>

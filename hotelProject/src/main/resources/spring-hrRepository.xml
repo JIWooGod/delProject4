@@ -12,7 +12,7 @@
 	<bean id="passEmpRepository" class="repository.hr.PassEmpRepository"/>
 	<bean id="jobInterviewRepository" class="repository.hr.JobInterviewRepository"/>
 	<bean id="userCheckRepository" class="repository.hr.UserCheckRepository"/>
-	
+	<bean id="viewJobRepository" class="repository.hr.ViewJobRepository"/>
 	<!-- promote repository -->
 	
 	<!-- teacher repository -->

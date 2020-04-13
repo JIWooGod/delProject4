@@ -20,4 +20,3 @@ public class InterviewingEmpController {
 		return "redirect:/personnel/detail/"+interviewCommand.getApplierNo();
 	}
 }
-//

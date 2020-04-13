@@ -42,31 +42,36 @@
       <div id="content">
 		<!-- 메인 내용 작성 구역 --> 
        
-<h2>${subject.subjName }</h2>
-<div id="basicInfo">
-<table style="float:left;">
+<h2>${list.subjName }</h2>
+<div id="basicInfo" style="display:block-inline;">
+<table style="margin-left:20px;float:left;">
 	<tr>
-		<td>${list.subjGroup }과목</td>
-		<td><b>${teach.teachName }</b> 강사(${teach.teachNo })</td>
+		<td colspan="2">${list.subjGroup }과목</td>
+	</tr>
+	<tr>
+		<td><b>${teach.teachName }</b> 강사(${teach.teachNo })/</td>
 		<td>강사연락처(${teach.teachTel }, ${teach.teachEmail })</td>
 	</tr>
 	<tr>
-		<td colspan="3">본 강의는 <b>${list.subjDay }</b>일 이내로 수강하여야 합니다.</td>
+		<td colspan="3">
+		본 강의는 <b>${list.subjDay }</b>일 이내로 수강하여야 합니다.<br/>
+		!강의시간 이내로 재생한 후 종료하면 수료되지 않습니다.
+		</td>
 	</tr>
 </table>
-<br/>
 </div>
 <br/>
 <hr/>
 <div id="videoView">
-!강의시간 이내로 재생한 후 종료하면 수료되지 않습니다.
 	<video id="video" width="100%" height="auto" controls="controls"
 	controlsList="nodownload" ontimeupdate="javascript:moved(this)">
 		<source src="/hotelProject/manager/lec/video/${list.subjStore }" type="video/mp4">
 	</video>
-	<div id="fullTime"></div>
-	<p>${list.subjCnt }</p>
 </div>
+<hr/>
+<div id="playtime" style="text-align:right;"></div>
+<p>${list.subjCnt }</p>
+<br/>
 <div id="hidden">
 <form action="timeSend" id="frm1">
 	<input type="hidden" name="subjTime" id="totalTime"/>
@@ -115,15 +120,15 @@
   <script src="/hotelProject/manager/js/sb-admin-2.min.js"></script>
 <script type="text/javascript">
 var totalTime; //총 재생시간
-var mine; //내 재생시간
 var current; //현재 재생시간
 var mineTime = document.getElementById("mineTime");
 var mineLoc = document.getElementById("mineLoc");
 var frm1 = document.getElementById("frm1");
 var frm1 = document.getElementById("frm2");
+var video = document.getElementById("video");
 
-function getTime(){
-	console.log("재생시간 "+videoUp);
+function getTime(e){
+	console.log("재생시간 "+video);
 	if(videoUp!=null){
 		totalTime = Math.floor(Player.currentMedia.duration);
 		document.getElementById("fullTime").innerHTML = "강의시간 "+changeTimeType(totalTime);
@@ -131,15 +136,15 @@ function getTime(){
 		frm1.submit();
 	}
 }
-function checkTime(){
-	var ok = confirm("내 재생시간은 "+mine+"입니다. 정말 종료하시겠습니까?");
+function checkTime(e){
+	var ok = confirm("내 재생시간은 "+video.currentTime+"입니다. 정말 종료하시겠습니까?");
 	if(ok==true){
-		mineTime.value = mine;
-		mineLoc.value = current;
+		mineTime.value = video.currentTime;
+		mineLoc.value = video.currentTime;
 		frm2.submit();
 		window.close();
 	}else{
-		videoUp.attr.autoplay = "autoplay";
+		video.attr.autoplay = "autoplay";
 	}
 }
 function finished(){
@@ -149,11 +154,14 @@ function moved(){
 	current = event.currentTime;
 	document.getElementById("mineLoc").value = current;
 }
-//videoUp.addEventListener("play",setTime,false);
-//videoUp.addEventListener("load",getTime,false);
-//videoUp.addEventListener("ended",finished,false);
-
-//window.addEventListener("close",checkTime,false);
+function PlayTime(e){
+    document.getElementById("playtime").innerHTML =
+    "재생상태(내 재생시간/총 재생시간): " + Math.floor(video.currentTime) + "초/" + Math.floor(video.duration) +"초";
+}
+video.addEventListener("timeupdate",PlayTime,false);
+video.addEventListener("load",getTime,false);
+video.addEventListener("ended",finished,false);
+self.addEventListener("close",checkTime,false);
 </script>
 </body>
 </html>
