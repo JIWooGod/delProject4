@@ -38,7 +38,7 @@ public class shopCheckOutController {
 		return "shop/check-Out";
 	}
 	@RequestMapping("delshop/payChk")
-	public String payChk(HttpSession session, shopChkCommand Ccommand) {
+	public String payChk(HttpSession session, shopChkCommand Ccommand,Model model) {
 		Ccommand.getMemTel();
 		SmsSend sms = new SmsSend();
 		String phoneNum = Ccommand.getMemTel();
@@ -46,9 +46,9 @@ public class shopCheckOutController {
 		String gName = Ccommand.getGoodsName();
 		String textMassage = name + "님 주문하신 '" + gName + "' 결제가 완료되었습니다.";
 		sms.smsSend(phoneNum, textMassage);
-		shopListService.insertPay(session,Ccommand);
-		//shopRepository.delcart(session);
-		return null;
+		shopListService.insertPay(session,Ccommand,model);
+		shopRepository.delcart(session);
+		return "shop/comKakao";
 	}
 	
 }

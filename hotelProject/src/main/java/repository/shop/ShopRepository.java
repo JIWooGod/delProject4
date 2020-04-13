@@ -17,6 +17,7 @@ import model.dto.pay.PayDTO;
 import model.dto.room.RoomDTO;
 import model.dto.shop.cartDTO;
 import model.dto.shop.shopDTO;
+import model.dto.shop.shopPayDTO;
 
 @Repository
 public class ShopRepository {
@@ -96,6 +97,16 @@ public class ShopRepository {
 	public void insertPay(PayDTO dto) {
 		String statement = namespace+".shopInsertPay";
 		sqlSession.insert(statement, dto);
+		
+	}
+	public void delOne(String goodsCode) {
+		String statement = namespace+".delGoods";
+		sqlSession.delete(statement, goodsCode);
+		
+	}
+	public void insertOrder(shopPayDTO dto) {
+		String statement = namespace+".insertOeder";
+		sqlSession.insert(statement,dto);
 		
 	}
 	

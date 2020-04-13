@@ -93,6 +93,7 @@
 					<input value="${command.shipName}" name="shipName">
 					<input value="${command.rmbkChkIn}" name="rmbkChkIn">
 					<input value="${command.rmbkChkOut}" name="rmbkChkOut">
+					<input value="${command.rmNo }" name="rmNo">
                 </form>
            </div>     
 </body>

@@ -120,7 +120,6 @@
                         <p>${goodsD.goodsOpt }</p>
                         <ul class="tags">
                             <li><span>Category :</span> ${goodsD.goodsCategory }</li>
-                            <li><span>Tags :</span> man, shirt, dotted, elegant, cool</li>
                         </ul>
                  
                         <div class="product-quantity">

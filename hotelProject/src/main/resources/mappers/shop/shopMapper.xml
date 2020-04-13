@@ -13,6 +13,12 @@
 		cart_no, goods_code, cart_price , cart_qty, mem_id
 	</sql>
 	
+	<sql id="paycolumn">
+		od_no, pay_no, od_name, ship_mtd, ship_addr, od_price, mem_id, chk_in, rm_no, ship_tel
+	</sql>
+	
+	
+	
 	<resultMap type="shopdto" id="shopmap">
 		<id column="goods_code" jdbcType="VARCHAR" property="goodsCode"/>
 		<result column="goods_name" jdbcType="VARCHAR" property="goodsName"/>
@@ -43,11 +49,16 @@
 	<resultMap type="reservationdto" id="rblist">
 		<id column="rmbk_chkin" jdbcType="TIMESTAMP" property="rmbkChkIn"/>
 		<result column="rmbk_chkout" jdbcType="TIMESTAMP" property="rmbkChkOut"/>
+		<result column="rm_no" jdbcType="VARCHAR" property="roomNo"/>
 	</resultMap>
 	
 	<resultMap type="coupondto" id="coupon">
 		<id column="couponcode" jdbcType="VARCHAR" property="cCode"/>
 	</resultMap>
+	
+	<delete id="delGoods">
+		DELETE FROM GOODS WHERE GOODS_CODE = #{goodsCode}
+	</delete>
 	
 	<!-- 카트 시작 -->
 	
@@ -112,11 +123,15 @@
 	</select>
 	
 	<select id="rbSelect" resultMap="rblist" parameterType="String">
-		select rmbk_chkin, rmbk_chkout from roombook where mem_id = #{memId}
+		select rmbk_chkin, rmbk_chkout, rm_no from roombook where mem_id = #{memId}
 	</select>
 	
 	<insert id="shopInsertPay" parameterType="paydto">
 		insert into payment(pay_no,pay_price,pay_mtd,pay_date,pay_who)values(#{payNo},#{payPrice},#{payMtd},sysdate,#{payWho})
+	</insert>
+	
+	<insert id="insertOeder" parameterType="shoppaydto">
+		insert into ordering(<include refid="paycolumn"/>) values(num_seq.nextval,#{payNo},#{odName},#{shipMtd},#{shipAddr},#{odPrice},#{memId},#{chkIn},#{rmNo},#{shipTel})
 	</insert>
 	
 	<!--  결제 끝 -->

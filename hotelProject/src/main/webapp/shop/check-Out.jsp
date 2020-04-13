@@ -85,7 +85,7 @@
 					<input value="객실배송" name="shipName">
 					<c:forEach var="rb" items="${rbChk }" varStatus="status" end="0">
 					<input value="${rb.rmbkChkIn }" name="rmbkChkIn">
-					<input value="${rb.rmbkChkOut}" name="rmbkChkOut">
+					<input value="${rb.roomNo}" name="roomNo">
 					</c:forEach>
                 </c:if>
                 <c:if test="${ empty rbChk }" >
@@ -134,10 +134,10 @@
                                 <p class="in-name">배송</p>
                             </div>
                             <div class="col-lg-10">
-                               객실배달 서비스<br/> 객실 이용일선택 :
+                              	 객실배달 서비스<br/> 객실 이용일선택 :
                                <select name="ship">
                                <c:forEach var="rb" items="${rbChk }" varStatus="status">
-                               <option value="${rb.rmbkChkIn }">${rb.rmbkChkIn }</option>
+                               <option value="${rb.rmbkChkIn }">${rb.rmbkChkIn }/${rb.roomNo }호</option>
                                </c:forEach>
                                </select>
                             </div>

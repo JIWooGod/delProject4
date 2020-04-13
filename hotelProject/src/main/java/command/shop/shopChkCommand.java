@@ -15,7 +15,14 @@ private	String memTel;
 private	String shipName;
 private	String rmbkChkIn;
 private	String rmbkChkOut;
+private Integer rmNo;
 
+public Integer getRmNo() {
+	return rmNo;
+}
+public void setRmNo(Integer rmNo) {
+	this.rmNo = rmNo;
+}
 public String getPayPrice() {
 	return payPrice;
 }
