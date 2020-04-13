@@ -120,6 +120,7 @@ function clearText(y){
         </ul>
           <div class="hs_reservation_section hs_reservation_bottom">
     <div class="hs_reservation_btn_set">
+    <a href="javascript:window.history.back();" class="hs_reservation_btn_poin" style="color:#FFFFFF;">뒤로가기</a>
       <a href="javascript:tblInsert();" class="hs_reservation_btn_poin" style="color:#FFFFFF;">등록</a>
     </div>
   </div>

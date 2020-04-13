@@ -62,6 +62,7 @@
 					<c:if test="${ !empty resList }">
 		<table class = "table2"id = "table2" width=100% border="1" cellpadding="0" cellspacing="0">
 			<tr>
+				<td>레스토랑</td>
 				<td>회원 아이디</td>
 				<td>예약자 이름</td>
 				<td>예약자 전화번호</td>
@@ -73,6 +74,7 @@
 			</tr>
 			<c:forEach items="${ resList }" var="l">
 			<tr>
+				<td><b style="color: blue;">${ l.rstName }</b></td>
 				<td>${ l.memId }</td>
 				<td>${ l.resName }</td>
 				<td>${ l.resTel }</td>
