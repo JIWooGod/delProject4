@@ -170,7 +170,8 @@
 				</c:if>
 				<button onclick="loginBtn(); return false;">login</button>
 				<p class="message">
-					Not registered? <a href="memCreateForm">Create an account</a>
+					Not registered? <a href="memCreateForm">Create an account</a><br />
+					<a href="main">MAIN</a>
 				</p>
 			</form>
 		</div>

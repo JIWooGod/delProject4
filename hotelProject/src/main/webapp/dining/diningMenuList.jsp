@@ -26,17 +26,17 @@
 						</c:forTokens>
 					</td>
 					<td style="padding-top: 2px;">
-						<b  style="font-size: 15px;">${ menu.menuName } &nbsp;&nbsp;...................&nbsp;&nbsp; ${ menu.menuPrice } \</b>
+						<b  style="font-size: 15px;">${ menu.menuName } &nbsp;&nbsp;.......&nbsp;&nbsp; ${ menu.menuPrice } \</b>
 					</td>
 				</tr>
 				<tr>
-					<td style="padding-bottom: 2px;">${ menu.menuCnt }</td>
+					<td style="padding-bottom: 2px;">메뉴 설명 <br /> ${ menu.menuCnt }</td>
 				</tr>
 				</c:forEach>
 			</c:if>
 			<c:if test="${ empty menus }">
 				<div align="center" style="padding: 200px;">
-					메뉴를 준비중입니다.
+					<span>메뉴를 준비중 입니다.</span>
 				</div>
 			</c:if>
 	</table>

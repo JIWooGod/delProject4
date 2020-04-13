@@ -115,8 +115,8 @@
 								예약시간 : ${ res3.resTime } <br />
 								예약인원 : ${ res3.resMans } <br />
 								요청사항 : ${ res3.resCnt } <br />
-								예약메뉴 : ${ res3.menuName } 이미지:${ res3.menuImg } <br />
-								예약좌석번호 : ${ res3.rstTbl }<br />
+								예약메뉴 : ${ res3.menuName } <br />
+								예약좌석번호 : ${ res3.rstTbl } <br />
 								결제 금액: ${ res3.menuPrice }
 							</div>
 

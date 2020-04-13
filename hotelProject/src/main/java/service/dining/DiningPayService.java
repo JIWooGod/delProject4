@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import Controller.Room.SmsSend;
 import command.dining.dReservationCommand;
 import model.dto.dining.DiningPayDTO;
 import model.dto.dining.dReservationDTO;
@@ -111,6 +112,10 @@ public class DiningPayService {
 		model.addAttribute("res3", dto);
 		diningRepository.insertDiningRes(dto);
 		request.setAttribute("totalPrice", dReservationCommand.getMenuPrice());
+		
+		SmsSend sms = new SmsSend();
+		String textMassage = dReservationCommand.getResName() + "님 호텔델루나의 레스토랑 예약이 완료되었습니다. 금액:" + dReservationCommand.getMenuPrice() + "원";
+		sms.smsSend(dReservationCommand.getResTel(), textMassage);
 	}
 
 }

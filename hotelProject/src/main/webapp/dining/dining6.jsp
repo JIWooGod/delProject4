@@ -68,9 +68,7 @@ $(window).load(function() {
 	<div class='title'>INFORMATION</div>
 	<div class='box'>
 		<div class='basic'>
-			<span>예약상담시간</span> : 09:00 ~ 19:00 &nbsp;&nbsp;&nbsp;&nbsp;
-			<span>전화번호</span> : 063-251-8000 &nbsp;&nbsp;&nbsp;&nbsp;
-			<span>이메일</span> : gh.1700@daum.net
+			<span>호텔델루나 대표 라운지 바</span>
 		</div>
 	</div>
 

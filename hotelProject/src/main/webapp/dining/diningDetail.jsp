@@ -139,9 +139,8 @@
 				<div class='line_height30'></div>
 				<div class='tl'>예약안내</div>
 				<div class='con'>
-					체크인 3일 전 취소: 100% 환불<br> 체크인 2일 전 취소: 1박 요금의 30% 수수료 부과<br>
-					체크인 1일 전 취소: 1박 요금의 50% 수수료 부과<br> 체크인 당일 및 노쇼: 예약 건의 1박 요금
-					100% 부과
+					3일 전 취소: 100% 환불<br> 2일 전 취소: 요금의 30% 수수료 부과<br>
+					1일 전 취소: 요금의 50% 수수료 부과<br>
 				</div>
 				<div class='line_height30'></div>
 				<div class='line_box'></div>

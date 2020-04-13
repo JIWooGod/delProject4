@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko">
-<title>그랜드힐스턴</title>
+<title>Deluna</title>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 

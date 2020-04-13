@@ -178,7 +178,7 @@ function submit1(){
 										<input type="text" size="10" name="resName" id="resName"/><span id="rspan2" style="font-size: 12px; color: red;"></span>
 									</li>
 									<li><strong>전화번호</strong>
-										<input type="text" size="10" name="resTel" id="resTel"/><span id="rspan3" style="font-size: 12px; color: red;"></span>
+										<input type="text" size="10" name="resTel" id="resTel" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/><span id="rspan3" style="font-size: 12px; color: red;"></span>
 									</li>
 									<li><strong>이메일</strong>
 										<input type="text" size="10" name="emailVal1" id="emailVal1" />

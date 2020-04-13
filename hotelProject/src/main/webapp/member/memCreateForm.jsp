@@ -178,7 +178,8 @@
 				<button type="button" onclick="createBtn()">create</button>
 				
 				<p class="message">
-					Already registered? <a href="signInForm">Sign In</a>
+					Already registered? <a href="signInForm">Sign In</a><br />
+					<a href="main">MAIN</a>
 				</p>
 			</form>
 			

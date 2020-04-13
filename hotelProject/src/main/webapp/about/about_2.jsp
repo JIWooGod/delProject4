@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!doctype html>
 <html lang="ko">
-<title>그랜드힐스턴</title>
+<title>Deluna</title>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" /> 
@@ -43,7 +43,7 @@ $(window).load(function() {
 	</div>
 	<div class='sub_menu'>
 		<div class='box'>
-		<span class='subMENUon'><a href='about'>인사말</a></span><span class='subMENUout'><a href='about2'>오시는 길</a></span>		</div>
+		<span class='subMENUout'><a href='about'>인사말</a></span><span class='subMENUon'><a href='about2'>오시는 길</a></span>		</div>
 
 		<div class='tl'>
 			<div class='line'></div>
