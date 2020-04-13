@@ -115,14 +115,11 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="/hotelProject/notice">채용지원</a>
-            <a class="collapse-item" href="/hotelProject/lecture">강의목록</a>
             <a class="collapse-item" href="/hotelProject/personnel">직원목록</a>
             <a class="collapse-item" href="/hotelProject/teacher">강사목록</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item active" href="blank.html">Blank Page</a>
+            <a class="collapse-item" href="/hotelProject/lecture">강의목록</a>
           </div>
         </div>
       </li>
