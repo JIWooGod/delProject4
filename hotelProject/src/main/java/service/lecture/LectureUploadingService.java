@@ -15,7 +15,7 @@ import repository.lecture.LectureUploadingRepository;
 
 @Service
 public class LectureUploadingService {
-	final String PATH = "\\lec\\video\\";
+	final String PATH = "\\manager\\lec\\video\\";
 	@Autowired
 	private LectureUploadingRepository lectureUploadingRepository;
 
@@ -42,12 +42,14 @@ public class LectureUploadingService {
 		SubjectDTO dto = new SubjectDTO();
 		dto.setSubjName(subjectCommand.getSubjName());
 		dto.setSubjCnt(subjectCommand.getSubjCnt());
-		//view에서 '분류선택'을 눌러서 값을 제대로 보내지 않는 경우 if로 막자
 		dto.setSubjGroup(subjectCommand.getSubjGroup());
 		dto.setSubjDay(subjectCommand.getSubjDay());
 		dto.setSubjFileSize(size);
 		dto.setSubjStore(store);
 		dto.setSubjOrigin(origin);
+		dto.setTeachNo(subjectCommand.getTchNo());
+		
+		System.out.println("강사번호: "+dto.getTeachNo());
 		
 		lectureUploadingRepository.reposit(dto);
 	}

@@ -37,7 +37,7 @@ $(document).ready(function(){
 	        }else{
 	           $("#delBtn").attr("value","삭제");
 	           $("#view").html("");
-	           $("#original_file").html("<video src='/hotelProject/lec/video/${list.subjStore }' width='300px' height='auto'></video>");
+	           $("#original_file").html("<video src='/hotelProject/manager/lec/video/${list.subjStore }' width='300px' height='auto'></video>");
        		}
 		});
 	});
@@ -61,7 +61,7 @@ $(document).ready(function(){
        
 <h2>강의 내용 수정</h2>
 <form action="modifying" method="post" enctype="multipart/form-data">
-	<input type="text" name="subjNum" value="${list.subjNo }" readonly/>
+	<input type="hidden" name="subjNum" value="${list.subjNo }" readonly/>
 	<table id="tableForm">
 		<tr>
 			<td>과목분류</td>
@@ -69,7 +69,7 @@ $(document).ready(function(){
 		</tr>
 		<tr>
 			<td>강사번호</td>
-			<td></td>
+			<td><input type="text" name="teachNo" value="${list.teachNo }" readonly="readonly"/></td>
 		</tr>
 		<tr>
 			<td>강의명</td>
@@ -80,7 +80,7 @@ $(document).ready(function(){
 			<td>
 				<input type="button" id="delBtn" value="파일삭제">
 				<div id="original_file">
-				<video src="/hotelProject/lec/video/${list.subjStore }" 
+				<video src="/hotelProject/manager/lec/video/${list.subjStore }" 
 					width="300px" height="auto"></video>
 				</div>
 				<div id="view"></div>
@@ -88,17 +88,20 @@ $(document).ready(function(){
 		</tr>
 		<tr>
 			<td>수강기간</td>
-			<td><input type="number" name="subjDay" id="dayLong" max="30" min="7" ${list.subjDay }/>일<div id="error"></div></td>
+			<td><input type="number" name="subjDay" id="dayLong" max="30" min="7" ${list.subjDay } placeholder="수강가능 기간을 기입하세요"/>일<div id="error"></div></td>
 		</tr>
 		<tr>
 			<td>강의내용</td>
-			<td><textarea name="subjCnt">${list.subjCnt }</textarea></td>
+			<td><textarea name="subjCnt"></textarea></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" value="수정하기">
+				<input type="button" onclick="location.href='/hotelProject/lecture/teacher/deleting?num=${list.subjNo}'" value="삭제"/>
+				<input type="button" onclick="location.href='/hotelProject/lecture/class/${list.subjNo}'" value="취소"/>
+			</td>
 		</tr>
 	</table>
-	<input type="submit" value="수정하기">
-	<input type="reset" value="초기화">
-	<input type="button" onclick="location.href='../lecture/teacher/deleting?num=${list.subjNo}'" value="삭제"/>
-	<input type="button" onclick="location.href='../lecture/teacher/${list.subjNo}'" value="취소"/>
 </form>
 
        <!-- 메인 내용 작성 구역 --> 

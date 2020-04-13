@@ -17,7 +17,7 @@ public class LectureUpController {
 	@Autowired
 	private LectureUploadingService lectureUploadingService;
 	
-	@RequestMapping(value="/lecture/teahcer/upload", method=RequestMethod.GET)
+	@RequestMapping(value="/lecture/teacher/upload", method=RequestMethod.GET)
 	public String upload(Model model) {
 		model.addAttribute("subjectCommand", new SubjectCommand());
 		return "manager/lec/lectureUp";
@@ -30,4 +30,3 @@ public class LectureUpController {
 		return "redirect:/lecture";
 	}
 }
-//

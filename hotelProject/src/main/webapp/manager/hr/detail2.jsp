@@ -43,7 +43,7 @@
 <h2>강사정보</h2>
 <form action="paperPass" id="frm1" method="post">
 	<input type="hidden" name="passState" value="서류합격자"/>
-	<input type="hidden" name="tchNo" value="${applier.teachNo }"/>
+	<input type="hidden" name="teachNo" value="${applier.teachNo }"/>
 </form>
 <table class="tableForm">
 	<tr>
@@ -84,8 +84,9 @@
 		<td>${applier.teachCerti }</td>
 	</tr>
 	</c:if>
-</table>
-<button onclick="location.href='../modify?teachNo=${applier.teachNo }'">정보수정</button>
+	<tr>
+		<td colspan="2">
+		<button onclick="location.href='../modify?teachNo=${applier.teachNo }'">정보수정</button>
 <button onclick="location.href='/hotelProject/main'">메인으로</button>
 <c:choose>
 	<c:when test="${empty applier.passState || applier.passState == '지원대기자'}">
@@ -98,6 +99,9 @@
 		<button onclick="location.href='./contract/${applier.teachNo }'">계약하기</button>
 	</c:when>
 </c:choose>
+		</td>
+	</tr>
+</table>
 
        <!-- 메인 내용 작성 구역 --> 
        <!-- Sidebar Toggle (Topbar) -->

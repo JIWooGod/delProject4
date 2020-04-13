@@ -3,7 +3,7 @@ package command.hr;
 import org.springframework.web.multipart.MultipartFile;
 
 public class SubjectCommand {
-	Long tchNo;
+	String tchNo;
 	String subjName;
 	MultipartFile subjVideo;
 	String subjCnt;
@@ -29,10 +29,10 @@ public class SubjectCommand {
 	public void setSubjGroup(String subjGroup) {
 		this.subjGroup = subjGroup;
 	}
-	public Long getTchNo() {
+	public String getTchNo() {
 		return tchNo;
 	}
-	public void setTchNo(Long tchNo) {
+	public void setTchNo(String tchNo) {
 		this.tchNo = tchNo;
 	}
 	public String getSubjName() {

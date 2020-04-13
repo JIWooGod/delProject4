@@ -18,4 +18,3 @@ public class LectureListController {
 		return "manager/lec/lectureList";
 	}
 }
-//

@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import service.hr.EmpDetailService;
 import service.hr.TchDetailService;
 
 @Controller
@@ -21,4 +20,3 @@ public class DetailTchController {
 		return "manager/hr/detail2";
 	}
 }
-//

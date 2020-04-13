@@ -16,19 +16,15 @@ body, * {margin:0;
 #topmenu a{font-family:inherit;
 			text-decoration:none;
 			vertical-align:middle;
-			font-weight:bold;
 			color:white;}
 #topmenu a:hover{font-family:inherit;
 				text-decoration:none;
-				font-weight:bold;
 				color:#382f29;}
 #topmenu a:active{font-family:inherit;
 				text-decoration:none;
-				font-weight:bold;
 				color:#382f29;}
 #topmenu a:visited{font-family:inherit;
 				text-decoration:none;
-				font-weight:bold;
 				color:white;}
 
 #header {height:700px;
@@ -101,7 +97,7 @@ input[type="number"] {text-align:left;
 					  height:30px; 
 					  vertical-align:center; 
 					  font-family:inherit;
-					  font-size:17px;
+					  font-size:15px;
 					  border-top:none;
 					  border-left:5px solid #935c3c;
 					  border-right:none;
@@ -203,7 +199,7 @@ table {max-width:80%;
 			min-width:50px;
 			text-align:center;
 			font-family:inherit;
-			font-size:17px;
+			font-size:13px;
 			padding:5px;
 			color:#935c3c;
 			border-top:none;
@@ -217,7 +213,7 @@ table {max-width:80%;
 			border-right:none;
 			border-bottom:1px solid #935c3c;
 			text-align:left;
-			font-size:17px;
+			font-size:13px;
 			padding:5px;}
 #invisibleTale{border:none;}
 #invisibleTale td{min-height:25px;

@@ -44,18 +44,6 @@
        
 <h2>강의등록</h2>
 <a href="../lecture" style='text-align:right;'>강좌목록</a>
-
-<div id="search">
-	<form action="search" method="post" enctype="application/x-www-form-urlencoded">
-		<select>
-			<option value="all">통합검색</option>
-			<option value="name">강사명</option>
-			<option value="number">강사번호</option>
-		</select>
-		<input type="text" placeholder="강사명 혹은 번호를 입력하시오"><input type="submit" value="검색">
-	</form>
-</div>
-
 <form action="uploading" method="post"
 	enctype="multipart/form-data" commandName="subjectCommand">
 	<table id="tableForm">
@@ -71,7 +59,7 @@
 		</tr>
 		<tr>
 			<td>강사번호</td>
-			<td><input type="text" name="tchNo" value="" readonly="readonly"/></td>
+			<td><input type="text" name="tchNo" placeholder="강사번호를 입력하시오"/></td>
 		</tr>
 		<tr>
 			<td>강의명</td>

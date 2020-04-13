@@ -15,7 +15,14 @@ public class SubjectDTO implements Serializable {
 	String subjFileSize;
 	String subjStore;
 	Timestamp subjRegDate;
+	String teachNo;
 	
+	public String getTeachNo() {
+		return teachNo;
+	}
+	public void setTeachNo(String teachNo) {
+		this.teachNo = teachNo;
+	}
 	public Timestamp getSubjRegDate() {
 		return subjRegDate;
 	}

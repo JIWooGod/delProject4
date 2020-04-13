@@ -16,7 +16,7 @@ import repository.lecture.LectureModifyRepository;
 
 @Service
 public class LectureModifyService {
-	final String PATH = "\\lec\\video\\";
+	final String PATH = "\\manager\\lec\\video\\";
 	@Autowired
 	private LectureModifyRepository lectureModifyRepository;
 	@Autowired

@@ -17,4 +17,3 @@ public class LectureUploadingRepository {
 		sqlSession.insert(statement, dto);
 	}
 }
-//

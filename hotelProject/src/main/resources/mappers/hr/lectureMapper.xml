@@ -5,7 +5,8 @@
 	<cache />
 	<sql id="subjBaseColumn">
 		SUBJ_NO, SUBJ_NAME, SUBJ_CNT, SUBJ_GROUP, SUBJ_DAY,
-		SUBJ_TIME, SUBJ_ORIGIN, SUBJ_FILESIZE, SUBJ_STORE, SUBJ_REGDATE
+		SUBJ_TIME, SUBJ_ORIGIN, SUBJ_FILESIZE, SUBJ_STORE, SUBJ_REGDATE,
+		TEACH_NO
 	</sql>
 	<resultMap type="subj" id="subRs">
 		<id column="SUBJ_NO" jdbcType="BIGINT" property="subjNo"/>
@@ -18,6 +19,7 @@
 		<result column="SUBJ_FILESIZE" jdbcType="VARCHAR" property="subjFileSize"/>
 		<result column="SUBJ_STORE" jdbcType="VARCHAR" property="subjStore"/>
 		<result column="SUBJ_REGDATE" jdbcType="TIMESTAMP" property="subjRegDate"/>
+		<result column="TEACH_NO" jdbcType="VARCHAR" property="teachNo"/>
 	</resultMap>
 	
 	<insert id="addVideo1" parameterType="subj">
@@ -35,7 +37,7 @@
 						</otherwise>
 					</choose>, #{subjName}, #{subjCnt}, #{subjGroup},
 					#{subjDay}, null, #{subjOrigin},
-					#{subjFileSize}, #{subjStore}, sysdate)
+					#{subjFileSize}, #{subjStore}, sysdate, #{teachNo})
 	</insert>
 	<select id="videoList" resultMap="subRs">
 		select

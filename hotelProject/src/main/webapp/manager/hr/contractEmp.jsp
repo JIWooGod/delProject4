@@ -80,13 +80,12 @@
 		<td>서명</td>
 		<td>* 아래 서명란에 서명하시오 <input type="button" onclick="javascript:onClear();" value="다시하기"/><br/>
 			<canvas id="drawCanvas" width="300" height="150" style=" position: relative; border: 1px solid #000;"></canvas>
-    		<img id="myImage" style="display:none"/>
+    		<img id="myImage" style="display:none" name="myImage"/>
 		</td>
 	</tr>
 </table>
 	<input type="submit" value="계약하기">
 </form>
-	<button id="cancel" onclick="location.href='../personnel'">취소</button>
 
 
        <!-- 메인 내용 작성 구역 --> 

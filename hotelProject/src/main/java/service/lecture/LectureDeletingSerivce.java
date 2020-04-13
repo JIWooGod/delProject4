@@ -21,7 +21,7 @@ public class LectureDeletingSerivce {
 	
 	public void action(HttpServletRequest request, Long num) {
 		SubjectDTO dto = new SubjectDTO();
-		String path = "\\lec\\video\\";
+		String path = "\\manager\\lec\\video\\";
 		String realPath = request.getServletContext().getRealPath(path);
 		System.out.println(realPath);
 		dto.setSubjNo(num);

@@ -46,7 +46,7 @@
 <table class="tableList">
 	<tr>
 		<td colspan="5"></td>
-		<td><button onclick="javascript:location.href='lecture/teacher/upload'">강의등록</button></td>
+		<td><button onclick="javascript:location.href='/hotelProject/lecture/teacher/upload'">강의등록</button></td>
 	</tr>
 	<tr>
 		<th>강의분류</th>
@@ -59,11 +59,11 @@
 	<c:forEach items="${list }" var="list">
 	<tr>
 		<td>${list.subjGroup }</td>
-		<td><a href="lecture/class/${list.subjNo}">${list.subjNo }</a></td>
-		<td><a href="lecture/class/${list.subjNo}">${list.subjName }</a></td>
+		<td><a href="/hotelProject/lecture/class/${list.subjNo}">${list.subjNo }</a></td>
+		<td><a href="/hotelProject/lecture/class/${list.subjNo}">${list.subjName }</a></td>
 		<td></td>
 		<td>${list.subjTime }</td>
-		<td><button onclick="location.href='lecture/teacher/deleting?num=${list.subjNo}'">삭제</button></td>
+		<td><button onclick="location.href='/hotelProject/lecture/teacher/deleting?num=${list.subjNo}'">삭제</button></td>
 	</tr>
 	</c:forEach>
 </table>
