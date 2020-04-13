@@ -19,7 +19,7 @@ public class RoomFormController {
 	@RequestMapping(method = RequestMethod.GET)
 	public String roomForm()
 	{
-		return"room/room_form";
+		return"manager/room_form";
 	}
 	@RequestMapping(method = RequestMethod.POST)
 	public String roomFormPro(RoomCommand roomCommand,HttpServletRequest request)

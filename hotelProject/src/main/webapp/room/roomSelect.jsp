@@ -232,7 +232,7 @@ selectRoom(4)
 							</div>
 							<div class="hs_reservation_left" style="padding: 0 20px 0 50px;width:15%" align = center>
 							<h3 class="hs_reservation_title"> 층 선택</h3>
-								<input type = "button" name = "floor" value = "10F" onclick="selectRoom(10);"><br/>
+								
 								<input type = "button" name = "floor" value = "9F"  onclick="selectRoom(9);"><br/>
 								<input type = "button" name = "floor" value = "8F"  onclick="selectRoom(8);"><br/>
 								<input type = "button" name = "floor" value = "7F"  onclick="selectRoom(7);"><br/>

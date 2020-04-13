@@ -26,6 +26,11 @@ public class MemberRepository {
 		return sqlSession.selectOne(statement, memId);
 	}
 	
+	public MemberDTO memberDetail(String memId) {
+		String statement = namespace + ".memberDetail";
+		return sqlSession.selectOne(statement, memId);
+	}
+	
 	
 	
 	

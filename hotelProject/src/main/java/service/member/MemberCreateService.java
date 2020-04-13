@@ -71,6 +71,11 @@ public class MemberCreateService {
 			return result;
 		}
 	}
+	
+	public void memberDetail(String userId,Model model) {
+		MemberDTO dto = memberRepository.memberDetail(userId);
+		model.addAttribute("detail",dto);
+	}
 
 }
 

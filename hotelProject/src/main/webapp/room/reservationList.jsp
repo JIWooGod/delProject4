@@ -29,7 +29,7 @@
 	});
 </script>
 <body>
-	<jsp:include page="../includePage/Header.jsp" flush="true" />
+	
 
 	<div id='content_wrapper'>
 
@@ -42,7 +42,7 @@
 
 			<div class='tl'>
 				<div class='line'></div>
-				<div class='title'>예약 현황</div>
+				<div class='title' style="color: gray;">예약 현황</div>
 				<div class='line'></div>
 			</div>
 		
@@ -95,7 +95,7 @@
 								onmouseout="this.style.backgroundColor=''">
 							
 								<td >
-								<a href = "reservationDetailManager?no=${my.rmbkNo}" style="color: #FFFFFF;"><div align="center">${my.roomNo }호</div></a>
+								<a href = "reservationDetailManager?no=${my.rmbkNo}" style="color: gray;"><div align="center">${my.roomNo }호</div></a>
 								</td>
 								<td >
 									<c:if test="${my.roomGrade eq 'standard'}">
@@ -137,7 +137,7 @@
 					</table>
 					</c:if>
 					<c:if test="${empty reservation }">
-					<div class='tl' align = center>예약이 1건도 없습니다 분발하세요.</div>
+					<div class='tl' align = center>예약이  없습니다.</div>
 					</c:if>
 				</div>
 				
@@ -169,6 +169,6 @@
 		</div>
 	</div>
 
-	<jsp:include page="../includePage/Footer.jsp" flush="true" />
+
 </body>
 </html>

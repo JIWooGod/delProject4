@@ -6,8 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<link rel="stylesheet" href="room/css/room.css">
-<link rel="stylesheet" href="./css/roomStyle.css">
+<link rel="stylesheet" href="./css/style.css">
+
 <link rel="stylesheet" href="./js/rolling.css" media="screen">
 <link rel="stylesheet" href="./css/slide.css" media="screen">
 <script src="./js/jquery-1.8.3.min.js"></script>
@@ -42,7 +42,7 @@ $(function(){
 	});
 </script>
 <body>
-<jsp:include page="../includePage/Header.jsp" flush="true" /> 
+
 
 <div id='content_wrapper'>
 	
@@ -55,7 +55,7 @@ $(function(){
 
 		<div class='tl'>
 			<div class='line'></div>
-			<div class='title'>객실 등록</div>
+			<div class='title' style="color: gray;">객실 등록</div>
 			<div class='line'></div>
 		</div>
 	</div>
@@ -118,12 +118,6 @@ $(function(){
                <option value='7f'>7 층 </option>
                 <option value='8f'>8 층 </option>
                  <option value='9f'>9 층 </option>
-                  <option value='10f'>10 층 </option>
-                   <option value='11f'>11 층 </option>
-                    <option value='12f'>12 층 </option>
-                     <option value='13f'>13 층 </option>
-                      <option value='14f'>14 층 </option>
-                       <option value='15f'>15 층 </option>
              </select>
           </li>
           	<li>
@@ -157,6 +151,6 @@ $(function(){
     </div>
   </div>
 </div>
-<jsp:include page="../includePage/Footer.jsp" flush="true" />
+</div>
 </body>
 </html>

@@ -37,7 +37,7 @@ function reservationCancel(){
 }
 </script>
 <body>
-	<jsp:include page="../includePage/Header.jsp" flush="true" />
+
 
 	<div id='content_wrapper'>
 
@@ -50,7 +50,7 @@ function reservationCancel(){
 
 			<div class='tl'>
 				<div class='line'></div>
-				<div class='title'>INFORMATION</div>
+				<div class='title' style="color:gray;">INFORMATION</div>
 				<div class='line'></div>
 			</div>
 		</div>
@@ -208,8 +208,8 @@ function reservationCancel(){
 			</div>
 			<div class='line_height50'></div>
 		</div>
-	</div>
 
-	<jsp:include page="../includePage/Footer.jsp" flush="true" />
+
+	
 </body>
 </html>

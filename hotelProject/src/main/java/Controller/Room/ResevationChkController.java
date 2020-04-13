@@ -37,12 +37,12 @@ public class ResevationChkController {
 	public String reservation4(Model model,HttpSession session)
 	{
 		reservationChkService.execute4(model,session);
-		return "room/reservationList";
+		return "manager/reservationList";
 	}
 	@RequestMapping(value = "/reservationDetailManager")
 	public String reservation5(@RequestParam(value = "no")String rmbkNo,Model model,HttpSession session)
 	{
 		reservationChkService.execute2(rmbkNo,model,session);
-		return "room/ReservationDetailManager";
+		return "manager/ReservationDetailManager";
 	}
 }

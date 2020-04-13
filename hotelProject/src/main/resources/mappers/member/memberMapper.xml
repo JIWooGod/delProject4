@@ -45,6 +45,16 @@
 		<result column="EMP_TEL" jdbcType="VARCHAR" property="memTel"/>
 	</resultMap>
 	
+	<resultMap type="memdto" id="memmap">
+		<id column="mem_id" jdbcType="VARCHAR" property="memId"/>
+		<result column="mem_name" jdbcType="VARCHAR" property="memName"/>
+		<result column="mem_addr" jdbcType="VARCHAR" property="memAddr"/>
+		<result column="mem_tel" jdbcType="VARCHAR" property="memTel"/>
+		<result column="mem_email" jdbcType="VARCHAR" property="memEmail"/>
+		<result column="mem_regdt" jdbcType="TIMESTAMP" property="memRegDt"/>
+
+	</resultMap>
+	
 	<select id="userCheck" parameterType="string" resultMap="authInfo">
 		SELECT emp_id AS ID, 'manager' AS ADMIN, EMP_PW, EMP_NAME, EMP_EMAIL, EMP_ADDR, EMP_TEL
 			FROM EMPLOYEE
@@ -76,6 +86,12 @@
 		SELECT teach_id
 			FROM deluna.teacher
 			WHERE teach_id = #{memId}
+	</select>
+	
+	<select id="memberDetail" parameterType="String" resultMap="memmap">
+		SELECT MEM_ID,MEM_NAME,MEM_ADDR,MEM_TEL,MEM_EMAIL,MEM_REGDT
+			FROM MEMBER
+			WHERE mem_id = #{memId}
 	</select>
 </mapper>
 
