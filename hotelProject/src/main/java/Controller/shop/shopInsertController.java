@@ -16,7 +16,7 @@ import command.shop.shopCommand;
 import service.shop.goodsInsertService;
 
 @Controller
-@RequestMapping(value = "/delshop/InsertPro")
+@RequestMapping(value = "/InsertPro")
 public class shopInsertController {
 	@Autowired
 	goodsInsertService goodsInsertService;
@@ -31,7 +31,7 @@ public class shopInsertController {
 	
 		goodsInsertService.execute(shopcommand, request);
 		
-		return "redirect:main";
+		return "redirect:manager";
 	}
 
 }

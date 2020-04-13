@@ -1,5 +1,7 @@
 package service.shop;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 
 import command.shop.shopChkCommand;
 import model.dto.member.AuthInfo;
+import model.dto.pay.PayDTO;
 import model.dto.shop.cartDTO;
 import model.dto.shop.shopDTO;
 import repository.shop.ShopRepository;
@@ -39,12 +42,26 @@ public class goodsListService {
 		List<cartDTO> list= shopRepository.rbList(session);
 		model.addAttribute("rbChk", list);
 	}
-	
-	public void kakaoPay(shopChkCommand cCommand,Model model, HttpSession session) {
-		Integer price = cCommand.getPayPrice();
-		System.out.println("price= " + price);
-		model.addAttribute("command",cCommand);
-		model.addAttribute("price", price);
+	public void insertPay(HttpSession session, shopChkCommand ccommand) {
+		PayDTO pay = new PayDTO();
+		SimpleDateFormat  formatter = new SimpleDateFormat("MMddhhmmss");
+		String payNo =  formatter.format(new Date());
+		pay.setPayNo((Integer.parseInt(payNo)));
+		pay.setPayPrice(ccommand.getPayPrice());
+		pay.setPayMtd("kakaoPay");
+		pay.setPayWho("shop");
+		
+		shopRepository.insertPay(pay);
+		
+		AuthInfo authInfo = (AuthInfo)session.getAttribute("authInfo");
 	}
+	public void kakaoPay(shopChkCommand cCommand, Model model, HttpSession session) {
+		String price = cCommand.getPayPrice();
+		model.addAttribute("price", price);
+		model.addAttribute("command",cCommand );
+		
+	}
+
+	
 	
 }

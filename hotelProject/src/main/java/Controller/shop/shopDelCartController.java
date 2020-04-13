@@ -24,8 +24,6 @@ public class shopDelCartController {
 	}
 	@RequestMapping("/delshop/cartOneDel")
 	public String oneDel(@RequestParam(value = "code")String goodsCode, HttpSession session) {
-		System.out.println("세션 = " + session);
-		System.out.println("goodsCode = " + goodsCode);
 		cartService.delOne(goodsCode, session);
 		return "redirect:/delshop/cart";
 		

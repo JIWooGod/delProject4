@@ -115,6 +115,10 @@
 		select rmbk_chkin, rmbk_chkout from roombook where mem_id = #{memId}
 	</select>
 	
+	<insert id="shopInsertPay" parameterType="paydto">
+		insert into payment(pay_no,pay_price,pay_mtd,pay_date,pay_who)values(#{payNo},#{payPrice},#{payMtd},sysdate,#{payWho})
+	</insert>
+	
 	<!--  결제 끝 -->
 
 </mapper>

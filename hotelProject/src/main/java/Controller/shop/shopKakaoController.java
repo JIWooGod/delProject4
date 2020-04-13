@@ -30,7 +30,7 @@ public class shopKakaoController {
 		return "shop/kakao";
 	}
 	@RequestMapping(method = RequestMethod.POST)
-		public String kakaoPay(shopChkCommand cCommand,Model model, HttpSession session) {
+		public String kakaoPay(shopChkCommand cCommand, Model model, HttpSession session) {
 			System.out.println("카카오컨트롤러 들어옴");
 			shopListService.kakaoPay(cCommand,model,session);
 			return "shop/kakao";

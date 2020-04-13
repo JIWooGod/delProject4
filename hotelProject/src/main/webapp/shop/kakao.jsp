@@ -3,12 +3,7 @@
 <%@ taglib prefix="c" uri = "http://java.sun.com/jsp/jstl/core" %>      
     
 <%
- //   String name = (String)request.getAttribute("name");
- //   String email = (String)request.getAttribute("email");
- //  String phone = (String)request.getAttribute("phone");
- //  String address = (String)request.getAttribute("address");
-  //  int totalPrice = (int)request.getAttribute("totalPrice");
-   
+
  	 String name = "1";
   
      String phone = "1";
@@ -40,8 +35,8 @@
             pg : 'kakaopay',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name : '호텔 델루나 결제',
-            amount : ${price} ,
+            name : '델루나 온라인샵 결제',
+            amount : ${price } ,
             buyer_name : '<%=name%>',
             buyer_tel : '<%=phone%>',
      
@@ -89,14 +84,15 @@
     </script> 
   <div style=display:none >
             	<form action="payChk" method="post" name="sendKakao" enctype="application/x-www-form-urlencoded">
-            
-                	
-					 
 					<input value="${command.memTel}" name="memTel">  
-              		
-          
-                	<input value="택배배송" name="shipName">
-              
+					<input value="${command.payPrice}" name="payPrice">
+					<input value="${command.goodsName}" name="goodsName">
+					<input value="${command.cartQty}" name="cartQty">
+					<input value="${command.memAddr}" name=memAddr>
+					<input value="${command.memName}" name="memName">
+					<input value="${command.shipName}" name="shipName">
+					<input value="${command.rmbkChkIn}" name="rmbkChkIn">
+					<input value="${command.rmbkChkOut}" name="rmbkChkOut">
                 </form>
            </div>     
 </body>

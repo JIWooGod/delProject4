@@ -19,10 +19,7 @@ public class shopMainController {
 		return "shop/shopIndex";
 	}
 
-	@RequestMapping("/manager/insert")
-	public String goodsInsert() {
-		return "manager/shopManager/goodsInsert";
-	}
+
 	
 	
 }

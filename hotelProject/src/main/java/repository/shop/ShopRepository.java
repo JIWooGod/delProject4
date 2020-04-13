@@ -1,5 +1,7 @@
 package repository.shop;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -9,7 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
+import command.shop.shopChkCommand;
 import model.dto.member.AuthInfo;
+import model.dto.pay.PayDTO;
 import model.dto.room.RoomDTO;
 import model.dto.shop.cartDTO;
 import model.dto.shop.shopDTO;
@@ -89,6 +93,12 @@ public class ShopRepository {
 		String statement = namespace + ".chkCode";
 		return sqlSession.selectList(statement, coupon);
 	}
+	public void insertPay(PayDTO dto) {
+		String statement = namespace+".shopInsertPay";
+		sqlSession.insert(statement, dto);
+		
+	}
+	
 
 
 

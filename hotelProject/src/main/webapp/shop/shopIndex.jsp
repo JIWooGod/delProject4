@@ -114,8 +114,7 @@
                         <div class="single-features-ads">
                             <img src='/hotelProject/shop/img/icons/chat.png' alt="">
                             <h4>Online support 24/7</h4>
-                            <p>Urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vesti bulum mal esuada
-                                aliquet libero viverra cursus. </p>
+                            <p>무 슨 말 을 써 야 할 까 요 </p>
                         </div>
                     </div>
                 </div>
@@ -177,10 +176,10 @@
                         </div>
                         <ul class="product-controls">
                             <li data-filter="*">All</li>
-                            <li data-filter=".Outer">Outer</li>
-                            <li data-filter=".Top">Top</li>
-                            <li data-filter=".shoes">Shoes</li>
-                            <li data-filter=".accesories">Accesories</li>
+                            <li data-filter=".Male">Male</li>
+                            <li data-filter=".Female">Female</li>
+                            <li data-filter=".Accesories">Accesories</li>
+                            <li data-filter=".Tour">Tour</li>
                         </ul>
                     </div>
                 </div>
@@ -213,33 +212,7 @@
     <!-- Latest Product End -->
 
     <!-- Lookbok Section Begin -->
-    <section class="lookbok-section">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-4 offset-lg-1">
-                    <div class="lookbok-left">
-                        <div class="section-title">
-                            <h2>2020 <br />#lookbook</h2>
-                        </div>
-                        <p>Fusce urna quam, euismod sit amet mollis quis, vestibulum quis velit. Vestibulum malesuada
-                            aliquet libero viverra cursus. Aliquam erat volutpat. Morbi id dictum quam, ut commodo
-                            lorem. In at nisi nec arcu porttitor aliquet vitae at dui. Sed sollicitudin nulla non leo
-                            viverra scelerisque. Phasellus facilisis lobortis metus, sit amet viverra lectus finibus ac.
-                            Aenean non felis dapibus, placerat libero auctor, ornare ante. Morbi quis ex eleifend,
-                            sodales nulla vitae, scelerisque ante. Nunc id vulputate dui. Suspendisse consectetur rutrum
-                            metus nec scelerisque. s</p>
-                        <a href="#" class="primary-btn look-btn">See More</a>
-                    </div>
-                </div>
-                <div class="col-lg-5 offset-lg-1">
-                    <div class="lookbok-pic">
-                        <img src='/hotelProject/shop/img/lookbok.jpg' alt="">
-                        <div class="pic-text">fashion</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+
     <!-- Lookbok Section End -->
 
     <!-- Logo Section Begin -->

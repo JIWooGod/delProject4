@@ -47,11 +47,11 @@
         <h2>Categories <span></span></h2>
         <div class="box-content">
           <ul>
-            <li><a href="categories2?cate=Outer">1</a></li>
-            <li><a href="categories2?cate=Top">Category 2</a></li>
-            <li><a href="#">Category 3</a></li>
-            <li><a href="#">Category 4</a></li>
-            <li class="last"><a href="#">Category 5</a></li>
+            <li><a href="categories">모든상품</a></li>
+            <li><a href="categories2?cate=Male">남성의류</a></li>
+            <li><a href="categories2?cate=Female">여성의류</a></li>
+            <li><a href="categories2?cate=Accesories">악세사리</a></li>
+            <li class="last"><a href="categories2?cate=Tour">여행상품</a></li>
           </ul>
         </div>
       </div>

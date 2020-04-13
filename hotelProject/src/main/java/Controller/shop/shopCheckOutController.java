@@ -22,8 +22,6 @@ public class shopCheckOutController {
 	
 	@RequestMapping("/delshop/chkOut")
 	public String chkOut(@RequestParam(value = "cs")String ship ,Model model, HttpSession session) {
-		System.out.println("ship = " + ship);
-		
 		if(ship.equals("a")) {
 			shopListService.cartList(session, model);
 			shopListService.memList(session, model);
@@ -43,10 +41,12 @@ public class shopCheckOutController {
 	public String payChk(HttpSession session, shopChkCommand Ccommand) {
 		Ccommand.getMemTel();
 		SmsSend sms = new SmsSend();
-		System.out.println("연락처" + Ccommand.getMemTel());
 		String phoneNum = Ccommand.getMemTel();
-		String textMassage = "주문이 완료되었습니다.";
+		String name = Ccommand.getMemName();
+		String gName = Ccommand.getGoodsName();
+		String textMassage = name + "님 주문하신 '" + gName + "' 결제가 완료되었습니다.";
 		sms.smsSend(phoneNum, textMassage);
+		shopListService.insertPay(session,Ccommand);
 		//shopRepository.delcart(session);
 		return null;
 	}

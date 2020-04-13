@@ -154,21 +154,21 @@
                                 	<form action="chkOut" method="get" name="shipment" >
                                     <input type="radio" name="cs" id="one" value="a">
                                     <label for="one" >
-                                        일반 택배배송
+                                     	   일반 택배배송
                                         <span>CJ대한통운 배송일 1-3일 </span>
                                     </label>
                                 </div>
                                 <div class="cs-item">
                                     <input type="radio" name="cs" id="two" value="b">
                                     <label for="two">
-                                        객실배송 
+                                      	  객실배송 
                                          <span>객실 이용일 3일전까지만 이용가능하며 <br/>날짜를 초과한경우 택배로 발송됩니다. </span>
                                     </label>
                                 </div>
                                 <div class="cs-item last">
                                     <input type="radio" name="cs" id="three" value="c">
                                     <label for="three">
-                                        객실배송 + 홈배달서비스
+                                    	    객실배송 + 홈배달서비스
                                         <span>집으로 가는 발걸음도 가볍게 홈배달 서비스를 같이 이용해 보세요</span>
                                     </label>
                                 </div>

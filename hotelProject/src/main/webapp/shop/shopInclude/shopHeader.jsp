@@ -48,12 +48,9 @@
                         <li><a href="categories">Shop</a>
                             <ul class="sub-menu">
                                 <li><a href="categories">Product Page</a></li>
-                                <li><a href="cart">Shopping Card</a></li>
-                                <li><a href="check-out.html">Check out</a></li>
+                                <li><a href="cart">Shopping Cart</a></li>
                             </ul>
                         </li>
-                        <li><a href="./product-page.html">About</a></li>
-                        <li><a href="./check-out.html">Contact</a></li>
                         <li><a href="/hotelProject/main">Hotel</a></li>
                     </ul>
                 </nav>

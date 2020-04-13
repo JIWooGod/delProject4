@@ -19,7 +19,23 @@
 
   <!-- Custom styles for this template-->
  <link href="/hotelProject/manager/css/sb-admin-2.min.css" rel="stylesheet">
- 
+ <script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(function(){
+	   $(document).ready(function readURL(input){
+	      if (input.files && input.files[0]) {
+	           var reader = new FileReader();
+	           reader.onload = function (e) {
+	            $('#image_section').attr('src', e.target.result);  
+	           }
+	           reader.readAsDataURL(input.files[0]);
+	           }
+	      $("#imgInput").change(function(){
+	            readURL(this);
+	         });
+	   });
+	});
+</script>
 
 </head>
 
@@ -60,12 +76,10 @@
 		<td>
 				<select name="goodsCategory" id="goodsCategory">
 				<option value="null">필수선택</option>
-				<option value="Outer">Outer</option>
-				<option value="Top">Top</option>
-				<option value="Bottom">Bottom</option>
-				<option value="Shoes">Shoes</option>
-				<option value="ACC">고급</option>
-				<option value="승합">승합</option>
+				<option value="Male">남성의류</option>
+				<option value="Female">여성의류</option>
+				<option value="Accesories">악세사리</option>
+				<option value="Tour">여행상품</option>
 				
 		</td>
 		

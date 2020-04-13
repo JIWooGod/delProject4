@@ -86,13 +86,12 @@
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">상품관리</h6>
-            <a class="collapse-item" href="login.html">상품등록</a>
-            <a class="collapse-item" href="register.html">상품삭제</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
+            <a class="collapse-item" href="insert">상품등록</a>
+            <a class="collapse-item" href="delGoods">상품삭제</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">배송관리</h6>
-            <a class="collapse-item" href="404.html">발송관리</a>
-            <a class="collapse-item active" href="blank.html">Blank Page</a>
+            <a class="collapse-item" href="oderList">주문리스트</a>
+            <a class="collapse-item" href="shipDoods">발송관리</a>
           </div>
         </div>
       </li>
@@ -124,19 +123,7 @@
         </div>
       </li>
 
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
+      
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
