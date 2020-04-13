@@ -49,7 +49,7 @@
 	
 </script>
 <body>
-	<jsp:include page="../includePage/Header.jsp" flush="true" />
+	
 
 	<div id='content_wrapper'>
 
@@ -65,7 +65,7 @@
 
 		<div class='tl'>
 			<div class='line'></div>
-			<div class='title'>
+			<div class='title' style="color: gray;">
 				메뉴관리
 			</div>
 			<div class='line'></div>
@@ -74,9 +74,7 @@
 
 		<div class='content_box'>
 			<div class='sub_detail2'>
-				관리자 전용 레스토랑 메뉴 관리페이지 입니다.<br>
-				<p style="font-size: 11px;">메뉴이름을 클릭하면 수정,삭제를 할 수 있습니다.<br />
-				새로운 메뉴를 등록하시려면 밑에 메뉴등록 버튼을 클릭하세요.</p>
+			
 			</div>
 			<div class='line_height30'></div>
 			<div class='sub_reservation'>
@@ -165,6 +163,6 @@
 		
 	</div>
 
-	<jsp:include page="../includePage/Footer.jsp" flush="true" />
+	
 </body>
 </html>

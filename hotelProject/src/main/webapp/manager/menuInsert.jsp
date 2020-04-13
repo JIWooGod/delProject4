@@ -38,35 +38,7 @@
       <!-- Main Content -->
       <div id="content">
 		<!-- 메인 내용 작성 구역 -->
-		<c:if test="${ empty lists }">
-			예약현황이 없습니다.
-		</c:if>
-		<c:if test="${ !empty lists }">
-		<table class = "table2"id = "table2" width=100% border="1" cellpadding="0" cellspacing="0">
-			<tr>
-				<td>회원 아이디</td>
-				<td>예약자 이름</td>
-				<td>예약자 전화번호</td>
-				<td>예약날짜</td>
-				<td>예약시간</td>
-				<td>예약 테이블(룸)번호</td>
-				<td>예약 메뉴</td>
-				<td>결제 금액</td>
-			</tr>
-			<c:forEach items="${ lists }" var="l">
-			<tr>
-				<td>${ l.memId }</td>
-				<td>${ l.resName }</td>
-				<td>${ l.resTel }</td>
-				<td>${ l.fromdate }</td>
-				<td>${ l.resTime }</td>
-				<td>${ l.rstTbl }</td>
-				<td>${ l.menuName }</td>
-				<td>${ l.menuPrice }</td>
-			</tr>
-			</c:forEach>
-		</table>
-	</c:if>
+		<jsp:include page="../dining/menuInsert.jsp"></jsp:include>
        
        
        

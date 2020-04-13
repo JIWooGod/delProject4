@@ -185,13 +185,13 @@ public class DiningController {
 	@RequestMapping("/mgMenuList")
 	public String d1menuList(Model model) {
 		mgMenuSelectService.execute(model);
-		return "dining/mgMenuList";
+		return "manager/mgMenuControll";
 	}
 
 	@RequestMapping("/menuInsert")
 	public String menuInsert(@RequestParam(value="rno") Long rstNo, Model model) {
 		rstDetailService.execute(rstNo, model);
-		return "dining/menuInsert";
+		return "manager/menuInsert";
 	}
 
 	@RequestMapping("/menuInsertAction")
