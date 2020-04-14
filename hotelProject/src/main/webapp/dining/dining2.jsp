@@ -105,29 +105,6 @@ function dMoreBtn(){
 
 <div id='tail_wrapper'>
 	<div class='box'>
-		<div class='line_box'></div>
-		<div class='line_height20'>&nbsp;</div>
-
-		<div class='menu'>
-				<li class='navmenu_ul_li1'>
-							<a href='./about_1.html'>ABOUT</a>
-							<ul><li><a href='./about_1.html'>인사말</a></li><li><a href='./about_2.html'>오시는 길</a></li></ul>
-						</li><li class='navmenu_ul_li2'>
-							<a href='./accommodation_1.html'>ACCOMMODATION</a>
-							<ul><li><a href='./accommodation_1.html'>비즈니스룸</a></li><li><a href='./accommodation_2.html'>스위트룸(침실)</a></li><li><a href='./accommodation_3.html'>스위트룸(온돌)</a></li></ul>
-						</li><li class='navmenu_ul_li3'>
-							<a href='./banquethall_1.html'>BANQUET HALL</a>
-							<ul><li><a href='./banquethall_1.html'>데이지스</a></li><li><a href='./banquethall_2.html'>그랜드벨라</a></li><li><a href='./banquethall_3.html'>아이리스</a></li><li><a href='./banquethall_4.html'>프리지아</a></li></ul>
-						</li><li class='navmenu_ul_li4'>
-							<a href='./wedding_1.html'>WEDDING</a>
-							<ul><li><a href='./wedding_1.html'>세인트</a></li><li><a href='./wedding_2.html'>그레이스</a></li><li><a href='./wedding_3.html'>더채플</a></li><li><a href='./wedding_4.html'>셀레나</a></li></ul>
-						</li><li class='navmenu_ul_li5'>
-							<a href='./facilities_1.html'>Dining&Bar</a>
-							<ul><li><a href='./facilities_1.html'>레스토랑</a></li><li><a href='./facilities_2.html'>커피숍</a></li><li><a href='./facilities_3.html'>Bar</a></li></ul>
-						</li><li class='navmenu_ul_li6'>
-							<a href='./reservation_1.html'>RESERVATION</a>
-							<ul><li><a href='./reservation_1.html'>실시간 예약</a></li></ul>
-						</li>		</div>	
 
 		<div class='line_height40'>&nbsp;</div>
 		<div class='line_box'></div>

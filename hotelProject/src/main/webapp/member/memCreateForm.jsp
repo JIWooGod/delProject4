@@ -85,8 +85,8 @@
 			return false;
 		}
 	var url = "idChkPop?id=" + $("#userId").val();
-	var windowW = 700; // 창의 가로 길이
-	var windowH = 800; // 창의 세로 길이
+	var windowW = 400; // 창의 가로 길이
+	var windowH = 200; // 창의 세로 길이
 	var left = Math.ceil((window.screen.width - windowW) / 2);
 	var top = Math.ceil((window.screen.height - windowH) / 2);
 	window.open(url, "pop_01", "l top=" + top + ", left=" + left
