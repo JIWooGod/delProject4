@@ -32,4 +32,9 @@ public class shopManagerController {
 		shopRepository.delOne(goodsCode);
 		return "redirect:delGoods";
 	}
+	@RequestMapping("oderList")
+	public String shipList(Model model) {
+		goodsListService.shipList(model);
+		return "manager/shopManager/orList";
+	}
 }

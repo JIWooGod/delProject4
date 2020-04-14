@@ -85,7 +85,7 @@
 					<input value="객실배송" name="shipName">
 					<c:forEach var="rb" items="${rbChk }" varStatus="status" end="0">
 					<input value="${rb.rmbkChkIn }" name="rmbkChkIn">
-					<input value="${rb.roomNo}" name="roomNo">
+					<input value="${rb.roomNo}" name="rmNo">
 					</c:forEach>
                 </c:if>
                 <c:if test="${ empty rbChk }" >

@@ -16,7 +16,19 @@
 	<sql id="paycolumn">
 		od_no, pay_no, od_name, ship_mtd, ship_addr, od_price, mem_id, chk_in, rm_no, ship_tel
 	</sql>
+	<resultMap type="shoppaydto" id="shoppaydto">
+		<id column="od_no" jdbcType="BIGINT" property="odNo" />
+		<result column="pay_no" jdbcType="BIGINT" property="payNo" />
+		<result column="od_name" jdbcType="VARCHAR" property="odName" />
+		<result column="ship_mtd" jdbcType="VARCHAR" property="shipMtd" />
+		<result column="ship_addr" jdbcType="VARCHAR" property="shipAddr" />
+		<result column="od_price" jdbcType="BIGINT" property="odPrice" />
+		<result column="mem_id" jdbcType="VARCHAR" property="memId" />
+		<result column="chk_in" jdbcType="VARCHAR" property="chkIn" />
+		<result column="rm_no" jdbcType="VARCHAR" property="rmNo" />
+		<result column="ship_tel" jdbcType="VARCHAR" property="shipTel" />
 	
+	</resultMap>
 	
 	
 	<resultMap type="shopdto" id="shopmap">
@@ -59,6 +71,10 @@
 	<delete id="delGoods">
 		DELETE FROM GOODS WHERE GOODS_CODE = #{goodsCode}
 	</delete>
+	
+	<select id="shipList" resultMap="shoppaydto" parameterType="String">
+		select* from ordering
+	</select>
 	
 	<!-- 카트 시작 -->
 	

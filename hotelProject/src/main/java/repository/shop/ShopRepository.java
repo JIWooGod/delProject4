@@ -109,6 +109,11 @@ public class ShopRepository {
 		sqlSession.insert(statement,dto);
 		
 	}
+
+	public List<cartDTO> shipList() {
+		String statement = namespace+".shipList";
+		return sqlSession.selectList(statement);
+	}
 	
 
 

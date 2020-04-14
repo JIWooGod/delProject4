@@ -75,8 +75,9 @@ public class goodsListService {
 		model.addAttribute("command",cCommand );
 		
 	}
-	public void delOne(String goodsCode) {
-		
+	public void shipList(Model model) {
+		List<cartDTO> list= shopRepository.shipList();
+		model.addAttribute("shipList", list);
 		
 	}
 	
