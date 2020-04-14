@@ -174,7 +174,7 @@ function submit1(){
 										</span> <span class="hs_image disabled"> </span> <span
 											class="hs_room_title"> 오션 뷰  <span
 												style="padding-top: 3px;"><b class="point"
-													style="font-size: 12px;">+ 50500 KRW</b> </span>
+													style="font-size: 12px;">+  30000KRW</b> </span>
 										</span> 
 									</label></li>
 								
@@ -200,7 +200,7 @@ function submit1(){
 										</span> <span class="hs_image disabled"> </span> <span
 											class="hs_room_title"> 트윈 <span
 												style="padding-top: 3px;"><b class="point"
-													style="font-size: 12px;">+ 20500 KRW</b></span>
+													style="font-size: 12px;">+ 20000 KRW</b></span>
 										</span> 
 									</label></li>
 									<li><label><span class="hs_checkbox"> 

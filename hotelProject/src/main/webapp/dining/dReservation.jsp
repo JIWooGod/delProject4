@@ -40,23 +40,23 @@ $(window).load(function() {
 function submit1(){
 	var i = 0;
 	if($("#resTime").val() == 0){
-		document.getElementById("rspan1").innerHTML = "  *";
+		document.getElementById("rspan1").innerHTML = " *필수";
 		i += 1;
 	}
 	if($("#resName").val() == ""){
-		document.getElementById("rspan2").innerHTML = "  *";
+		document.getElementById("rspan2").innerHTML = " *필수";
 		i += 1;
 	}
 	if($("#resTel").val() == ""){
-		document.getElementById("rspan3").innerHTML = "  *";
+		document.getElementById("rspan3").innerHTML = "  *필수";
 		i += 1;
 	}
 	if($("#emailVal1").val() == ""){
-		document.getElementById("rspan4").innerHTML = "  *";
+		document.getElementById("rspan4").innerHTML = "  *필수";
 		i += 1;
 	}
 	if($("#emailVal2").val() == 0){
-		document.getElementById("rspan4").innerHTML = "  *";
+		document.getElementById("rspan4").innerHTML = "  *필수";
 		i += 1;
 	}
 	if(i <= 0){
