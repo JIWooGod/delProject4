@@ -158,7 +158,7 @@
                             <a href="#"><img src="/hotelProject/shop/img/products/img-1.jpg" alt=""></a>
                             <div class="p-status">new</div>
                         </figure>
-                        <div class="product-text">
+                        <div class="prsoduct-text">
                             <h6>Green Dress with details</h6>
                             <p>$22.90</p>
                         </div>

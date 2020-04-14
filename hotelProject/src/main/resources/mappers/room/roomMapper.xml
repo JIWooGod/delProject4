@@ -60,9 +60,11 @@
 	<insert id="insertRoom" parameterType="roomdto" >
 		insert into room (<include refid="basecolumn"/>) values(#{roomNo},#{roomGrade},#{roomPrice},#{roomPic},#{roomLoc},#{roomBed},#{roomView})
 	</insert>
-	<insert id="insertOeder" parameterType="reservationdto">
-		insert into roombook(<include refid="basecolumn2"/>) values(RMBK_SEQ.NEXTVAL,#{memId},#{roomNo},#{roomGrade},#{payNo},sysdate,#{roomBed},#{rmbkOption},#{dndMode},#{rmbkPeople},#{rmbkPrice},#{rmbkChkIn},#{rmbkChkOut},default,default,#{userName},#{userPh},#{uncomFort},#{noFeader})
-	</insert>
+	<insert id="insertReservation" parameterType="reservationdto">
+insert into roombook(
+<include refid="basecolumn2"/>
+) values(RMBK_SEQ.NEXTVAL,#{memId},#{roomNo},#{roomGrade},#{payNo},sysdate,#{roomBed},#{rmbkOption},#{dndMode},#{rmbkPeople},#{rmbkPrice},#{rmbkChkIn},#{rmbkChkOut},default,default,#{userName},#{userPh},#{uncomFort},#{noFeader}) 
+</insert>
 	
 	<insert id="insertPay" parameterType="paydto">
 		insert into payment(pay_no,pay_price,pay_mtd,pay_date,pay_who)values(#{payNo},#{payPrice},#{payMtd},sysdate,#{payWho})

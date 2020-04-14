@@ -30,6 +30,7 @@
         <a class="nav-link" href="main">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>HOTEL MAIN</span></a>
+          &nbsp;&nbsp;&nbsp;&nbsp;<a href="logout" style=color:blue;>로그아웃</a>
       </li>
 
       <!-- Divider -->
