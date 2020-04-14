@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 
 import command.room.RoomCommand;
@@ -55,6 +56,20 @@ public class RoomFormService {
 		dto.setRoomPic(storeTotal);
 		
 		roomRepository.insertRoom(dto);
+	}
+	
+	public void paySum(Model model) {
+		String room = "room";
+		String dining = "dining";
+		String shop = "shop";
+		String roomSum = roomRepository.roomSum(room);
+		String diningSum = roomRepository.diningSum(dining);
+		String shopSum = roomRepository.shopSum(shop);
+		
+		model.addAttribute("roomSum",roomSum);
+		model.addAttribute("diningSum",diningSum);
+		model.addAttribute("shopSum",shopSum);
+		System.out.println("sum"+roomSum);
 	}
 
 }

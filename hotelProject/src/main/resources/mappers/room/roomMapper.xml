@@ -21,6 +21,10 @@
 		<result column="rm_view" jdbcType="VARCHAR" property="roomView"/>
 	</resultMap>
 	
+	<resultMap type="String" id="roomSum">
+		<result column="pay_price" jdbcType="VARCHAR" property="roomSum"/>
+	</resultMap>
+	
 		<resultMap type="model.dto.room.ReservationChkDTO" id="chkMap">
 		<result column="rm_no" jdbcType="BIGINT" property="roomNo"/>
 		<result column="rm_grade" jdbcType="VARCHAR" property="roomGrade"/>
@@ -117,6 +121,16 @@
 	
 	<select id="reservationList" parameterType="String" resultMap="reservationmap">
 		select <include refid="basecolumn2"/> from roombook order by rmbk_date desc
+	</select>
+	
+	<select id="roomSum" parameterType="String" resultMap="roomSum">
+		select sum(pay_price) as pay_price from payment where pay_who = 'room'
+	</select>
+	<select id="diningSum" parameterType="String" resultMap="roomSum">
+		select sum(pay_price) as pay_price from payment where pay_who = 'dining'
+	</select>
+	<select id="shopSum" parameterType="String" resultMap="roomSum">
+		select sum(pay_price) as pay_price from payment where pay_who = 'shop'
 	</select>
 	
 </mapper>

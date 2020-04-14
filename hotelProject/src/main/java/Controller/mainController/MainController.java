@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import service.member.MemberCreateService;
+import service.room.RoomFormService;
 
 @Controller
 public class MainController {
 	@Autowired
 	MemberCreateService memberCreateService;
+	@Autowired
+	RoomFormService roomFormService;
 	@RequestMapping("/main")
 	public String mainPage() {
 		return "/main/main";
@@ -24,10 +27,16 @@ public class MainController {
 	public String aboutTwo() {
 		return "/about/about_2";
 	}
+	
+	
 	@RequestMapping("/manager")
-	public String managerPage() {
+	public String managerPage(Model model) {
+		
+		roomFormService.paySum(model);
 		return "/manager/managerIndex";
 	}
+	
+	
 	@RequestMapping("/blank")
 	public String blankPage() {
 		return "/manager/blank";

@@ -14,6 +14,7 @@ import command.member.LoginCommand;
 import command.member.MemberCommand;
 import service.member.AuthService;
 import service.member.MemberCreateService;
+import service.room.RoomFormService;
 
 @Controller
 public class MemberController {
@@ -21,7 +22,8 @@ public class MemberController {
 	private AuthService authService;
 	@Autowired
 	private MemberCreateService memberCreateService;
-	
+	@Autowired
+	RoomFormService roomFormService;
 	@RequestMapping("/signInForm")
 	public String signInForm() {
 		return "member/signInForm";
@@ -57,6 +59,7 @@ public class MemberController {
 		} else if(result.equals("1")) {
 			return "redirect:/main";
 		} else {
+			roomFormService.paySum(model);
 			return "manager/managerIndex";
 		}
 	}

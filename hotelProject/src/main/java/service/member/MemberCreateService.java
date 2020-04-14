@@ -76,6 +76,8 @@ public class MemberCreateService {
 		MemberDTO dto = memberRepository.memberDetail(userId);
 		model.addAttribute("detail",dto);
 	}
+	
+	
 
 }
 

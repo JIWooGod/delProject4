@@ -88,5 +88,23 @@ public class RoomRepository {
 		return sqlSession.selectList(statement);
 	}
 	
+	public String roomSum(String room)
+	{
+		String statement = namespace+".roomSum";
+		return sqlSession.selectOne(statement,room);
+	}
+
+	public String diningSum(String dining)
+	{
+		String statement = namespace+".diningSum";
+		return sqlSession.selectOne(statement,dining);
+	}
+
+	public String shopSum(String shop)
+	{
+		String statement = namespace+".shopSum";
+		return sqlSession.selectOne(statement,shop);
+	}
+	
 	
 }

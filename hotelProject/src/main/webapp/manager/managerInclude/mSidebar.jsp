@@ -27,9 +27,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item">
-        <a class="nav-link" href="manager">
+        <a class="nav-link" href="main">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>HOTEL MAIN</span></a>
       </li>
 
       <!-- Divider -->
